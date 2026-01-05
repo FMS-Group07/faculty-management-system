@@ -49,11 +49,11 @@ public class AdminDashboardView {
         int yStart = 180;
         int gap = 60;
 
-        addSidebarButton(sidebar, "Students", "👤", true, 65, yStart);
-        addSidebarButton(sidebar, "Lecturers", "👥", false, 65, yStart + gap);
-        addSidebarButton(sidebar, "Courses", "📖", false, 65, yStart + gap * 2);
-        addSidebarButton(sidebar, "Departments", "🏢", false, 65, yStart + gap * 3);
-        addSidebarButton(sidebar, "Degrees", "🎓", false, 65, yStart + gap * 4);
+        JButton studentsBtn = addSidebarButton(sidebar, "Students", "👤", true, 65, yStart);
+        JButton lecturersBtn = addSidebarButton(sidebar, "Lecturers", "👥", false, 65, yStart + gap);
+        JButton coursesBtn = addSidebarButton(sidebar, "Courses", "📖", false, 65, yStart + gap * 2);
+        JButton departmentsBtn = addSidebarButton(sidebar, "Departments", "🏢", false, 65, yStart + gap * 3);
+        JButton degreesBtn = addSidebarButton(sidebar, "Degrees", "🎓", false, 65, yStart + gap * 4);
 
         // Logout Button (Bottom)
         RoundedButton logoutBtn = new RoundedButton("Logout");
@@ -78,14 +78,127 @@ public class AdminDashboardView {
 
         // ================= TABLE =================
         String[] columns = { "Full Name", "Student ID", "Degree", "Email", "Mobile Number" };
-        Object[][] data = {
+        Object[][] studentData = {
                 { "Kumar Sangakkara", "ET/2022/007", "Engineering Tech", "kumar@kln.ac.lk", "0123456789" },
                 { "Mahela Jayawardene", "ET/2022/008", "Engineering Tech", "mahela@kln.ac.lk", "0123456788" },
                 { "Sanath Jayasuriya", "ET/2022/009", "Engineering Tech", "sanath@kln.ac.lk", "0123456787" },
         };
 
-        DefaultTableModel model = new DefaultTableModel(data, columns);
+        String[] lecturerColumns = { "Full Name", "Department", "Courses Teaching", "Email", "Mobile Number" };
+        Object[][] lecturerData = {
+                { "Dr. Nuwan Kodagoda", "Computing", "OOP, DSA", "nuwan@kln.ac.lk", "0712345678" },
+                { "Dr. Pradeepa Samarasinghe", "Computing", "DBMS, SAD", "pradeepa@kln.ac.lk", "0712345679" }
+        };
+
+        String[] courseColumns = { "Course Code", "Course Name", "Credits", "Lecturer" };
+        Object[][] courseData = {
+                { "SENG 11223", "Object Oriented Programming", "3", "Dr. Nuwan Kodagoda" },
+                { "SENG 11213", "Data Structures and Algorithms", "3", "Dr. Nuwan Kodagoda" },
+                { "SENG 11233", "Database Management Systems", "3", "Dr. Pradeepa Samarasinghe" }
+        };
+
+        String[] departmentColumns = { "Department Name", "HOD", "Degrees", "No of Staff" };
+        Object[][] departmentData = {
+                { "Computing", "Dr. Nuwan Kodagoda", "SE, CS, IS", "15" },
+                { "Engineering Tech", "Dr. Pradeepa Samarasinghe", "BET, BICT", "20" }
+        };
+
+        String[] degreeColumns = { "Degree Name", "Department", "No of Students" };
+        Object[][] degreeData = {
+                { "Software Engineering", "Computing", "150" },
+                { "Computer Science", "Computing", "120" },
+                { "Information Systems", "Computing", "100" },
+                { "Bet", "Engineering Tech", "200" }
+        };
+
+        DefaultTableModel model = new DefaultTableModel(studentData, columns);
         JTable table = new JTable(model);
+
+        // Sidebar Navigation Logic
+        studentsBtn.addActionListener(e -> {
+            titleLabel.setText("Students");
+            model.setDataVector(studentData, columns);
+
+            // Update Styles
+            studentsBtn.setBackground(AppColors.DARK_PURPLE);
+            studentsBtn.setForeground(Color.WHITE);
+            lecturersBtn.setBackground(Color.WHITE);
+            lecturersBtn.setForeground(AppColors.PRIMARY_PURPLE);
+            coursesBtn.setBackground(Color.WHITE);
+            coursesBtn.setForeground(AppColors.PRIMARY_PURPLE);
+            departmentsBtn.setBackground(Color.WHITE);
+            departmentsBtn.setForeground(AppColors.PRIMARY_PURPLE);
+            degreesBtn.setBackground(Color.WHITE);
+            degreesBtn.setForeground(AppColors.PRIMARY_PURPLE);
+        });
+
+        lecturersBtn.addActionListener(e -> {
+            titleLabel.setText("Lecturers");
+            model.setDataVector(lecturerData, lecturerColumns);
+
+            // Update Styles
+            lecturersBtn.setBackground(AppColors.DARK_PURPLE);
+            lecturersBtn.setForeground(Color.WHITE);
+            studentsBtn.setBackground(Color.WHITE);
+            studentsBtn.setForeground(AppColors.PRIMARY_PURPLE);
+            coursesBtn.setBackground(Color.WHITE);
+            coursesBtn.setForeground(AppColors.PRIMARY_PURPLE);
+            departmentsBtn.setBackground(Color.WHITE);
+            departmentsBtn.setForeground(AppColors.PRIMARY_PURPLE);
+            degreesBtn.setBackground(Color.WHITE);
+            degreesBtn.setForeground(AppColors.PRIMARY_PURPLE);
+        });
+
+        coursesBtn.addActionListener(e -> {
+            titleLabel.setText("Courses");
+            model.setDataVector(courseData, courseColumns);
+
+            // Update Styles
+            coursesBtn.setBackground(AppColors.DARK_PURPLE);
+            coursesBtn.setForeground(Color.WHITE);
+            studentsBtn.setBackground(Color.WHITE);
+            studentsBtn.setForeground(AppColors.PRIMARY_PURPLE);
+            lecturersBtn.setBackground(Color.WHITE);
+            lecturersBtn.setForeground(AppColors.PRIMARY_PURPLE);
+            departmentsBtn.setBackground(Color.WHITE);
+            departmentsBtn.setForeground(AppColors.PRIMARY_PURPLE);
+            degreesBtn.setBackground(Color.WHITE);
+            degreesBtn.setForeground(AppColors.PRIMARY_PURPLE);
+        });
+
+        departmentsBtn.addActionListener(e -> {
+            titleLabel.setText("Departments");
+            model.setDataVector(departmentData, departmentColumns);
+
+            // Update Styles
+            departmentsBtn.setBackground(AppColors.DARK_PURPLE);
+            departmentsBtn.setForeground(Color.WHITE);
+            studentsBtn.setBackground(Color.WHITE);
+            studentsBtn.setForeground(AppColors.PRIMARY_PURPLE);
+            lecturersBtn.setBackground(Color.WHITE);
+            lecturersBtn.setForeground(AppColors.PRIMARY_PURPLE);
+            coursesBtn.setBackground(Color.WHITE);
+            coursesBtn.setForeground(AppColors.PRIMARY_PURPLE);
+            degreesBtn.setBackground(Color.WHITE);
+            degreesBtn.setForeground(AppColors.PRIMARY_PURPLE);
+        });
+
+        degreesBtn.addActionListener(e -> {
+            titleLabel.setText("Degrees");
+            model.setDataVector(degreeData, degreeColumns);
+
+            // Update Styles
+            degreesBtn.setBackground(AppColors.DARK_PURPLE);
+            degreesBtn.setForeground(Color.WHITE);
+            studentsBtn.setBackground(Color.WHITE);
+            studentsBtn.setForeground(AppColors.PRIMARY_PURPLE);
+            lecturersBtn.setBackground(Color.WHITE);
+            lecturersBtn.setForeground(AppColors.PRIMARY_PURPLE);
+            coursesBtn.setBackground(Color.WHITE);
+            coursesBtn.setForeground(AppColors.PRIMARY_PURPLE);
+            departmentsBtn.setBackground(Color.WHITE);
+            departmentsBtn.setForeground(AppColors.PRIMARY_PURPLE);
+        });
         table.setRowHeight(40);
         table.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         table.setSelectionBackground(AppColors.GRAY_BUTTON);
@@ -325,7 +438,7 @@ public class AdminDashboardView {
         }
     }
 
-    private void addSidebarButton(JPanel panel, String text, String icon, boolean isActive, int x, int y) {
+    private JButton addSidebarButton(JPanel panel, String text, String icon, boolean isActive, int x, int y) {
         JButton btn = new RoundedButton(text); // Icons typically require Font support or ImageIcon
         // For simplicity using text, but styling it like the image
 
@@ -345,6 +458,7 @@ public class AdminDashboardView {
         }
 
         panel.add(btn);
+        return btn;
     }
 
     private JButton createRoundedButton(String text, Color bg, Color fg) {
