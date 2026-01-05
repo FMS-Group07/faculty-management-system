@@ -5,39 +5,103 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4a710ca-3f45-4df2-b520-1694420f4367" name="Changes" comment="Merge branch 'main' into salik&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <change afterPath="$PROJECT_DIR$/mysql-connector-j-9.5.0/mysql-connector-j-9.5.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/CourseController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/DegreeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/DepartmentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/LecturerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/LecturerProfileController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/StudentCourseController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/StudentDashboardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/StudentDetailsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/StudentTimeTableController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/TimeTableController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/AdminPanelsDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/CourseDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/DegreeDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/DepartmentDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/LecturerProfileDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/StudentCourseDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/StudentDetailsDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dao/TimeTableDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/CourseEnrolledPanle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/CoursePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/DegreePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/DepartmentPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/LecturerDashboardView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/LecturerMessagePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/LecturerPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/LecturerProfilePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/ProfileDetailsPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/StudentPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/TimeTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/TimeTablePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/faculty/util/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/faculty-management-system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/faculty-management-system.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/controller/AdminController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/controller/CourseController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/controller/DegreeController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/controller/DepartmentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/controller/LecturerController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/controller/LecturerProfileController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/controller/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/controller/StudentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/controller/StudentCourseController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/controller/StudentDashboardController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/controller/StudentDetailsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/controller/StudentTimeTableController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/controller/TimeTableController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/dao/AdminPanelsDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/dao/CourseDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/dao/DegreeDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/dao/DepartmentDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/dao/LecturerDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/dao/LecturerProfileDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/dao/StudentCourseDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/dao/StudentDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/dao/StudentDetailsDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/dao/TimeTableDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/dao/UserDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/main/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/model/Course.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/model/Degree.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/model/Department.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/model/Enrollment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/model/Lecturer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/model/Student.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/model/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/view/AdminDashboardView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/view/CourseEnrolledPanle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/view/CoursePanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/view/DegreePanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/view/DepartmentPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/view/LecturerDashboardView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/view/LecturerMessagePanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/view/LecturerPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/view/LecturerProfilePanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/view/LoginView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/view/ProfileDetailsPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/view/StudentDashboardView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/view/StudentPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/view/TimeTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/view/TimeTablePanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/controller/CourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/DegreeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/controller/DegreeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/DepartmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/controller/DepartmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/LecturerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/controller/LecturerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/LecturerProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/controller/LecturerProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/controller/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/StudentCourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/controller/StudentCourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/StudentDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/controller/StudentDashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/StudentDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/controller/StudentDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/StudentTimeTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/controller/StudentTimeTableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/TimeTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/controller/TimeTableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/AdminPanelsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/dao/AdminPanelsDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/CourseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/dao/CourseDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/DegreeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/dao/DegreeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/DepartmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/dao/DepartmentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/LecturerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/dao/LecturerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/LecturerProfileDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/dao/LecturerProfileDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/StudentCourseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/dao/StudentCourseDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/StudentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/dao/StudentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/StudentDetailsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/dao/StudentDetailsDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/TimeTableDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/dao/TimeTableDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/model/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Degree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/model/Degree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/model/Department.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Enrollment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/model/Enrollment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Lecturer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/model/Lecturer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/model/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/AdminDashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/AdminDashboardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/CourseEnrolledPanle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/CourseEnrolledPanle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/CoursePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/CoursePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/DegreePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/DegreePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/DepartmentPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/DepartmentPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LecturerDashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/LecturerDashboardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LecturerMessagePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/LecturerMessagePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LecturerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/LecturerPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LecturerProfilePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/LecturerProfilePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/LoginView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ProfileDetailsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/ProfileDetailsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/StudentDashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/StudentDashboardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/StudentPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/StudentPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TimeTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/TimeTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TimeTablePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/TimeTablePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,14 +142,18 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.LoginView.executor": "Run",
+    "Application.Main.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging salik",
+    "git-widget-placeholder": "salik",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/MY FILES/University Of Kelaniya/Projects/faculty-management-system"
+    "last_opened_file_path": "C:/MY FILES/University Of Kelaniya/Projects/faculty-management-system",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RecentsManager">
