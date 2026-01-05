@@ -4,7 +4,7 @@ import utils.AppColors;
 import utils.AppConfig;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -34,7 +34,7 @@ public class AdminDashboardView {
 
         // ================= SIDEBAR =================
         JPanel sidebar = new JPanel();
-        sidebar.setPreferredSize(new Dimension(360, AppConfig.FRAME_HEIGHT - 30)); // Adjust for title bar height
+        sidebar.setPreferredSize(new Dimension(330, AppConfig.FRAME_HEIGHT - 30)); // Adjust for title bar height
         sidebar.setBackground(AppColors.PRIMARY_PURPLE);
         sidebar.setLayout(null);
 
@@ -42,22 +42,22 @@ public class AdminDashboardView {
         JLabel welcomeLabel = new JLabel("Welcome, Admin");
         welcomeLabel.setForeground(Color.WHITE);
         welcomeLabel.setFont(new Font("Segoe UI", Font.BOLD, 35));
-        welcomeLabel.setBounds(35, 90, 290, 40);
+        welcomeLabel.setBounds(20, 90, 290, 40);
         sidebar.add(welcomeLabel);
 
         // Sidebar Menu Items
-        int yStart = 200;
+        int yStart = 180;
         int gap = 60;
 
-        addSidebarButton(sidebar, "Students", "👤", true, 80, yStart);
-        addSidebarButton(sidebar, "Lecturers", "👥", false, 80, yStart + gap);
-        addSidebarButton(sidebar, "Courses", "📖", false, 80, yStart + gap * 2);
-        addSidebarButton(sidebar, "Departments", "🏢", false, 80, yStart + gap * 3);
-        addSidebarButton(sidebar, "Degrees", "🎓", false, 80, yStart + gap * 4);
+        addSidebarButton(sidebar, "Students", "👤", true, 65, yStart);
+        addSidebarButton(sidebar, "Lecturers", "👥", false, 65, yStart + gap);
+        addSidebarButton(sidebar, "Courses", "📖", false, 65, yStart + gap * 2);
+        addSidebarButton(sidebar, "Departments", "🏢", false, 65, yStart + gap * 3);
+        addSidebarButton(sidebar, "Degrees", "🎓", false, 65, yStart + gap * 4);
 
         // Logout Button (Bottom)
         RoundedButton logoutBtn = new RoundedButton("Logout");
-        logoutBtn.setBounds(150, AppConfig.FRAME_HEIGHT - 100 - 30, 50, 50); // Adjust for title bar
+        logoutBtn.setBounds(135, AppConfig.FRAME_HEIGHT - 100 - 30, 50, 50); // Adjust for title bar
         logoutBtn.setBackground(Color.WHITE);
         logoutBtn.setForeground(AppColors.PRIMARY_PURPLE);
         logoutBtn.setFocusPainted(false);
@@ -73,32 +73,8 @@ public class AdminDashboardView {
         JLabel titleLabel = new JLabel("Students");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 35));
         titleLabel.setForeground(AppColors.PRIMARY_PURPLE);
-        titleLabel.setBounds(360, 30, 200, 50);
+        titleLabel.setBounds(255, 30, 200, 50);
         centerPanel.add(titleLabel);
-
-        // Action Buttons
-        int btnY = 120;
-        int btnWidth = 150;
-        int btnHeight = 45;
-        int btnGap = 30;
-
-        // Center Panel Width approx calculation or fixed based on config
-        // Frame: 1280, Sidebar: 360 => Center: 920
-        int panelWidth = AppConfig.FRAME_WIDTH - 360;
-        int totalBtnWidth = (btnWidth * 3) + (btnGap * 2);
-        int startX = (panelWidth - totalBtnWidth) / 2;
-
-        JButton addBtn = createRoundedButton("Add new", AppColors.PRIMARY_PURPLE, Color.WHITE);
-        addBtn.setBounds(startX, btnY, btnWidth, btnHeight);
-        centerPanel.add(addBtn);
-
-        JButton editBtn = createRoundedButton("Edit", AppColors.PRIMARY_PURPLE, Color.WHITE);
-        editBtn.setBounds(startX + btnWidth + btnGap, btnY, btnWidth, btnHeight);
-        centerPanel.add(editBtn);
-
-        JButton deleteBtn = createRoundedButton("Delete", AppColors.PRIMARY_PURPLE, Color.WHITE);
-        deleteBtn.setBounds(startX + (btnWidth + btnGap) * 2, btnY, btnWidth, btnHeight);
-        centerPanel.add(deleteBtn);
 
         // ================= TABLE =================
         String[] columns = { "Full Name", "Student ID", "Degree", "Email", "Mobile Number" };
@@ -111,7 +87,7 @@ public class AdminDashboardView {
         DefaultTableModel model = new DefaultTableModel(data, columns);
         JTable table = new JTable(model);
         table.setRowHeight(40);
-        table.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        table.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         table.setSelectionBackground(AppColors.GRAY_BUTTON);
         table.setSelectionForeground(AppColors.DARK_PURPLE);
         table.setShowVerticalLines(true);
@@ -137,20 +113,89 @@ public class AdminDashboardView {
         // Dynamic Table Height Calculation
         int rowHeight = 40;
         int headerHeight = 50;
-        int maxVisibleRows = 8;
+        int maxVisibleRows = 7;
         int rows = model.getRowCount();
 
         int calculatedHeight = headerHeight + (rows * rowHeight);
         int maxHeight = headerHeight + (maxVisibleRows * rowHeight);
 
-        scrollPane.setBounds(50, 210, 800, Math.min(calculatedHeight, maxHeight));
+        scrollPane.setBounds(50, 210, 580, Math.min(calculatedHeight, maxHeight));
         scrollPane.setBorder(BorderFactory.createLineBorder(AppColors.PRIMARY_PURPLE, 1));
         scrollPane.getViewport().setBackground(Color.WHITE);
         centerPanel.add(scrollPane);
 
+        // Action Buttons
+        int btnY = 120;
+        int btnWidth = 150;
+        int btnHeight = 45;
+        int btnGap = 30;
+
+        int panelWidth = AppConfig.FRAME_WIDTH - 330;
+        int totalBtnWidth = (btnWidth * 3) + (btnGap * 2);
+        int startX = (panelWidth - totalBtnWidth) / 2;
+
+        JButton addBtn = createRoundedButton("Add new", AppColors.PRIMARY_PURPLE, Color.WHITE);
+        addBtn.setBounds(startX, btnY, btnWidth, btnHeight);
+        addBtn.addActionListener(e -> {
+            StudentFormDialog dialog = new StudentFormDialog(frame, "Add Student", null);
+            dialog.setVisible(true);
+            if (dialog.isSaved()) {
+                model.addRow(dialog.getData());
+            }
+        });
+        centerPanel.add(addBtn);
+
+        JButton editBtn = createRoundedButton("Edit", AppColors.PRIMARY_PURPLE, Color.WHITE);
+        editBtn.setBounds(startX + btnWidth + btnGap, btnY, btnWidth, btnHeight);
+        editBtn.addActionListener(e -> {
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(frame, "Please select a student to edit.", "Warning",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            // Get current data
+            Object[] currentData = new Object[5];
+            for (int i = 0; i < 5; i++) {
+                currentData[i] = model.getValueAt(selectedRow, i);
+            }
+
+            StudentFormDialog dialog = new StudentFormDialog(frame, "Edit Student", currentData);
+            dialog.setVisible(true);
+
+            if (dialog.isSaved()) {
+                Object[] newData = dialog.getData();
+                for (int i = 0; i < 5; i++) {
+                    model.setValueAt(newData[i], selectedRow, i);
+                }
+            }
+        });
+        centerPanel.add(editBtn);
+
+        JButton deleteBtn = createRoundedButton("Delete", AppColors.PRIMARY_PURPLE, Color.WHITE);
+        deleteBtn.setBounds(startX + (btnWidth + btnGap) * 2, btnY, btnWidth, btnHeight);
+        deleteBtn.addActionListener(e -> {
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(frame, "Please select a student to delete.", "Warning",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            int confirm = JOptionPane.showConfirmDialog(frame,
+                    "Are you sure you want to delete this record?",
+                    "Confirm Delete",
+                    JOptionPane.YES_NO_OPTION);
+
+            if (confirm == JOptionPane.YES_OPTION) {
+                model.removeRow(selectedRow);
+            }
+        });
+        centerPanel.add(deleteBtn);
+
         // ================= SAVE BUTTON =================
         JButton saveBtn = createRoundedButton("Save changes", AppColors.PRIMARY_PURPLE, Color.WHITE);
-        saveBtn.setBounds(250, 590, 400, 50);
+        saveBtn.setBounds(140, 520, 400, 50);
         saveBtn.setFont(new Font("Segoe UI", Font.BOLD, 18));
         centerPanel.add(saveBtn);
 
