@@ -58,12 +58,8 @@ public class AdminDashboardView {
         JButton degreesBtn = addSidebarButton(sidebar, "Degrees", "🎓", false, 65, yStart + gap * 4);
 
         // Logout Button (Bottom)
-        RoundedButton logoutBtn = new RoundedButton("Logout");
+        LogoutButton logoutBtn = new LogoutButton();
         logoutBtn.setBounds(135, AppConfig.FRAME_HEIGHT - 100 - 30, 50, 50); // Adjust for title bar
-        logoutBtn.setBackground(Color.WHITE);
-        logoutBtn.setForeground(AppColors.PRIMARY_PURPLE);
-        logoutBtn.setFocusPainted(false);
-        logoutBtn.setBorderPainted(false);
         sidebar.add(logoutBtn);
 
         // ================= CENTER CONTENT =================
@@ -394,7 +390,6 @@ public class AdminDashboardView {
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         titleBar.add(titleLabel, BorderLayout.CENTER);
 
-
         // Spacer - LEFT SIDE (to balance the controls and force title to absolute
         // center)
         JPanel spacer = new JPanel();
@@ -429,6 +424,52 @@ public class AdminDashboardView {
         });
 
         return titleBar;
+    }
+
+    public class LogoutButton extends JButton {
+        public LogoutButton() {
+            super();
+            setContentAreaFilled(false);
+            setFocusPainted(false);
+            setBorderPainted(false);
+            setCursor(new Cursor(Cursor.HAND_CURSOR));
+            setBackground(Color.WHITE);
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+            // Draw Background
+            g2.setColor(getBackground());
+            g2.fillRoundRect(0, 0, getWidth(), getHeight(), 100, 100); // Fully rounded
+
+            // Draw Icon
+            g2.setColor(AppColors.PRIMARY_PURPLE);
+            if (getModel().isPressed()) {
+                g2.setColor(AppColors.DARK_PURPLE);
+            }
+
+            Stroke stroke = new BasicStroke(3f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
+            g2.setStroke(stroke);
+
+            int size = 24;
+            int x = (getWidth() - size) / 2;
+            int y = (getHeight() - size) / 2;
+
+            // Power Icon: Broken Circle
+            // 90 is top. Start at 120, sweep 300. Gap at top.
+            g2.drawArc(x, y, size, size, 120, 300);
+
+            // Power Icon: Line
+            // From top of bounding box down to center
+            int cx = x + size / 2;
+            int cy = y + size / 2;
+            g2.drawLine(cx, y - 2, cx, cy);
+
+            g2.dispose();
+        }
     }
 
     public class RoundedButton extends JButton {
