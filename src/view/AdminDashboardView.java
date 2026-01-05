@@ -13,6 +13,8 @@ import java.awt.geom.RoundRectangle2D;
 
 public class AdminDashboardView {
 
+    private String currentView = "Students";
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             new AdminDashboardView().createAndShowGUI();
@@ -73,7 +75,7 @@ public class AdminDashboardView {
         JLabel titleLabel = new JLabel("Students");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 35));
         titleLabel.setForeground(AppColors.PRIMARY_PURPLE);
-        titleLabel.setBounds(255, 30, 200, 50);
+        titleLabel.setBounds(250, 30, 220, 50);
         centerPanel.add(titleLabel);
 
         // ================= TABLE =================
@@ -87,6 +89,7 @@ public class AdminDashboardView {
         String[] lecturerColumns = { "Full Name", "Department", "Courses Teaching", "Email", "Mobile Number" };
         Object[][] lecturerData = {
                 { "Dr. Nuwan Kodagoda", "Computing", "OOP, DSA", "nuwan@kln.ac.lk", "0712345678" },
+                { "Dr. Pradeepa Samarasinghe", "Computing", "DBMS, SAD", "pradeepa@kln.ac.lk", "0712345679" },
                 { "Dr. Pradeepa Samarasinghe", "Computing", "DBMS, SAD", "pradeepa@kln.ac.lk", "0712345679" }
         };
 
@@ -100,6 +103,7 @@ public class AdminDashboardView {
         String[] departmentColumns = { "Department Name", "HOD", "Degrees", "No of Staff" };
         Object[][] departmentData = {
                 { "Computing", "Dr. Nuwan Kodagoda", "SE, CS, IS", "15" },
+                { "Engineering Tech", "Dr. Pradeepa Samarasinghe", "BET, BICT", "20" },
                 { "Engineering Tech", "Dr. Pradeepa Samarasinghe", "BET, BICT", "20" }
         };
 
@@ -116,6 +120,7 @@ public class AdminDashboardView {
 
         // Sidebar Navigation Logic
         studentsBtn.addActionListener(e -> {
+            currentView = "Students";
             titleLabel.setText("Students");
             model.setDataVector(studentData, columns);
             centerTableCells(table);
@@ -134,6 +139,7 @@ public class AdminDashboardView {
         });
 
         lecturersBtn.addActionListener(e -> {
+            currentView = "Lecturers";
             titleLabel.setText("Lecturers");
             model.setDataVector(lecturerData, lecturerColumns);
             centerTableCells(table);
@@ -152,6 +158,7 @@ public class AdminDashboardView {
         });
 
         coursesBtn.addActionListener(e -> {
+            currentView = "Courses";
             titleLabel.setText("Courses");
             model.setDataVector(courseData, courseColumns);
             centerTableCells(table);
@@ -170,6 +177,7 @@ public class AdminDashboardView {
         });
 
         departmentsBtn.addActionListener(e -> {
+            currentView = "Departments";
             titleLabel.setText("Departments");
             model.setDataVector(departmentData, departmentColumns);
             centerTableCells(table);
@@ -188,6 +196,7 @@ public class AdminDashboardView {
         });
 
         degreesBtn.addActionListener(e -> {
+            currentView = "Degrees";
             titleLabel.setText("Degrees");
             model.setDataVector(degreeData, degreeColumns);
             centerTableCells(table);
@@ -251,10 +260,37 @@ public class AdminDashboardView {
         JButton addBtn = createRoundedButton("Add new", AppColors.PRIMARY_PURPLE, Color.WHITE);
         addBtn.setBounds(startX, btnY, btnWidth, btnHeight);
         addBtn.addActionListener(e -> {
-            StudentFormDialog dialog = new StudentFormDialog(frame, "Add Student", null);
-            dialog.setVisible(true);
-            if (dialog.isSaved()) {
-                model.addRow(dialog.getData());
+            switch (currentView) {
+                case "Students":
+                    StudentFormDialog sDialog = new StudentFormDialog(frame, "Add Student", null);
+                    sDialog.setVisible(true);
+                    if (sDialog.isSaved())
+                        model.addRow(sDialog.getData());
+                    break;
+                case "Lecturers":
+                    LecturerFormDialog lDialog = new LecturerFormDialog(frame, "Add Lecturer", null);
+                    lDialog.setVisible(true);
+                    if (lDialog.isSaved())
+                        model.addRow(lDialog.getData());
+                    break;
+                case "Courses":
+                    CourseFormDialog cDialog = new CourseFormDialog(frame, "Add Course", null);
+                    cDialog.setVisible(true);
+                    if (cDialog.isSaved())
+                        model.addRow(cDialog.getData());
+                    break;
+                case "Departments":
+                    DepartmentFormDialog dDialog = new DepartmentFormDialog(frame, "Add Department", null);
+                    dDialog.setVisible(true);
+                    if (dDialog.isSaved())
+                        model.addRow(dDialog.getData());
+                    break;
+                case "Degrees":
+                    DegreeFormDialog deDialog = new DegreeFormDialog(frame, "Add Degree", null);
+                    deDialog.setVisible(true);
+                    if (deDialog.isSaved())
+                        model.addRow(deDialog.getData());
+                    break;
             }
         });
         centerPanel.add(addBtn);
@@ -264,24 +300,48 @@ public class AdminDashboardView {
         editBtn.addActionListener(e -> {
             int selectedRow = table.getSelectedRow();
             if (selectedRow == -1) {
-                JOptionPane.showMessageDialog(frame, "Please select a student to edit.", "Warning",
+                JOptionPane.showMessageDialog(frame, "Please select a record to edit.", "Warning",
                         JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            // Get current data
-            Object[] currentData = new Object[5];
-            for (int i = 0; i < 5; i++) {
+
+            int colCount = table.getColumnCount();
+            Object[] currentData = new Object[colCount];
+            for (int i = 0; i < colCount; i++) {
                 currentData[i] = model.getValueAt(selectedRow, i);
             }
 
-            StudentFormDialog dialog = new StudentFormDialog(frame, "Edit Student", currentData);
-            dialog.setVisible(true);
-
-            if (dialog.isSaved()) {
-                Object[] newData = dialog.getData();
-                for (int i = 0; i < 5; i++) {
-                    model.setValueAt(newData[i], selectedRow, i);
-                }
+            switch (currentView) {
+                case "Students":
+                    StudentFormDialog sDialog = new StudentFormDialog(frame, "Edit Student", currentData);
+                    sDialog.setVisible(true);
+                    if (sDialog.isSaved())
+                        updateRow(model, selectedRow, sDialog.getData());
+                    break;
+                case "Lecturers":
+                    LecturerFormDialog lDialog = new LecturerFormDialog(frame, "Edit Lecturer", currentData);
+                    lDialog.setVisible(true);
+                    if (lDialog.isSaved())
+                        updateRow(model, selectedRow, lDialog.getData());
+                    break;
+                case "Courses":
+                    CourseFormDialog cDialog = new CourseFormDialog(frame, "Edit Course", currentData);
+                    cDialog.setVisible(true);
+                    if (cDialog.isSaved())
+                        updateRow(model, selectedRow, cDialog.getData());
+                    break;
+                case "Departments":
+                    DepartmentFormDialog dDialog = new DepartmentFormDialog(frame, "Edit Department", currentData);
+                    dDialog.setVisible(true);
+                    if (dDialog.isSaved())
+                        updateRow(model, selectedRow, dDialog.getData());
+                    break;
+                case "Degrees":
+                    DegreeFormDialog deDialog = new DegreeFormDialog(frame, "Edit Degree", currentData);
+                    deDialog.setVisible(true);
+                    if (deDialog.isSaved())
+                        updateRow(model, selectedRow, deDialog.getData());
+                    break;
             }
         });
         centerPanel.add(editBtn);
@@ -291,13 +351,13 @@ public class AdminDashboardView {
         deleteBtn.addActionListener(e -> {
             int selectedRow = table.getSelectedRow();
             if (selectedRow == -1) {
-                JOptionPane.showMessageDialog(frame, "Please select a student to delete.", "Warning",
+                JOptionPane.showMessageDialog(frame, "Please select a record to delete.", "Warning",
                         JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
             int confirm = JOptionPane.showConfirmDialog(frame,
-                    "Are you sure you want to delete this record?",
+                    "Are you sure you want to delete this " + currentView.substring(0, currentView.length() - 1) + "?",
                     "Confirm Delete",
                     JOptionPane.YES_NO_OPTION);
 
@@ -309,7 +369,7 @@ public class AdminDashboardView {
 
         // ================= SAVE BUTTON =================
         JButton saveBtn = createRoundedButton("Save changes", AppColors.PRIMARY_PURPLE, Color.WHITE);
-        saveBtn.setBounds(140, 520, 400, 50);
+        saveBtn.setBounds(140, 420, 400, 50);
         saveBtn.setFont(new Font("Segoe UI", Font.BOLD, 18));
         centerPanel.add(saveBtn);
 
@@ -334,32 +394,6 @@ public class AdminDashboardView {
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         titleBar.add(titleLabel, BorderLayout.CENTER);
 
-        // Window Controls (Minimize, Close)
-        // JPanel controls = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 0));
-        // controls.setOpaque(false);
-        // controls.setPreferredSize(new Dimension(100, 30)); // Fixed width for
-        // balancing
-
-        // JButton minimizeBtn = new JButton("-");
-        // minimizeBtn.setBorderPainted(false);
-        // minimizeBtn.setContentAreaFilled(false);
-        // minimizeBtn.setFocusPainted(false);
-        // minimizeBtn.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        // minimizeBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        // minimizeBtn.addActionListener(e -> frame.setState(Frame.ICONIFIED));
-
-        // JButton closeBtn = new JButton("X");
-        // closeBtn.setBorderPainted(false);
-        // closeBtn.setContentAreaFilled(false);
-        // closeBtn.setFocusPainted(false);
-        // closeBtn.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        // closeBtn.setForeground(Color.RED);
-        // closeBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        // closeBtn.addActionListener(e -> System.exit(0));
-
-        // controls.add(minimizeBtn);
-        // controls.add(closeBtn);
-        // titleBar.add(controls, BorderLayout.EAST);
 
         // Spacer - LEFT SIDE (to balance the controls and force title to absolute
         // center)
@@ -460,6 +494,12 @@ public class AdminDashboardView {
 
         panel.add(btn);
         return btn;
+    }
+
+    private void updateRow(DefaultTableModel model, int row, Object[] newData) {
+        for (int i = 0; i < newData.length; i++) {
+            model.setValueAt(newData[i], row, i);
+        }
     }
 
     private void centerTableCells(JTable table) {
