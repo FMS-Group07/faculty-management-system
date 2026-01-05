@@ -118,6 +118,7 @@ public class AdminDashboardView {
         studentsBtn.addActionListener(e -> {
             titleLabel.setText("Students");
             model.setDataVector(studentData, columns);
+            centerTableCells(table);
 
             // Update Styles
             studentsBtn.setBackground(AppColors.DARK_PURPLE);
@@ -135,6 +136,7 @@ public class AdminDashboardView {
         lecturersBtn.addActionListener(e -> {
             titleLabel.setText("Lecturers");
             model.setDataVector(lecturerData, lecturerColumns);
+            centerTableCells(table);
 
             // Update Styles
             lecturersBtn.setBackground(AppColors.DARK_PURPLE);
@@ -152,6 +154,7 @@ public class AdminDashboardView {
         coursesBtn.addActionListener(e -> {
             titleLabel.setText("Courses");
             model.setDataVector(courseData, courseColumns);
+            centerTableCells(table);
 
             // Update Styles
             coursesBtn.setBackground(AppColors.DARK_PURPLE);
@@ -169,6 +172,7 @@ public class AdminDashboardView {
         departmentsBtn.addActionListener(e -> {
             titleLabel.setText("Departments");
             model.setDataVector(departmentData, departmentColumns);
+            centerTableCells(table);
 
             // Update Styles
             departmentsBtn.setBackground(AppColors.DARK_PURPLE);
@@ -186,6 +190,7 @@ public class AdminDashboardView {
         degreesBtn.addActionListener(e -> {
             titleLabel.setText("Degrees");
             model.setDataVector(degreeData, degreeColumns);
+            centerTableCells(table);
 
             // Update Styles
             degreesBtn.setBackground(AppColors.DARK_PURPLE);
@@ -215,11 +220,7 @@ public class AdminDashboardView {
         ((DefaultTableCellRenderer) header.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
 
         // Center cell content
-        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-        for (int i = 0; i < table.getColumnCount(); i++) {
-            table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-        }
+        centerTableCells(table);
 
         JScrollPane scrollPane = new JScrollPane(table);
 
@@ -459,6 +460,14 @@ public class AdminDashboardView {
 
         panel.add(btn);
         return btn;
+    }
+
+    private void centerTableCells(JTable table) {
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < table.getColumnCount(); i++) {
+            table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
     }
 
     private JButton createRoundedButton(String text, Color bg, Color fg) {
