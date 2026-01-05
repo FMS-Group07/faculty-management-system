@@ -6,144 +6,232 @@ import java.awt.*;
 public class LoginView {
 
     private JFrame frame;
-    private JTextField usernameField;
-    private JPasswordField passwordField;
-    private JRadioButton adminBtn, studentBtn, lecturerBtn;
-    private JButton signInBtn;
+    private JPanel rightPanel, signInPanel, signUpPanel;
+    private JButton btnSignInTab, btnSignUpTab;
+    private JPanel indicatorSignIn, indicatorSignUp;
+
+    private final Color PURPLE = new Color(123, 104, 238);
+    private final Color GREY = Color.GRAY;
 
     public LoginView() {
 
         frame = new JFrame("Faculty Management System");
-        frame.setBounds(180,30,1000,650); // Updated size
+        frame.setBounds(180, 30, 1000, 650);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.setResizable(false);
 
+        /* ---------- LEFT PANEL ---------- */
         JPanel leftPanel = new JPanel();
-        leftPanel.setBackground(new Color(123,104,238));
-        leftPanel.setBounds(0,0,500,650);
+        leftPanel.setBackground(PURPLE);
+        leftPanel.setBounds(0, 0, 500, 650);
         leftPanel.setLayout(null);
         frame.add(leftPanel);
-
-        JPanel rightPanel = new JPanel();
-        rightPanel.setBounds(500,0,500,650);
-        frame.add(rightPanel);
 
         JLabel logoLabel = new JLabel("\uD83C\uDF93");
         logoLabel.setFont(new Font("SansSerif", Font.PLAIN, 180));
         logoLabel.setForeground(Color.WHITE);
         logoLabel.setBounds(150, 70, 200, 180);
 
-        JLabel titleLabel = new JLabel("<html><div style='text-align: center;'>Faculty Management<br>System</div></html>");
+        JLabel titleLabel = new JLabel(
+                "<html><div style='text-align:center;'>Faculty Management<br>System</div></html>"
+        );
         titleLabel.setForeground(Color.WHITE);
         titleLabel.setFont(new Font("Times New Roman", Font.BOLD, 36));
-        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         titleLabel.setBounds(75, 250, 400, 100);
 
-        JLabel FCTLabel = new JLabel("Faculty of Computing & Technology");
-        FCTLabel.setForeground(Color.WHITE);
-        FCTLabel.setFont(new Font("Times New Roman", Font.BOLD, 22));
-        FCTLabel.setBounds(80, 475, 400, 50);
+        JLabel fctLabel = new JLabel("Faculty of Computing & Technology");
+        fctLabel.setForeground(Color.WHITE);
+        fctLabel.setFont(new Font("Times New Roman", Font.BOLD, 22));
+        fctLabel.setBounds(80, 475, 400, 40);
 
         JLabel subtitleLabel = new JLabel("Manage your academic journey");
         subtitleLabel.setForeground(Color.WHITE);
         subtitleLabel.setFont(new Font("Times New Roman", Font.PLAIN, 19));
-        subtitleLabel.setBounds(120, 510, 400, 50);
-
+        subtitleLabel.setBounds(120, 510, 400, 40);
 
         leftPanel.add(logoLabel);
         leftPanel.add(titleLabel);
-        leftPanel.add(FCTLabel);
+        leftPanel.add(fctLabel);
         leftPanel.add(subtitleLabel);
 
-        // Right login panel
-        //JPanel rightPanel = new JPanel();
-//        rightPanel.setBackground(Color.WHITE);
-//        rightPanel.setLayout(null); // We'll adjust bounds manually
+        /* ---------- RIGHT PANEL ---------- */
+        rightPanel = new JPanel();
+        rightPanel.setBounds(500, 0, 500, 650);
+        rightPanel.setLayout(null);
+        frame.add(rightPanel);
 
-        // Sign in label
-        JLabel signInLabel = new JLabel("Sign In");
-        signInLabel.setFont(new Font("SansSerif", Font.BOLD, 32));
-        signInLabel.setBounds(50, 50, 300, 40);
-//        rightPanel.add(signInLabel);
+        btnSignInTab = new JButton("Sign In");
+        btnSignUpTab = new JButton("Sign Up");
 
-        // Username
-        JLabel userLabel = new JLabel("Username");
-        userLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        userLabel.setBounds(50, 130, 150, 25);
-        rightPanel.add(userLabel);
+        btnSignInTab.setBounds(50, 15, 150, 40);
+        btnSignUpTab.setBounds(300, 15, 150, 40);
 
-        usernameField = new JTextField();
-        usernameField.setBounds(50, 160, 250, 35);
-        usernameField.setFont(new Font("SansSerif", Font.PLAIN, 16));
-        rightPanel.add(usernameField);
+        styleTabButton(btnSignInTab);
+        styleTabButton(btnSignUpTab);
 
-        // Password
-        JLabel passLabel = new JLabel("Password");
-        passLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        passLabel.setBounds(50, 220, 150, 25);
-        rightPanel.add(passLabel);
+        indicatorSignIn = new JPanel();
+        indicatorSignUp = new JPanel();
 
-        passwordField = new JPasswordField();
-        passwordField.setBounds(50, 250, 250, 35);
-        passwordField.setFont(new Font("SansSerif", Font.PLAIN, 16));
-        rightPanel.add(passwordField);
+        indicatorSignIn.setBounds(50, 60, 150, 3);
+        indicatorSignUp.setBounds(300, 60, 150, 3);
 
-        // Role selection
-        JLabel roleLabel = new JLabel("Role");
-        roleLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        roleLabel.setBounds(50, 310, 150, 25);
-        rightPanel.add(roleLabel);
+        rightPanel.add(btnSignInTab);
+        rightPanel.add(btnSignUpTab);
+        rightPanel.add(indicatorSignIn);
+        rightPanel.add(indicatorSignUp);
 
-        adminBtn = new JRadioButton("Admin");
-        adminBtn.setBounds(50, 340, 100, 30);
-        adminBtn.setSelected(true);
-        adminBtn.setBackground(Color.WHITE);
-        adminBtn.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        createSignInForm();
+        createSignUpForm();
 
-        studentBtn = new JRadioButton("Student");
-        studentBtn.setBounds(160, 340, 120, 30);
-        studentBtn.setBackground(Color.WHITE);
-        studentBtn.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        rightPanel.add(signInPanel);
+        rightPanel.add(signUpPanel);
 
-        lecturerBtn = new JRadioButton("Lecturer");
-        lecturerBtn.setBounds(290, 340, 120, 30);
-        lecturerBtn.setBackground(Color.WHITE);
-        lecturerBtn.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        setActiveTab(true);
 
-        ButtonGroup roleGroup = new ButtonGroup();
-        roleGroup.add(adminBtn);
-        roleGroup.add(studentBtn);
-        roleGroup.add(lecturerBtn);
-
-        rightPanel.add(adminBtn);
-        rightPanel.add(studentBtn);
-        rightPanel.add(lecturerBtn);
-
-        // Sign In button
-        signInBtn = new JButton("Sign In");
-        signInBtn.setBounds(50, 400, 250, 45);
-        signInBtn.setBackground(new Color(123, 104, 238));
-        signInBtn.setForeground(Color.WHITE);
-        signInBtn.setFocusPainted(false);
-        signInBtn.setFont(new Font("SansSerif", Font.BOLD, 20));
-
-        rightPanel.add(signInBtn);
-
-        // Action listener
-        signInBtn.addActionListener(e -> {
-            String username = usernameField.getText();
-            String password = new String(passwordField.getPassword());
-            String role = adminBtn.isSelected() ? "Admin" :
-                    studentBtn.isSelected() ? "Student" : "Lecturer";
-
-            JOptionPane.showMessageDialog(frame,
-                    "Username: " + username + "\nPassword: " + password + "\nRole: " + role,
-                    "Login Info", JOptionPane.INFORMATION_MESSAGE);
-        });
+        btnSignInTab.addActionListener(e -> setActiveTab(true));
+        btnSignUpTab.addActionListener(e -> setActiveTab(false));
     }
 
-    // Show GUI
+    /* ---------- SIGN IN FORM ---------- */
+    private void createSignInForm() {
+
+        signInPanel = new JPanel();
+        signInPanel.setBounds(50, 100, 400, 500);
+        signInPanel.setLayout(null);
+
+        JLabel userLabel = createLabel("Username", 0, 20);
+        JTextField usernameField = createTextField(0, 55);
+
+        JLabel passLabel = createLabel("Password", 0, 115);
+        JPasswordField passwordField = createPasswordField(0, 150);
+
+        JLabel roleLabel = createLabel("Role", 0, 210);
+
+        JRadioButton admin = createRadio("Admin", 0, 245);
+        JRadioButton student = createRadio("Student", 130, 245);
+        JRadioButton lecturer = createRadio("Lecturer", 260, 245);
+
+        ButtonGroup group = new ButtonGroup();
+        group.add(admin);
+        group.add(student);
+        group.add(lecturer);
+
+        JButton signInBtn = new JButton("Sign In");
+        signInBtn.setBounds(0, 420, 400, 42);
+        signInBtn.setBackground(PURPLE);
+        signInBtn.setForeground(Color.WHITE);
+        signInBtn.setFocusPainted(false);
+
+        signInPanel.add(userLabel);
+        signInPanel.add(usernameField);
+        signInPanel.add(passLabel);
+        signInPanel.add(passwordField);
+        signInPanel.add(roleLabel);
+        signInPanel.add(admin);
+        signInPanel.add(student);
+        signInPanel.add(lecturer);
+        signInPanel.add(signInBtn);
+    }
+
+    /* ---------- SIGN UP FORM ---------- */
+    private void createSignUpForm() {
+
+        signUpPanel = new JPanel();
+        signUpPanel.setBounds(50, 100, 400, 500);
+        signUpPanel.setLayout(null);
+
+        JLabel userLabel = createLabel("Username", 0, 20);
+        JTextField usernameField = createTextField(0, 55);
+
+        JLabel passLabel = createLabel("Password", 0, 115);
+        JPasswordField passwordField = createPasswordField(0, 150);
+
+        JLabel confirmLabel = createLabel("Confirm Password", 0, 210);
+        JPasswordField confirmField = createPasswordField(0, 245);
+
+        JLabel roleLabel = createLabel("Role", 0, 305);
+
+        JRadioButton admin = createRadio("Admin", 0, 340);
+        JRadioButton student = createRadio("Student", 130, 340);
+        JRadioButton lecturer = createRadio("Lecturer", 260, 340);
+
+        ButtonGroup group = new ButtonGroup();
+        group.add(admin);
+        group.add(student);
+        group.add(lecturer);
+
+        JButton signUpBtn = new JButton("Sign Up");
+        signUpBtn.setBounds(0, 420, 400, 42);
+        signUpBtn.setBackground(PURPLE);
+        signUpBtn.setForeground(Color.WHITE);
+        signUpBtn.setFocusPainted(false);
+
+        signUpPanel.add(userLabel);
+        signUpPanel.add(usernameField);
+        signUpPanel.add(passLabel);
+        signUpPanel.add(passwordField);
+        signUpPanel.add(confirmLabel);
+        signUpPanel.add(confirmField);
+        signUpPanel.add(roleLabel);
+        signUpPanel.add(admin);
+        signUpPanel.add(student);
+        signUpPanel.add(lecturer);
+        signUpPanel.add(signUpBtn);
+    }
+
+    /* ---------- HELPERS ---------- */
+    private JLabel createLabel(String text, int x, int y) {
+        JLabel lbl = new JLabel(text);
+        lbl.setBounds(x, y, 250, 25);
+        lbl.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        lbl.setForeground(PURPLE);
+        return lbl;
+    }
+
+    private JTextField createTextField(int x, int y) {
+        JTextField tf = new JTextField();
+        tf.setBounds(x, y, 400, 38);
+        tf.setBorder(BorderFactory.createLineBorder(PURPLE, 1));
+        return tf;
+    }
+
+    private JPasswordField createPasswordField(int x, int y) {
+        JPasswordField pf = new JPasswordField();
+        pf.setBounds(x, y, 400, 38);
+        pf.setBorder(BorderFactory.createLineBorder(PURPLE, 1));
+        return pf;
+    }
+
+    private JRadioButton createRadio(String text, int x, int y) {
+        JRadioButton rb = new JRadioButton(text);
+        rb.setBounds(x, y, 120, 25);
+        rb.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        rb.setForeground(PURPLE);
+        rb.setOpaque(false);
+        return rb;
+    }
+
+    private void setActiveTab(boolean signInActive) {
+        signInPanel.setVisible(signInActive);
+        signUpPanel.setVisible(!signInActive);
+
+        btnSignInTab.setForeground(signInActive ? PURPLE : GREY);
+        btnSignUpTab.setForeground(signInActive ? GREY : PURPLE);
+
+        indicatorSignIn.setBackground(signInActive ? PURPLE : new Color(0, 0, 0, 0));
+        indicatorSignUp.setBackground(signInActive ? new Color(0, 0, 0, 0) : PURPLE);
+    }
+
+    private void styleTabButton(JButton btn) {
+        btn.setFocusPainted(false);
+        btn.setBorderPainted(false);
+        btn.setContentAreaFilled(false);
+        btn.setFont(new Font("Times New Roman", Font.BOLD, 28));
+        btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btn.setForeground(GREY);
+    }
+
     public void show() {
         frame.setVisible(true);
     }
