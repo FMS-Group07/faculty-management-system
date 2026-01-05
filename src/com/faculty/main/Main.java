@@ -1,10 +1,7 @@
-package main;
+package com.faculty.main;
 
-//import view.AdminDashboardView;
-
-import com.faculty.controller.LoginController;
-import com.faculty.view.AdminDashboardView;
 import com.faculty.view.LoginView;
+import com.faculty.controller.LoginController;
 
 public class Main {
     public static void main(String[] args) {
