@@ -8,15 +8,22 @@ import javax.swing.table.JTableHeader;
 import java.awt.*;
 
 public class StudentDashboardView extends JFrame {
+
+    // --- 1. NEW CONSTANTS FOR FRAME SIZE ---
+    private static final int FRAME_WIDTH = 1000;
+    private static final int FRAME_HEIGHT = 650;
+
     private DefaultTableModel tableModel;
     private JTable studentTable;
     private Color primaryPurple = new Color(124, 77, 255);
     private Color darkPurple = new Color(45, 42, 78);
-    private Color lightPurple = new Color(235, 230, 255);
 
     public StudentDashboardView() {
         setTitle("Admin Dashboard");
-        setSize(1400, 800);
+
+        // --- 2. APPLIED HERE ---
+        setSize(FRAME_WIDTH, FRAME_HEIGHT);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         getContentPane().setBackground(Color.WHITE);
@@ -36,19 +43,21 @@ public class StudentDashboardView extends JFrame {
         JPanel sidebar = new JPanel();
         sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.Y_AXIS));
         sidebar.setBackground(primaryPurple);
-        sidebar.setPreferredSize(new Dimension(350, 0));
+        // Adjusted width slightly since the frame is smaller now (optional but looks
+        // better)
+        sidebar.setPreferredSize(new Dimension(320, 0));
         sidebar.setBorder(BorderFactory.createEmptyBorder(40, 30, 40, 30));
 
         // Welcome message
         JLabel welcomeLabel = new JLabel("Welcome, Admin");
-        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 36));
+        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 28)); // Slightly smaller font
         welcomeLabel.setForeground(Color.WHITE);
         welcomeLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         sidebar.add(welcomeLabel);
-        sidebar.add(Box.createRigidArea(new Dimension(0, 60)));
+        sidebar.add(Box.createRigidArea(new Dimension(0, 50)));
 
         // Menu buttons
-        String[] menuItems = { "Students", "Lecturers", "Courses", "Departments", "Degrees" };
+        String[] menuItems = { "👤 Students", "👤 Lecturers", "📖 Courses", "🏫 Departments", "🎓 Degrees" };
         for (int i = 0; i < menuItems.length; i++) {
             JButton btn = createMenuButton(menuItems[i], i == 0);
             sidebar.add(btn);
@@ -57,39 +66,51 @@ public class StudentDashboardView extends JFrame {
 
         sidebar.add(Box.createVerticalGlue());
 
-        // Settings button (at the bottom)
-        int radius = 35;
-        JButton settingsBtn = new JButton("...") {
+        // ---------------------------------------------------------
+        // LOGOUT BUTTON
+        // ---------------------------------------------------------
+        JButton logoutBtn = new JButton() {
             @Override
             protected void paintComponent(Graphics g) {
                 Graphics2D g2 = (Graphics2D) g.create();
-                g2.setRenderingHint(
-                        RenderingHints.KEY_ANTIALIASING,
-                        RenderingHints.VALUE_ANTIALIAS_ON);
-                g2.setColor(getBackground());
-                g2.fillRoundRect(0, 0, getWidth(), getHeight(), radius, radius);
-                super.paintComponent(g2);
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+                g2.setColor(Color.WHITE);
+                g2.fillOval(0, 0, getWidth(), getHeight());
+
+                g2.setColor(primaryPurple);
+                g2.setStroke(new BasicStroke(4f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+
+                int cx = getWidth() / 2;
+                int cy = getHeight() / 2;
+                int size = 10;
+
+                g2.drawLine(cx - size, cy, cx + size, cy);
+                g2.drawLine(cx + size, cy, cx + 2, cy - 8);
+                g2.drawLine(cx + size, cy, cx + 2, cy + 8);
+
                 g2.dispose();
             }
         };
 
-        settingsBtn.setPreferredSize(new Dimension(60, 60));
-        settingsBtn.setMaximumSize(new Dimension(60, 60));
-        settingsBtn.setBackground(Color.WHITE);
-        settingsBtn.setFont(new Font("Arial", Font.BOLD, 24));
-        settingsBtn.setFocusPainted(false);
-        settingsBtn.setContentAreaFilled(false);
-        settingsBtn.setBorderPainted(false);
-        settingsBtn.setOpaque(false);
-        settingsBtn.setAlignmentX(Component.LEFT_ALIGNMENT);
-        sidebar.add(settingsBtn);
+        logoutBtn.setPreferredSize(new Dimension(60, 60));
+        logoutBtn.setMaximumSize(new Dimension(60, 60));
+        logoutBtn.setContentAreaFilled(false);
+        logoutBtn.setFocusPainted(false);
+        logoutBtn.setBorderPainted(false);
+        logoutBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        logoutBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        logoutBtn.addActionListener(e -> System.exit(0));
+
+        sidebar.add(logoutBtn);
 
         return sidebar;
     }
 
     private JButton createMenuButton(String text, boolean selected) {
 
-        int radius = 35; // 🔥 CHANGE THIS VALUE to control roundness
+        int radius = 35;
 
         JButton btn = new JButton(text) {
             @Override
@@ -105,10 +126,10 @@ public class StudentDashboardView extends JFrame {
             }
         };
 
-        btn.setMaximumSize(new Dimension(290, 60));
-        btn.setPreferredSize(new Dimension(290, 60));
+        btn.setMaximumSize(new Dimension(290, 50)); // Made slightly shorter for smaller screen
+        btn.setPreferredSize(new Dimension(290, 50));
         btn.setAlignmentX(Component.LEFT_ALIGNMENT);
-        btn.setFont(new Font("Arial", Font.BOLD, 22));
+        btn.setFont(new Font("Dialog", Font.BOLD, 18)); // Slightly smaller font
         btn.setFocusPainted(false);
         btn.setContentAreaFilled(false);
         btn.setBorderPainted(false);
@@ -128,28 +149,26 @@ public class StudentDashboardView extends JFrame {
     private JPanel createMainContent() {
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(Color.WHITE);
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(40, 50, 40, 50));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(30, 40, 30, 40)); // Reduced padding
 
         // -- 1. Header --
         JPanel headerPanel = new JPanel(new BorderLayout());
         headerPanel.setBackground(Color.WHITE);
         JLabel titleLabel = new JLabel("Students");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 42));
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 36)); // Slightly smaller font
         titleLabel.setForeground(primaryPurple);
         headerPanel.add(titleLabel, BorderLayout.CENTER);
         mainPanel.add(headerPanel, BorderLayout.NORTH);
 
-        // -- 2. Center Panel (Buttons + Table) --
+        // -- 2. Center Panel --
         JPanel centerPanel = new JPanel(new BorderLayout());
         centerPanel.setBackground(Color.WHITE);
-        centerPanel.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
+        centerPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
 
-        // Top Action Buttons (Add, Edit, Delete)
+        // Top Action Buttons
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 15, 0));
         buttonPanel.setBackground(Color.WHITE);
-
-        // 🔥 MOVED DOWN: Added 40px padding to the bottom of the buttons
-        buttonPanel.setBorder(new EmptyBorder(0, 0, 40, 0));
+        buttonPanel.setBorder(new EmptyBorder(0, 0, 30, 0)); // Reduced bottom space
 
         JButton addBtn = createActionButton("Add new");
         JButton editBtn = createActionButton("Edit");
@@ -163,7 +182,6 @@ public class StudentDashboardView extends JFrame {
         buttonPanel.add(editBtn);
         buttonPanel.add(deleteBtn);
 
-        // Add buttons to top of center panel
         centerPanel.add(buttonPanel, BorderLayout.NORTH);
 
         // Table Setup
@@ -172,41 +190,34 @@ public class StudentDashboardView extends JFrame {
         addSampleData();
 
         studentTable = new JTable(tableModel);
-        studentTable.setFont(new Font("Arial", Font.PLAIN, 16));
-        studentTable.setRowHeight(55); // Increased padding
-        studentTable.setGridColor(primaryPurple); // Purple grid
-        studentTable.setForeground(primaryPurple); // Purple text
-        studentTable.setSelectionBackground(primaryPurple); // Purple selection bg
-        studentTable.setSelectionForeground(Color.WHITE); // White selection text
+        studentTable.setFont(new Font("Arial", Font.PLAIN, 14));
+        studentTable.setRowHeight(45); // Adjusted row height
+        studentTable.setGridColor(primaryPurple);
+        studentTable.setForeground(primaryPurple);
+        studentTable.setSelectionBackground(primaryPurple);
+        studentTable.setSelectionForeground(Color.WHITE);
 
-        // Center align table cells
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         for (int i = 0; i < studentTable.getColumnCount(); i++) {
             studentTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
 
-        // Style table header
         JTableHeader header = studentTable.getTableHeader();
         header.setBackground(primaryPurple);
         header.setForeground(Color.WHITE);
-        header.setFont(new Font("Arial", Font.BOLD, 18));
-        header.setPreferredSize(new Dimension(header.getWidth(), 50));
+        header.setFont(new Font("Arial", Font.BOLD, 16));
+        header.setPreferredSize(new Dimension(header.getWidth(), 40));
         ((DefaultTableCellRenderer) header.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
 
-        // ScrollPane
         JScrollPane scrollPane = new JScrollPane(studentTable);
         scrollPane.setBorder(BorderFactory.createLineBorder(primaryPurple));
         scrollPane.getViewport().setBackground(Color.WHITE);
 
-        // Add Table to CENTER (Fills remaining space)
         centerPanel.add(scrollPane, BorderLayout.CENTER);
-
-        // Add Center Panel to Main
         mainPanel.add(centerPanel, BorderLayout.CENTER);
 
         // -- 3. Bottom Panel (Save Button) --
-        // Custom Rounded Save Button
         JButton saveBtn = new JButton("Save changes") {
             @Override
             protected void paintComponent(Graphics g) {
@@ -219,21 +230,20 @@ public class StudentDashboardView extends JFrame {
             }
         };
 
-        saveBtn.setPreferredSize(new Dimension(250, 55));
+        saveBtn.setPreferredSize(new Dimension(200, 45)); // Smaller save button
         saveBtn.setBackground(primaryPurple);
         saveBtn.setForeground(Color.WHITE);
-        saveBtn.setFont(new Font("Arial", Font.BOLD, 20));
+        saveBtn.setFont(new Font("Arial", Font.BOLD, 18));
         saveBtn.setFocusPainted(false);
         saveBtn.setBorderPainted(false);
         saveBtn.setContentAreaFilled(false);
         saveBtn.setOpaque(false);
 
-        // Add Action Listener
         saveBtn.addActionListener(e -> saveChanges());
 
         JPanel bottomPanel = new JPanel();
         bottomPanel.setBackground(Color.WHITE);
-        bottomPanel.setBorder(new EmptyBorder(20, 0, 0, 0));
+        bottomPanel.setBorder(new EmptyBorder(15, 0, 0, 0));
         bottomPanel.add(saveBtn);
 
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
@@ -253,10 +263,10 @@ public class StudentDashboardView extends JFrame {
                 super.paintComponent(g);
             }
         };
-        btn.setPreferredSize(new Dimension(160, 50));
+        btn.setPreferredSize(new Dimension(140, 40)); // Smaller action buttons
         btn.setBackground(primaryPurple);
         btn.setForeground(Color.WHITE);
-        btn.setFont(new Font("Arial", Font.BOLD, 18));
+        btn.setFont(new Font("Arial", Font.BOLD, 16));
         btn.setFocusPainted(false);
         btn.setBorderPainted(false);
         btn.setContentAreaFilled(false);
@@ -291,10 +301,7 @@ public class StudentDashboardView extends JFrame {
         int option = JOptionPane.showConfirmDialog(this, message, "Add New Student", JOptionPane.OK_CANCEL_OPTION);
         if (option == JOptionPane.OK_OPTION) {
             tableModel.addRow(new Object[] {
-                    nameField.getText(),
-                    idField.getText(),
-                    degreeField.getText(),
-                    emailField.getText(),
+                    nameField.getText(), idField.getText(), degreeField.getText(), emailField.getText(),
                     mobileField.getText()
             });
         }
@@ -314,10 +321,7 @@ public class StudentDashboardView extends JFrame {
         JTextField mobileField = new JTextField((String) tableModel.getValueAt(selectedRow, 4));
 
         Object[] message = {
-                "Full Name:", nameField,
-                "Student ID:", idField,
-                "Degree:", degreeField,
-                "Email:", emailField,
+                "Full Name:", nameField, "Student ID:", idField, "Degree:", degreeField, "Email:", emailField,
                 "Mobile Number:", mobileField
         };
 
@@ -346,7 +350,6 @@ public class StudentDashboardView extends JFrame {
     }
 
     private void saveChanges() {
-
         JOptionPane.showMessageDialog(this, "Changes saved successfully!");
     }
 
