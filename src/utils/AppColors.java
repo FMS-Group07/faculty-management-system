@@ -12,8 +12,8 @@ public class AppColors {
     public static final Color WHITE = Color.WHITE;
     public static final Color GRAY_TEXT = new Color(107, 114, 128); // #6b7280
     public static final Color GRAY_BG = new Color(141, 143, 148); // #8D8F94
-    
+
     // Success/Error (Optional)
-    public static final Color ERROR_RED = new Color(239, 68, 68); // #ef4444
+    public static final Color ERROR_RED = new Color(255, 0, 34); // #FF0022
     public static final Color SUCCESS_GREEN = new Color(34, 197, 94); // #22c55e
 }
