@@ -1,5 +1,6 @@
 package com.faculty.controller;
 
+import com.faculty.view.AdminDashboardView;
 import com.faculty.view.LoginView;
 import com.faculty.dao.UserDAO;
 import com.faculty.model.User;
@@ -66,7 +67,14 @@ public class LoginController {
         boolean exists = userDAO.checkUserExists(username, password, role);
         if(exists) {
             JOptionPane.showMessageDialog(null, "Sign Up successful!");
-            openDashboard(role);
+            if (role.equals("ADMIN")) {
+                new AdminDashboardView().createAndShowGUI();
+            } else if (role.equals("STUDENT")) {
+               // call student dashboard
+            } else if (role.equals("STUDENT")) {
+                // call lecturer dashboard
+            }
+
         } else {
             JOptionPane.showMessageDialog(null, "User not found! Please Sign In first.");
         }

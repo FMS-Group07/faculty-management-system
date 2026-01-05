@@ -19,7 +19,7 @@ public class AdminDashboardView {
         });
     }
 
-    private void createAndShowGUI() {
+    public void createAndShowGUI() {
         JFrame frame = new JFrame("Admin Dashboard");
         frame.setUndecorated(true); // Remove default title bar
         frame.setSize(AppConfig.FRAME_WIDTH, AppConfig.FRAME_HEIGHT);
@@ -237,6 +237,7 @@ public class AdminDashboardView {
 
         return titleBar;
     }
+
 
     public class RoundedButton extends JButton {
 

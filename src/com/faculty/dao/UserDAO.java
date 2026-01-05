@@ -1,7 +1,7 @@
 package com.faculty.dao;
 
 import com.faculty.model.User;
-import com.faculty.util.DBConnection;
+import utils.DBConnection;
 
 import java.sql.*;
 
