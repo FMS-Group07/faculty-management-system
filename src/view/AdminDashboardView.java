@@ -1,6 +1,7 @@
 package view;
 
 import utils.AppColors;
+import utils.AppConfig;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -18,18 +19,15 @@ public class AdminDashboardView {
     }
 
     private void createAndShowGUI() {
-        final int FRAME_WIDTH = 1200;
-        final int FRAME_HEIGHT = 750;
-
         JFrame frame = new JFrame("Admin Dashboard");
-        frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+        frame.setSize(AppConfig.FRAME_WIDTH, AppConfig.FRAME_HEIGHT);
         frame.setLocationRelativeTo(null); // Center the frame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
 
         // ================= SIDEBAR =================
         JPanel sidebar = new JPanel();
-        sidebar.setPreferredSize(new Dimension(260, FRAME_HEIGHT));
+        sidebar.setPreferredSize(new Dimension(260, AppConfig.FRAME_HEIGHT));
         sidebar.setBackground(AppColors.PRIMARY_PURPLE);
         sidebar.setLayout(null); // Using absolute layout for precise custom button positioning if needed, or Box
 
@@ -52,7 +50,7 @@ public class AdminDashboardView {
 
         // Logout Button (Bottom)
         JButton logoutBtn = new JButton("Logout"); // or using icon
-        logoutBtn.setBounds(30, FRAME_HEIGHT - 100, 50, 50);
+        logoutBtn.setBounds(30, AppConfig.FRAME_HEIGHT - 100, 50, 50);
         logoutBtn.setBackground(Color.WHITE);
         logoutBtn.setForeground(AppColors.DARK_PURPLE);
         logoutBtn.setFocusPainted(false);
@@ -99,7 +97,7 @@ public class AdminDashboardView {
         JTable table = new JTable(model);
         table.setRowHeight(40);
         table.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        table.setSelectionBackground(AppColors.LIGHT_PURPLE);
+        table.setSelectionBackground(AppColors.LIGHT_BLUE);
         table.setSelectionForeground(AppColors.DARK_PURPLE);
         table.setShowVerticalLines(true);
         table.setGridColor(AppColors.PRIMARY_PURPLE);
