@@ -237,7 +237,7 @@ public class LecturerDashboardView extends JFrame implements ActionListener {
         coursesView.add(title);
 
         //TABLE PART
-        String[] columns = {"Course Code", "Course Name", "Credits", "Students"};
+        String[] columns = {"Course Code", "Course Name", "Credits", "Total Students"};
 
         DefaultTableModel model = new DefaultTableModel(columns, 0) {
             @Override
