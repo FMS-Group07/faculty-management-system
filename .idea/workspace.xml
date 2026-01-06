@@ -7,69 +7,26 @@
     <list default="true" id="c4a710ca-3f45-4df2-b520-1694420f4367" name="Changes" comment="workflow">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/CourseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/CourseController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/DegreeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/DegreeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/DepartmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/DepartmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/LecturerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/LecturerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/LecturerProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/LecturerProfileController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/StudentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/StudentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/StudentCourseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/StudentCourseController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/StudentDashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/StudentDashboardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/StudentDetailsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/StudentDetailsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/StudentTimeTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/StudentTimeTableController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/TimeTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/TimeTableController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/AdminPanelsDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/AdminPanelsDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/CourseDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/CourseDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/DegreeDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/DegreeDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/DepartmentDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/DepartmentDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/LecturerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/LecturerDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/LecturerProfileDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/LecturerProfileDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/StudentCourseDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/StudentCourseDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/StudentDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/StudentDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/StudentDetailsDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/StudentDetailsDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/TimeTableDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/TimeTableDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/dao/UserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/model/Course.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/model/Course.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/model/Degree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/model/Degree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/model/Department.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/model/Department.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/model/Enrollment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/model/Enrollment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/model/Lecturer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/model/Lecturer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/model/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/model/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/utils/AppColors.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/utils/AppColors.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/utils/AppConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/utils/AppConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/utils/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/utils/DBConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$LogoutButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$LogoutButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$RoundedButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$RoundedButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/CourseEnrolledPanle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/CourseEnrolledPanle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/CourseFormDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/CourseFormDialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/CoursePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/CoursePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/DegreeFormDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/DegreeFormDialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/DegreePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/DegreePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/DepartmentFormDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/DepartmentFormDialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/DepartmentPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/DepartmentPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LecturerDashboardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LecturerDashboardView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LecturerFormDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LecturerFormDialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LecturerMessagePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LecturerMessagePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LecturerPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LecturerPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LecturerProfilePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LecturerProfilePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LoginView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LoginView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/ProfileDetailsPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/ProfileDetailsPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/RoundRectangle3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/RoundRectangle3D.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/StudentDashBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/StudentDashBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/StudentFormDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/StudentFormDialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/StudentPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/StudentPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/TimeTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/TimeTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/TimeTablePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/TimeTablePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/faculty/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/faculty/view/StudentDashBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/StudentDashBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentDashBoard/untitled/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentDashBoard/untitled/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentDashBoard/untitled/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentDashBoard/untitled/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentDashBoard/untitled/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentDashBoard/untitled/src/FMSSystem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentDashBoard/untitled/src/MainFrame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentDashBoard/untitled/src/exit.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/exit.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StudentDashBoard/untitled/untitled.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/faculty/view/CourseEnrolledPanle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/not_used/CourseEnrolledPanle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/faculty/view/CoursePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/not_used/CoursePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/faculty/view/DegreePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/not_used/DegreePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/faculty/view/DepartmentPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/not_used/DepartmentPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/faculty/view/LecturerMessagePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/not_used/LecturerMessagePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/faculty/view/LecturerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/not_used/LecturerPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/faculty/view/LecturerProfilePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/not_used/LecturerProfilePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/faculty/view/ProfileDetailsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/not_used/ProfileDetailsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/faculty/view/StudentPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/not_used/StudentPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/faculty/view/TimeTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/not_used/TimeTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/faculty/view/TimeTablePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/not_used/TimeTablePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,23 +69,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.LoginView.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;salik__3&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/MY FILES/University Of Kelaniya/Projects/faculty-management-system&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.LoginView.executor": "Run",
+    "Application.Main.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "lakmina",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/MY FILES/University Of Kelaniya/Projects/faculty-management-system",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\MY FILES\University Of Kelaniya\Projects\faculty-management-system" />

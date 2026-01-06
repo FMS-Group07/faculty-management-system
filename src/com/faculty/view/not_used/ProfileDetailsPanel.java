@@ -1,4 +1,4 @@
-package com.faculty.view;
+package com.faculty.view.not_used;
 
 public class ProfileDetailsPanel {
 }
