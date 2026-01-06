@@ -1,9 +1,5 @@
 package com.faculty.controller;
 
-<<<<<<< HEAD
-public class LoginController {
-=======
-import com.faculty.view.AdminDashboardView;
 import com.faculty.view.LoginView;
 import com.faculty.dao.UserDAO;
 import com.faculty.model.User;
@@ -36,18 +32,18 @@ public class LoginController {
         String password = view.getSignInPassword();
         String role = view.getSignInRole();
 
-        if(username.isEmpty() || password.isEmpty() || role.isEmpty()) {
+        if (username.isEmpty() || password.isEmpty() || role.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Fill all fields and select a role!");
             return;
         }
 
-        boolean saved = userDAO.register(new User(username, password, role));
-        if(saved) {
-            JOptionPane.showMessageDialog(null, "Sign In successful! Proceed to Sign Up.");
-            view.switchToSignUpTab();
+        boolean exists = userDAO.checkUserExists(username, password, role);
+        if (exists) {
+            openDashboard(role);
+            // view.frame.dispose(); // Assuming we want to close login, but sticking to
+            // logic fix for now
         } else {
-            JOptionPane.showMessageDialog(null, "User already exists! Proceed to Sign Up.");
-            view.switchToSignUpTab();
+            JOptionPane.showMessageDialog(null, "User not found! Please Sign Up.");
         }
     }
 
@@ -57,34 +53,27 @@ public class LoginController {
         String confirm = view.getSignUpConfirm();
         String role = view.getSignUpRole();
 
-        if(username.isEmpty() || password.isEmpty() || confirm.isEmpty() || role.isEmpty()) {
+        if (username.isEmpty() || password.isEmpty() || confirm.isEmpty() || role.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Fill all fields and select a role!");
             return;
         }
 
-        if(!password.equals(confirm)) {
+        if (!password.equals(confirm)) {
             JOptionPane.showMessageDialog(null, "Passwords do not match!");
             return;
         }
 
-        boolean exists = userDAO.checkUserExists(username, password, role);
-        if(exists) {
-            JOptionPane.showMessageDialog(null, "Sign Up successful!");
-            if (role.equals("ADMIN")) {
-                new AdminDashboardView().createAndShowGUI();
-            } else if (role.equals("STUDENT")) {
-               // call student dashboard
-            } else if (role.equals("STUDENT")) {
-                // call lecturer dashboard
-            }
-
+        boolean saved = userDAO.register(new User(username, password, role));
+        if (saved) {
+            JOptionPane.showMessageDialog(null, "Sign Up successful! Please Sign In.");
+            view.switchToSignInTab();
         } else {
-            JOptionPane.showMessageDialog(null, "User not found! Please Sign In first.");
+            JOptionPane.showMessageDialog(null, "User already exists!");
         }
     }
 
     private void openDashboard(String role) {
-        switch(role.toUpperCase()) {
+        switch (role.toUpperCase()) {
             case "ADMIN":
                 JOptionPane.showMessageDialog(null, "Opening Admin Dashboard...");
                 // new AdminDashboardView();
@@ -99,5 +88,4 @@ public class LoginController {
                 break;
         }
     }
->>>>>>> origin/main
 }

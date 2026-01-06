@@ -22,7 +22,7 @@ public class AdminDashboardView {
         });
     }
 
-    private void createAndShowGUI() {
+    public void createAndShowGUI() {
         JFrame frame = new JFrame("Admin Dashboard");
         frame.setUndecorated(true); // Remove default title bar
         frame.setSize(AppConfig.FRAME_WIDTH, AppConfig.FRAME_HEIGHT);
@@ -397,6 +397,40 @@ public class AdminDashboardView {
         spacer.setOpaque(false);
         spacer.setPreferredSize(new Dimension(100, 30)); // Match controls width
         titleBar.add(spacer, BorderLayout.WEST);
+
+        // Controls - RIGHT SIDE (Close Button)
+        JPanel controlsPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+        controlsPanel.setOpaque(false);
+        controlsPanel.setPreferredSize(new Dimension(100, 30)); // Match left spacer for balance
+
+        JButton closeBtn = new JButton("X"); // Standard X to avoid rendering issues
+        closeBtn.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        closeBtn.setFocusPainted(false);
+        closeBtn.setBorderPainted(false);
+        closeBtn.setContentAreaFilled(false);
+        closeBtn.setOpaque(true);
+        closeBtn.setBackground(Color.WHITE);
+        closeBtn.setForeground(Color.BLACK);
+        closeBtn.setPreferredSize(new Dimension(45, 30));
+
+        closeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent e) {
+                closeBtn.setBackground(new Color(232, 17, 35)); // Windows 10 red
+                closeBtn.setForeground(Color.WHITE);
+                closeBtn.setContentAreaFilled(true);
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent e) {
+                closeBtn.setBackground(Color.WHITE);
+                closeBtn.setForeground(Color.BLACK);
+                closeBtn.setContentAreaFilled(false);
+            }
+        });
+
+        closeBtn.addActionListener(e -> System.exit(0));
+
+        controlsPanel.add(closeBtn);
+        titleBar.add(controlsPanel, BorderLayout.EAST);
 
         // Drag Functionality
         titleBar.addMouseListener(new java.awt.event.MouseAdapter() {

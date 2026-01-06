@@ -1,8 +1,5 @@
 package com.faculty.view;
 
-<<<<<<< HEAD
-public class LecturerDashboardView {
-=======
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -246,5 +243,4 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
             call.show(rightPanelContainer, "Courses");
         }
     }
->>>>>>> origin/main
 }

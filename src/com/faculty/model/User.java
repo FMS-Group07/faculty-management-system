@@ -1,8 +1,6 @@
 package com.faculty.model;
 
 public class User {
-<<<<<<< HEAD
-=======
     private int id;
     private String username;
     private String password;
@@ -34,5 +32,4 @@ public class User {
 
     public String getRole() { return role; }
     public void setRole(String role) { this.role = role; }
->>>>>>> origin/main
 }
