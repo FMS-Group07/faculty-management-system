@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4a710ca-3f45-4df2-b520-1694420f4367" name="Changes" comment="DBConnection + backends to Login page">
+    <list default="true" id="c4a710ca-3f45-4df2-b520-1694420f4367" name="Changes" comment="workflow">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$LogoutButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$LogoutButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$RoundedButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView$RoundedButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/AdminDashboardView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/faculty/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/faculty/view/AdminDashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/AdminDashboardView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +86,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767506543941</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="workflow">
+      <option name="closed" value="true" />
+      <created>1767689216923</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1767689216923</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -125,6 +124,7 @@
     <MESSAGE value="Build the initial folder setup that is needed for the assignment." />
     <MESSAGE value="Build the initial folder that is needed for the assignment." />
     <MESSAGE value="DBConnection + backends to Login page" />
-    <option name="LAST_COMMIT_MESSAGE" value="DBConnection + backends to Login page" />
+    <MESSAGE value="workflow" />
+    <option name="LAST_COMMIT_MESSAGE" value="workflow" />
   </component>
 </project>
