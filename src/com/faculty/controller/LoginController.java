@@ -1,5 +1,6 @@
 package com.faculty.controller;
 
+import com.faculty.view.AdminDashboardView;
 import com.faculty.view.LoginView;
 import com.faculty.dao.UserDAO;
 import com.faculty.model.User;
@@ -76,7 +77,7 @@ public class LoginController {
         switch (role.toUpperCase()) {
             case "ADMIN":
                 JOptionPane.showMessageDialog(null, "Opening Admin Dashboard...");
-                // new AdminDashboardView();
+                new AdminDashboardView();
                 break;
             case "STUDENT":
                 JOptionPane.showMessageDialog(null, "Opening Student Dashboard...");
