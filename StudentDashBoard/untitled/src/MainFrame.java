@@ -1,8 +1,3 @@
-package com.faculty.view;
-
-<<<<<<< HEAD
-public class LecturerDashboardView {
-=======
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -10,16 +5,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class LecturerDashBoardView extends JFrame implements ActionListener {
+class MainFrame extends JFrame implements ActionListener {
     JButton btnProfile, btnTimeTable, btnCourses , btnExit ;
     JPanel rightPanelContainer;
     JPanel profileView;
     JPanel timeTableView;
     JPanel coursesView;
 
-    LecturerDashBoardView() {
+    MainFrame() {
         setTitle("Faculty Management System");
-        setSize(1000, 650);
+        setSize(900, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);//Frame make sure open in center of the display
         setLayout(new BorderLayout());
@@ -37,7 +32,7 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
         iconLabel.setBounds(0, 20, 280, 105);
         sidebar.add(iconLabel);
 
-        JLabel welcomeLabel = new JLabel("Welcome, Lucky", SwingConstants.CENTER);
+        JLabel welcomeLabel = new JLabel("Welcome, Kumar", SwingConstants.CENTER);
         welcomeLabel.setFont(new Font("Arial", Font.BOLD, 30));
         welcomeLabel.setForeground(Color.WHITE);
         welcomeLabel.setBounds(15, 110, 250, 30);
@@ -60,7 +55,7 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
         btnTimeTable.setBorderPainted(false);
         btnTimeTable.setBounds(10, 240, 260, 40);
 
-        btnCourses = createNavButton("\uD83D\uDCDA    Courses Teaching", 300);
+        btnCourses = createNavButton("\uD83D\uDCDA    Course Enrolled", 300);
         btnCourses.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
         btnCourses.setForeground(Color.GRAY);
         btnCourses.setBackground(Color.WHITE);
@@ -133,11 +128,11 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
         title.setBounds(220, 30, 200, 30);
         profileView.add(title);
 
-        addFormRow(profileView, "Full Name", "Lucky Dias", 100);
-        addFormRow(profileView, "Salary ID", "FCT_LE_010", 150);
-        addFormRow(profileView, "Department", "Computer Systems Engineering", 200);
-        addFormRow(profileView, "Email", "luckydias@le.kln.ac.lk", 250);
-        addFormRow(profileView, "Mobile Number", "0712345678", 300);
+        addFormRow(profileView, "Full Name", "Kumar Sangakkara", 100);
+        addFormRow(profileView, "Student ID", "ET/2022/011", 150);
+        addFormRow(profileView, "Degree", "Engineering Technology", 200);
+        addFormRow(profileView, "Email", "kumars-et22011@stu.kln.ac.lk", 250);
+        addFormRow(profileView, "Mobile Number", "0123456789", 300);
 
 
         JButton saveBtn = new JButton("Save changes");
@@ -170,19 +165,19 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
         timeTableView.setBackground(Color.WHITE);
         timeTableView.setBorder(new EmptyBorder(40, 40, 40, 40));
 
-        JLabel title = new JLabel("Your Time Table", SwingConstants.CENTER);
+        JLabel title = new JLabel("Student Time Table", SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 24));
         title.setForeground(new Color(138, 43, 226));
         timeTableView.add(title, BorderLayout.NORTH);
 
         // Table Data (Slide 228 - JTable)
-        String[] columns = {"Day", "Time", "Batch", "Hall"};
+        String[] columns = {"Day", "Time", "Subject", "Hall"};
         String[][] data = {
-                {"Monday", "08:00 - 10:00", "CS/22", "Lab 01"},
-                {"Monday", "10:30 - 12:30", "CS/22", "Hall A"},
-                {"Tuesday", "09:00 - 11:00", "CS/21", "Lab 02"},
-                {"Wednesday", "13:00 - 15:00", "CS/23", "Hall B"},
-                {"Friday", "08:00 - 10:00", "CS/21", "Hall C"}
+                {"Monday", "08:00 - 10:00", "Object Oriented Programming", "Lab 01"},
+                {"Monday", "10:30 - 12:30", "Database Systems", "Hall A"},
+                {"Tuesday", "09:00 - 11:00", "Engineering Physics", "Lab 02"},
+                {"Wednesday", "13:00 - 15:00", "Mathematics", "Hall B"},
+                {"Friday", "08:00 - 10:00", "English", "Hall C"}
         };
 
         JTable table = new JTable(data, columns);
@@ -201,15 +196,15 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
         coursesView.setLayout(null); // Absolute positioning for custom card look
         coursesView.setBackground(Color.WHITE);
 
-        JLabel title = new JLabel("Courses Teaching");
+        JLabel title = new JLabel("Enrolled Courses");
         title.setFont(new Font("Arial", Font.BOLD, 24));
         title.setForeground(new Color(138, 43, 226));
         title.setBounds(220, 30, 250, 30);
         coursesView.add(title);
 
-        addCourseCard(coursesView, "CSCI 21052", "Object Oriented Programming", "Status: Active", 100);
-        addCourseCard(coursesView, "CSCI 10222", "Software Engineering", "Status: Active", 220);
-        addCourseCard(coursesView, "CSCI 20112", "Advanced OOP Concepts", "Status: Completed", 340);
+        addCourseCard(coursesView, "CSCI 21052", "Object Oriented Programming I", "Status: Active", 100);
+        addCourseCard(coursesView, "ENG 10222", "Engineering Physics", "Status: Active", 220);
+        addCourseCard(coursesView, "MATH 20112", "Linear Algebra", "Status: Completed", 340);
     }
 
     private void addCourseCard(JPanel panel, String code, String name, String status, int y) {
@@ -246,5 +241,4 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
             call.show(rightPanelContainer, "Courses");
         }
     }
->>>>>>> origin/main
 }
