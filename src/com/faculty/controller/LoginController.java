@@ -6,6 +6,7 @@ import com.faculty.view.AdminDashboardView;
 import com.faculty.view.LoginView;
 import com.faculty.dao.UserDAO;
 import com.faculty.model.User;
+import com.faculty.view.StudentDashBoard;
 
 import javax.swing.*;
 
@@ -85,7 +86,10 @@ public class LoginController {
                 break;
             case "STUDENT":
                 JOptionPane.showMessageDialog(null, "Opening Student Dashboard...");
-                // new StudentDashboardView();
+                SwingUtilities.invokeLater(() -> {
+                    StudentDashBoard dash = new StudentDashBoard();
+                    dash.setVisible(true);
+                });
                 break;
             case "LECTURER":
                 JOptionPane.showMessageDialog(null, "Opening Lecturer Dashboard...");

@@ -9,14 +9,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class StudentDashBoard extends JFrame implements ActionListener {
+public class StudentDashBoard extends JFrame implements ActionListener {
     JButton btnProfile, btnTimeTable, btnCourses , btnExit ;
     JPanel rightPanelContainer;
     JPanel profileView;
     JPanel timeTableView;
     JPanel coursesView;
 
-    StudentDashBoard() {
+    public StudentDashBoard() {
         setTitle("Faculty Management System");
         setSize(1000, 650);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
