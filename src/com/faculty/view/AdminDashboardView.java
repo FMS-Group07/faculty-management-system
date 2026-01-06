@@ -16,12 +16,6 @@ public class AdminDashboardView {
 
     private String currentView = "Students";
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new AdminDashboardView().createAndShowGUI();
-        });
-    }
-
     public void createAndShowGUI() {
         JFrame frame = new JFrame("Admin Dashboard");
         frame.setUndecorated(true); // Remove default title bar
