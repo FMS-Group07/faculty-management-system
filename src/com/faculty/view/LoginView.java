@@ -1,6 +1,10 @@
 package com.faculty.view;
 
 import javax.swing.*;
+
+import com.faculty.utils.AppColors;
+import com.faculty.utils.AppConfig;
+
 import java.awt.*;
 
 public class LoginView {
@@ -27,14 +31,15 @@ public class LoginView {
 
     public LoginView() {
         frame = new JFrame("Faculty Management System");
-        frame.setBounds(180, 30, 1000, 650);
+        frame.setSize(AppConfig.FRAME_WIDTH, AppConfig.FRAME_HEIGHT);
+        frame.setLocationRelativeTo(null); // Center the frame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.setResizable(false);
 
         /* ---------- LEFT PANEL ---------- */
         JPanel leftPanel = new JPanel();
-        leftPanel.setBackground(PURPLE);
+        leftPanel.setBackground(AppColors.PRIMARY_PURPLE);
         leftPanel.setBounds(0, 0, 500, 650);
         leftPanel.setLayout(null);
         frame.add(leftPanel);
@@ -129,7 +134,7 @@ public class LoginView {
 
         signInBtn = new JButton("Sign In");
         signInBtn.setBounds(0, 420, 400, 42);
-        signInBtn.setBackground(PURPLE);
+        signInBtn.setBackground(AppColors.PRIMARY_PURPLE);
         signInBtn.setForeground(Color.WHITE);
         signInBtn.setFocusPainted(false);
 
@@ -172,7 +177,7 @@ public class LoginView {
 
         signUpBtn = new JButton("Sign Up");
         signUpBtn.setBounds(0, 420, 400, 42);
-        signUpBtn.setBackground(PURPLE);
+        signUpBtn.setBackground(AppColors.PRIMARY_PURPLE);
         signUpBtn.setForeground(Color.WHITE);
         signUpBtn.setFocusPainted(false);
 
@@ -201,14 +206,14 @@ public class LoginView {
     private JTextField createTextField(int x, int y) {
         JTextField tf = new JTextField();
         tf.setBounds(x, y, 400, 38);
-        tf.setBorder(BorderFactory.createLineBorder(PURPLE, 1));
+        tf.setBorder(BorderFactory.createLineBorder(AppColors.PRIMARY_PURPLE, 1));
         return tf;
     }
 
     private JPasswordField createPasswordField(int x, int y) {
         JPasswordField pf = new JPasswordField();
         pf.setBounds(x, y, 400, 38);
-        pf.setBorder(BorderFactory.createLineBorder(PURPLE, 1));
+        pf.setBorder(BorderFactory.createLineBorder(AppColors.PRIMARY_PURPLE, 1));
         return pf;
     }
 
@@ -216,7 +221,7 @@ public class LoginView {
         JRadioButton rb = new JRadioButton(text);
         rb.setBounds(x, y, 120, 25);
         rb.setFont(new Font("Times New Roman", Font.BOLD, 18));
-        rb.setForeground(PURPLE);
+        rb.setForeground(AppColors.PRIMARY_PURPLE);
         rb.setOpaque(false);
         return rb;
     }
@@ -225,11 +230,11 @@ public class LoginView {
         signInPanel.setVisible(signInActive);
         signUpPanel.setVisible(!signInActive);
 
-        btnSignInTab.setForeground(signInActive ? PURPLE : GREY);
-        btnSignUpTab.setForeground(signInActive ? GREY : PURPLE);
+        btnSignInTab.setForeground(signInActive ? AppColors.DARK_PURPLE : GREY);
+        btnSignUpTab.setForeground(signInActive ? GREY : AppColors.DARK_PURPLE);
 
-        indicatorSignIn.setBackground(signInActive ? PURPLE : new Color(0, 0, 0, 0));
-        indicatorSignUp.setBackground(signInActive ? new Color(0, 0, 0, 0) : PURPLE);
+        indicatorSignIn.setBackground(signInActive ? AppColors.PRIMARY_PURPLE : new Color(0, 0, 0, 0));
+        indicatorSignUp.setBackground(signInActive ? new Color(0, 0, 0, 0) : AppColors.PRIMARY_PURPLE);
     }
 
     private void styleTabButton(JButton btn) {

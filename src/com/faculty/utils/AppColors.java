@@ -1,4 +1,4 @@
-package utils;
+package com.faculty.utils;
 
 import java.awt.Color;
 
