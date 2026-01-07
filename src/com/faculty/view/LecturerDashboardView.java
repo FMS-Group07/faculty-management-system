@@ -2,18 +2,19 @@ package com.faculty.view;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LecturerDashboard extends JFrame implements ActionListener {
+class LecturerDashBoardView extends JFrame implements ActionListener {
     JButton btnProfile, btnTimeTable, btnCourses , btnExit ;
     JPanel rightPanelContainer;
     JPanel profileView;
     JPanel timeTableView;
     JPanel coursesView;
 
-    public LecturerDashboard() {
+    LecturerDashBoardView() {
         setTitle("Faculty Management System");
         setSize(1000, 650);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,31 +31,42 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         JLabel iconLabel = new JLabel("👤", SwingConstants.CENTER);
         iconLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 80));
         iconLabel.setForeground(Color.WHITE);
-        iconLabel.setBounds(0, 35, 280, 105);
+        iconLabel.setBounds(0, 20, 280, 105);
         sidebar.add(iconLabel);
 
         JLabel welcomeLabel = new JLabel("Welcome, Lucky", SwingConstants.CENTER);
         welcomeLabel.setFont(new Font("Arial", Font.BOLD, 30));
         welcomeLabel.setForeground(Color.WHITE);
-        welcomeLabel.setBounds(15, 125, 250, 30);
+        welcomeLabel.setBounds(15, 110, 250, 30);
         sidebar.add(welcomeLabel);
 
         // Navigation Buttons (Using helper method to style them)
         btnProfile = createNavButton("👤    Profile Details", 180);
         btnProfile.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-        btnProfile.setForeground(new Color(138, 43, 226));
-        btnProfile.setBounds(10, 200, 260, 40);
+        btnProfile.setForeground(Color.GRAY);
+        btnProfile.setBackground(Color.WHITE);
+        btnProfile.setFocusPainted(false);
+        btnProfile.setBorderPainted(false);
+        btnProfile.setBounds(10, 180, 260, 40);
 
         btnTimeTable = createNavButton("\uD83D\uDCC5    Time Table", 230);
         btnTimeTable.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-        btnTimeTable.setBounds(10, 260, 260, 40);
+        btnTimeTable.setForeground(Color.GRAY);
+        btnTimeTable.setBackground(Color.WHITE);
+        btnTimeTable.setFocusPainted(false);
+        btnTimeTable.setBorderPainted(false);
+        btnTimeTable.setBounds(10, 240, 260, 40);
 
         btnCourses = createNavButton("\uD83D\uDCDA    Courses Teaching", 300);
         btnCourses.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
-        btnCourses.setBounds(10, 320, 260, 40);
+        btnCourses.setForeground(Color.GRAY);
+        btnCourses.setBackground(Color.WHITE);
+        btnCourses.setFocusPainted(false);
+        btnCourses.setBorderPainted(false);
+        btnCourses.setBounds(10, 300, 260, 40);
 
         btnExit = new JButton("Exit");
-        btnExit.setBounds(110, 440, 60, 60);
+        btnExit.setBounds(110, 400, 60, 60);
 
 
         ImageIcon exitIcon = new ImageIcon(this.getClass().getResource("exit.png"));
@@ -96,12 +108,13 @@ public class LecturerDashboard extends JFrame implements ActionListener {
 
     private JButton createNavButton(String text, int y) {
         JButton btn = new JButton(text);
+        btn.setBounds(30, y, 220, 45);
         btn.setFont(new Font("Arial", Font.BOLD, 14));
+        btn.setBackground(Color.WHITE);
+        btn.setForeground(new Color(138, 43, 226));
         btn.setFocusPainted(false);
         btn.setHorizontalAlignment(SwingConstants.LEFT);
         btn.addActionListener(this);
-        btn.setForeground(Color.GRAY);
-        btn.setBackground(Color.WHITE);
         return btn;
     }
 
@@ -111,169 +124,100 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         profileView.setLayout(null);
         profileView.setBackground(Color.WHITE);
 
-        JLabel title = new JLabel("Profile Details",SwingConstants.CENTER);
-        title.setFont(new Font("Arial", Font.BOLD, 35));
+        JLabel title = new JLabel("Profile Details");
+        title.setFont(new Font("Arial", Font.BOLD, 24));
         title.setForeground(new Color(138, 43, 226));
-        title.setBounds(220, 100, 300, 40);
+        title.setBounds(220, 30, 200, 30);
         profileView.add(title);
 
-        addFormRow(profileView, "Full Name", "Lucky Dias", 180);
-        addFormRow(profileView, "Salary ID", "FCT_001", 230);
-        addFormRow(profileView, "Department", "Computer Systems Engineering", 280);
-        addFormRow(profileView, "Email", "luckydias@le.kln.ac.lk", 330);
-        addFormRow(profileView, "Mobile Number", "0716656789", 380);
+        addFormRow(profileView, "Full Name", "Lucky Dias", 100);
+        addFormRow(profileView, "Salary ID", "FCT_LE_010", 150);
+        addFormRow(profileView, "Department", "Computer Systems Engineering", 200);
+        addFormRow(profileView, "Email", "luckydias@le.kln.ac.lk", 250);
+        addFormRow(profileView, "Mobile Number", "0712345678", 300);
 
 
         JButton saveBtn = new JButton("Save changes");
-        saveBtn.setBounds(160, 450, 400, 45);
+        saveBtn.setBounds(150, 380, 350, 45);
         saveBtn.setBackground(new Color(138, 43, 226));
         saveBtn.setForeground(Color.WHITE);
-        saveBtn.setFont(new Font("Arial", Font.BOLD, 20));
+        saveBtn.setFont(new Font("Arial", Font.BOLD, 16));
         profileView.add(saveBtn);
     }
 
     private void addFormRow(JPanel panel, String labelText, String value, int y) {
         JLabel label = new JLabel(labelText);
-        label.setBounds(80, y, 150, 30);
+        label.setBounds(50, y, 150, 30);
         label.setFont(new Font("Arial", Font.BOLD, 15));
         label.setForeground(new Color(138, 43, 226));
         panel.add(label);
 
         JTextField field = new JTextField("  "+value);
-        field.setBounds(240, y, 350, 30);
+        field.setBounds(200, y, 350, 30);
         field.setFont(new Font("Arial", Font.PLAIN, 14));
         field.setBorder(BorderFactory.createLineBorder(new Color(138, 43, 226), 2,true));
         field.setForeground(new Color(138, 43, 226));
         panel.add(field);
     }
 
-    //Time Table View
+    // --- View 2: Time Table (JTable) ---
     private void initTimeTableView() {
-        Color purple = new Color(138, 43, 226);
-
         timeTableView = new JPanel();
-        timeTableView.setLayout(null);
+        timeTableView.setLayout(new BorderLayout());
         timeTableView.setBackground(Color.WHITE);
+        timeTableView.setBorder(new EmptyBorder(40, 40, 40, 40));
 
-        JLabel title = new JLabel("Time table",SwingConstants.CENTER);
-        title.setFont(new Font("Arial", Font.BOLD, 35));
+        JLabel title = new JLabel("Your Time Table", SwingConstants.CENTER);
+        title.setFont(new Font("Arial", Font.BOLD, 24));
         title.setForeground(new Color(138, 43, 226));
-        title.setBounds(220, 100, 300, 40);
-        timeTableView.add(title);
+        timeTableView.add(title, BorderLayout.NORTH);
 
-        int startX = 50;
-        int startY = 170;
-        int cellWidth = 100;
-        int cellHeight = 50;
-        String[] cols = {"Time", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
-
-        for (int i = 0; i < cols.length; i++) {
-            JLabel lbl = new JLabel(cols[i], SwingConstants.CENTER);
-            lbl.setBounds(startX + (i * cellWidth), startY, cellWidth, cellHeight);
-            lbl.setBorder(BorderFactory.createLineBorder(purple));
-            lbl.setForeground(purple);
-            lbl.setFont(new Font("Arial", Font.BOLD, 14));
-            timeTableView.add(lbl);
-        }
-
-        String[][] Data = {
-                {"08.00", "OOP", "OOP", "OOP", "OOP", "OOP"},
-                {"10.00", "OOP", "OOP", "OOP", "OOP", "OOP"}
+        // Table Data (Slide 228 - JTable)
+        String[] columns = {"Day", "Time", "Batch", "Hall"};
+        String[][] data = {
+                {"Monday", "08:00 - 10:00", "CS/22", "Lab 01"},
+                {"Monday", "10:30 - 12:30", "CS/22", "Hall A"},
+                {"Tuesday", "09:00 - 11:00", "CS/21", "Lab 02"},
+                {"Wednesday", "13:00 - 15:00", "CS/23", "Hall B"},
+                {"Friday", "08:00 - 10:00", "CS/21", "Hall C"}
         };
 
-        int currentY = startY + cellHeight;
+        JTable table = new JTable(data, columns);
+        table.setRowHeight(30);
+        table.setFont(new Font("Arial", Font.PLAIN, 14));
+        table.getTableHeader().setBackground(new Color(138, 43, 226));
+        table.getTableHeader().setForeground(Color.WHITE);
 
-        for (String[] row : Data) {
-            for (int i = 0; i < row.length; i++) {
-                JLabel lbl = new JLabel(row[i], SwingConstants.CENTER);
-                lbl.setBounds(startX + (i * cellWidth), currentY, cellWidth, cellHeight);
-                lbl.setBorder(BorderFactory.createLineBorder(purple));
-                lbl.setForeground(purple);
-                timeTableView.add(lbl);
-            }
-            currentY += cellHeight;
-        }
-
-        JLabel interval = new JLabel("Interval", SwingConstants.CENTER);
-        interval.setBounds(startX, currentY, cellWidth * 6, cellHeight);
-        interval.setOpaque(true);
-        interval.setBackground(purple);
-        interval.setForeground(Color.WHITE);
-        interval.setFont(new Font("Arial", Font.BOLD, 18));
-        timeTableView.add(interval);
-
-        currentY += cellHeight;
-
-        String[][] afternoonData = {
-                {"01.00", "SE", "OOP", "SE", "SE", "SE"},
-                {"03.00", "SE", "OOP", "SE", "SE", "SE"}
-        };
-
-        for (String[] row : afternoonData) {
-            for (int i = 0; i < row.length; i++) {
-                JLabel lbl = new JLabel(row[i], SwingConstants.CENTER);
-                lbl.setBounds(startX + (i * cellWidth), currentY, cellWidth, cellHeight);
-                lbl.setBorder(BorderFactory.createLineBorder(purple));
-                lbl.setForeground(purple);
-                timeTableView.add(lbl);
-            }
-            currentY += cellHeight;
-        }
+        JScrollPane scrollPane = new JScrollPane(table);
+        timeTableView.add(scrollPane, BorderLayout.CENTER);
     }
 
     //Courses Enrolled
     private void initCoursesView() {
         coursesView = new JPanel();
-        coursesView.setLayout(null); // keep your layout
+        coursesView.setLayout(null); // Absolute positioning for custom card look
         coursesView.setBackground(Color.WHITE);
 
         JLabel title = new JLabel("Courses Teaching");
-        title.setFont(new Font("Arial", Font.BOLD, 30));
+        title.setFont(new Font("Arial", Font.BOLD, 24));
         title.setForeground(new Color(138, 43, 226));
-        title.setBounds(220, 100, 300, 40);
+        title.setBounds(220, 30, 250, 30);
         coursesView.add(title);
 
-        //TABLE PART
-        String[] columns = {"Course Code", "Course Name", "Credits", "Total Students"};
-
-        DefaultTableModel model = new DefaultTableModel(columns, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false; // read-only
-            }
-        };
-
-        JTable table = new JTable(model);
-        table.setRowHeight(43);
-        table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
-        table.getTableHeader().setPreferredSize(new Dimension(100, 40));
-        table.getTableHeader().setBackground(Color.WHITE);
-        table.getTableHeader().setForeground(new Color(138, 43, 226));
-
-        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-        centerRenderer.setForeground(new Color(138, 43, 226));
-        table.setDefaultRenderer(Object.class, centerRenderer);
-        table.setFont(table.getFont().deriveFont(Font.BOLD));
-        table.setGridColor(new Color(138, 43, 226));
-
-        JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setBounds(60, 160, 580, 300);
-        scrollPane.setBorder(BorderFactory.createLineBorder(
-                new Color(138, 43, 226), 2));
-
-        coursesView.add(scrollPane);
-
-        // TEMP DATA (remove later when DB is connected)
-        loadMockCourses(model);
+        addCourseCard(coursesView, "CSCI 21052", "Object Oriented Programming", "Status: Active", 100);
+        addCourseCard(coursesView, "CSCI 10222", "Software Engineering", "Status: Active", 220);
+        addCourseCard(coursesView, "CSCI 20112", "Advanced OOP Concepts", "Status: Completed", 340);
     }
-    private void loadMockCourses(DefaultTableModel model) {
-        model.addRow(new Object[]{"SE 21062", "OOP", 2, "60"});
-        model.addRow(new Object[]{"OOP1  21052", "OOP", 2, "80"});
-        model.addRow(new Object[]{"OOP2 21042", "OOP", 2, "85"});
-        model.addRow(new Object[]{"SE 21032", "OOP", 2, "50"});
-        model.addRow(new Object[]{"OOP 21022", "OOP", 2, "80"});
-        model.addRow(new Object[]{"OOP 21012", "OOP", 2, "70"});
+
+    private void addCourseCard(JPanel panel, String code, String name, String status, int y) {
+        JTextArea card = new JTextArea();
+        card.setText("\n  " + code + "\n  " + name + "\n\n  " + status);
+        card.setBounds(100, y, 400, 100);
+        card.setFont(new Font("Arial", Font.PLAIN, 15));
+        card.setEditable(false);
+        card.setBackground(new Color(245, 245, 255));
+        card.setBorder(BorderFactory.createMatteBorder(0, 5, 0, 0, new Color(138, 43, 226)));
+        panel.add(card);
     }
 
     @Override
