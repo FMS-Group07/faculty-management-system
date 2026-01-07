@@ -2,6 +2,8 @@ package com.faculty.view;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -237,7 +239,6 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         String[] columns = {"Course Code", "Course Name", "Credits", "Total Students"};
 
         DefaultTableModel model = new DefaultTableModel(columns, 0) {
-            @Override
             public boolean isCellEditable(int row, int column) {
                 return false; // read-only
             }
