@@ -3,9 +3,9 @@ package com.faculty.utils;
 import java.sql.*;
 
 public class DBConnection {
-    private static final String URL = "jdbc:mysql://student-mysql-small.mysql.database.azure.com:3306/faculty_db?useSSL=true&requireSSL=false";
-    private static final String USER = "dbadmin";
-    private static final String PASSWORD = "Faculty@2026!";
+    private static final String URL = "jdbc:mysql://localhost:3306/faculty_management";
+    private static final String USER = "root";
+    private static final String PASSWORD = "";
 
     private static Connection conn;
 
