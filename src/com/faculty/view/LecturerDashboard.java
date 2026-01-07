@@ -2,21 +2,32 @@ package com.faculty.view;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+<<<<<<< HEAD:src/com/faculty/view/LecturerDashboardView.java
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+=======
+>>>>>>> 68875536cc29aacafa76adc6cbdce1c3b1495074:src/com/faculty/view/LecturerDashboard.java
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+<<<<<<< HEAD:src/com/faculty/view/LecturerDashboardView.java
 public class LecturerDashboardView extends JFrame implements ActionListener {
+=======
+public class LecturerDashboard extends JFrame implements ActionListener {
+>>>>>>> 68875536cc29aacafa76adc6cbdce1c3b1495074:src/com/faculty/view/LecturerDashboard.java
     JButton btnProfile, btnTimeTable, btnCourses , btnExit ;
     JPanel rightPanelContainer;
     JPanel profileView;
     JPanel timeTableView;
     JPanel coursesView;
 
+<<<<<<< HEAD:src/com/faculty/view/LecturerDashboardView.java
     public LecturerDashboardView() {
+=======
+    public LecturerDashboard() {
+>>>>>>> 68875536cc29aacafa76adc6cbdce1c3b1495074:src/com/faculty/view/LecturerDashboard.java
         setTitle("Faculty Management System");
         setSize(1000, 650);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
