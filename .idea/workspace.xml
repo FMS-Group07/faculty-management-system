@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="c4a710ca-3f45-4df2-b520-1694420f4367" name="Changes" comment="Did changes in StudentDashBoard.java file and LecturerDashboardView.java.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/faculty/view/LecturerDashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/LecturerDashboardView.java" afterDir="false" />
+=======
+    <list default="true" id="c4a710ca-3f45-4df2-b520-1694420f4367" name="Changes" comment="DBConnection + backends to Login page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/faculty/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/controller/LoginController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +41,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/FMS-Group07/faculty-management-system.git&quot;,
-    &quot;accountId&quot;: &quot;07ca4215-53c2-4007-b145-33f6cee42bb7&quot;
+    &quot;accountId&quot;: &quot;2af8b499-1f78-4669-af8f-e851730b2fa0&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -107,6 +109,7 @@
       <option name="project" value="LOCAL" />
       <updated>1767634079858</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00004" summary="Add exit.png file to the view folder and made the project folder structure more clearer and simple.">
       <option name="closed" value="true" />
       <created>1767723957235</created>
@@ -122,8 +125,32 @@
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
       <updated>1767725923937</updated>
+=======
+    <task id="LOCAL-00004" summary="DBConnection + backends to Login page">
+      <option name="closed" value="true" />
+      <created>1767693057449</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1767693057449</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00005" summary="DBConnection + backends to Login page">
+      <option name="closed" value="true" />
+      <created>1767693387074</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1767693387076</updated>
+    </task>
+    <task id="LOCAL-00006" summary="DBConnection + backends to Login page">
+      <option name="closed" value="true" />
+      <created>1767798879731</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1767798879731</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -152,11 +179,15 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Build the initial folder setup that is needed for the assignment." />
     <MESSAGE value="Build the initial folder that is needed for the assignment." />
-    <MESSAGE value="DBConnection + backends to Login page" />
     <MESSAGE value="StudentDashBoard add to the files" />
     <MESSAGE value="exit Image commit" />
+<<<<<<< HEAD
     <MESSAGE value="Add exit.png file to the view folder and made the project folder structure more clearer and simple." />
     <MESSAGE value="Did changes in StudentDashBoard.java file and LecturerDashboardView.java." />
     <option name="LAST_COMMIT_MESSAGE" value="Did changes in StudentDashBoard.java file and LecturerDashboardView.java." />
+=======
+    <MESSAGE value="DBConnection + backends to Login page" />
+    <option name="LAST_COMMIT_MESSAGE" value="DBConnection + backends to Login page" />
+>>>>>>> 68875536cc29aacafa76adc6cbdce1c3b1495074
   </component>
 </project>
