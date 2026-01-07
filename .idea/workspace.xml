@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4a710ca-3f45-4df2-b520-1694420f4367" name="Changes" comment="Did changes in StudentDashBoard.java file and LecturerDashboardView.java.">
-      <change beforePath="$PROJECT_DIR$/src/com/faculty/view/LecturerDashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/view/LecturerDashboardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/faculty/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/faculty/controller/LoginController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +61,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "lakmina",
+    "git-widget-placeholder": "#18 on main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/MY FILES/University Of Kelaniya/Projects/faculty-management-system",
