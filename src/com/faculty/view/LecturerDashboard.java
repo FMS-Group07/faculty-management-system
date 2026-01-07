@@ -2,19 +2,18 @@ package com.faculty.view;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class LecturerDashBoardView extends JFrame implements ActionListener {
+public class LecturerDashboard extends JFrame implements ActionListener {
     JButton btnProfile, btnTimeTable, btnCourses , btnExit ;
     JPanel rightPanelContainer;
     JPanel profileView;
     JPanel timeTableView;
     JPanel coursesView;
 
-    LecturerDashBoardView() {
+    public LecturerDashboard() {
         setTitle("Faculty Management System");
         setSize(1000, 650);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

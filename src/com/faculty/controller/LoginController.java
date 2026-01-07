@@ -3,6 +3,7 @@
 package com.faculty.controller;
 
 import com.faculty.view.AdminDashboardView;
+import com.faculty.view.LecturerDashboard;
 import com.faculty.view.LoginView;
 import com.faculty.dao.UserDAO;
 import com.faculty.model.User;
@@ -93,7 +94,10 @@ public class LoginController {
                 break;
             case "LECTURER":
                 JOptionPane.showMessageDialog(null, "Opening Lecturer Dashboard...");
-                // new LecturerDashboardView();
+                SwingUtilities.invokeLater(() -> {
+                    LecturerDashboard dashh = new LecturerDashboard();
+                    dashh.setVisible(true);
+                });
                 break;
         }
     }
