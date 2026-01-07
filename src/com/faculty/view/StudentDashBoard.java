@@ -9,14 +9,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class StudentDashBoard extends JFrame implements ActionListener {
+public class StudentDashBoard extends JFrame implements ActionListener {
     JButton btnProfile, btnTimeTable, btnCourses , btnExit ;
     JPanel rightPanelContainer;
     JPanel profileView;
     JPanel timeTableView;
     JPanel coursesView;
 
-    StudentDashBoard() {
+    public StudentDashBoard() {
         setTitle("Faculty Management System");
         setSize(1000, 650);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -123,7 +123,7 @@ class StudentDashBoard extends JFrame implements ActionListener {
         addFormRow(profileView, "Full Name", "Kumar Sangakkara", 180);
         addFormRow(profileView, "Student ID", "ET/2022/011", 230);
         addFormRow(profileView, "Degree", "Engineering Technology", 280);
-        addFormRow(profileView, "Email", "kumars-et22011@stu.kln.ac.lk", 330);
+        addFormRow(profileView, "Email", "kumarsa-et22011@stu.kln.ac.lk", 330);
         addFormRow(profileView, "Mobile Number", "0123456789", 380);
 
 

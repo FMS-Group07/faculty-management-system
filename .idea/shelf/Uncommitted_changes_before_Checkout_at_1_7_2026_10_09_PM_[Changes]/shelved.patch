@@ -1,0 +1,94 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"c4a710ca-3f45-4df2-b520-1694420f4367\" name=\"Changes\" comment=\"DBConnection + backends to Login page\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;LakminaRubasinghe&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/FMS-Group07/faculty-management-system.git&quot;,\r\n    &quot;accountId&quot;: &quot;2af8b499-1f78-4669-af8f-e851730b2fa0&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 3\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"37mKYK3uEvwBqJDsloSKSfEOOnQ\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.LoginView.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;salik__3&quot;,\r\n    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/MY FILES/University Of Kelaniya/Projects/faculty-management-system&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\MY FILES\\University Of Kelaniya\\Projects\\faculty-management-system\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"c4a710ca-3f45-4df2-b520-1694420f4367\" name=\"Changes\" comment=\"\" />\r\n      <created>1767502852608</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1767502852608</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Build the initial folder that is needed for the assignment.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1767506543941</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1767506543941</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"StudentDashBoard add to the files\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1767633766865</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1767633766865</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"exit Image commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1767634079858</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1767634079858</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"DBConnection + backends to Login page\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1767693057449</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1767693057449</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"DBConnection + backends to Login page\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1767693387074</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1767693387076</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"DBConnection + backends to Login page\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1767798879731</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1767798879731</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"7\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origin/main\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Build the initial folder setup that is needed for the assignment.\" />\r\n    <MESSAGE value=\"Build the initial folder that is needed for the assignment.\" />\r\n    <MESSAGE value=\"StudentDashBoard add to the files\" />\r\n    <MESSAGE value=\"exit Image commit\" />\r\n    <MESSAGE value=\"DBConnection + backends to Login page\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"DBConnection + backends to Login page\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 03bc91d5bb5c4f3ed37c5bc97145b054cbf9a954)
++++ b/.idea/workspace.xml	(date 1767803676659)
+@@ -5,7 +5,23 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="c4a710ca-3f45-4df2-b520-1694420f4367" name="Changes" comment="DBConnection + backends to Login page">
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/controller/LoginController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/CourseEnrolledPanle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/CourseEnrolledPanle.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/CoursePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/CoursePanel.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/DegreePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/DegreePanel.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/DepartmentPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/DepartmentPanel.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LecturerDashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LecturerDashboard.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LecturerMessagePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LecturerMessagePanel.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LecturerPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LecturerPanel.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LecturerProfilePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/LecturerProfilePanel.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/ProfileDetailsPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/ProfileDetailsPanel.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/StudentDashBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/StudentDashBoard$1.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/StudentDashBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/StudentDashBoard.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/StudentPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/StudentPanel.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/TimeTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/TimeTable.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/TimeTablePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/TimeTablePanel.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/faculty-management-system/com/faculty/view/exit.png" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -48,23 +64,23 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;Application.LoginView.executor&quot;: &quot;Run&quot;,
+-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;salik__3&quot;,
+-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/MY FILES/University Of Kelaniya/Projects/faculty-management-system&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "Application.LoginView.executor": "Run",
++    "Application.Main.executor": "Run",
++    "ModuleVcsDetector.initialDetectionPerformed": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
++    "RunOnceActivity.git.unshallow": "true",
++    "git-widget-placeholder": "#21 on salik__3",
++    "ignore.virus.scanning.warn.message": "true",
++    "kotlin-language-version-configured": "true",
++    "last_opened_file_path": "C:/MY FILES/University Of Kelaniya/Projects/faculty-management-system",
++    "project.structure.last.edited": "Modules",
++    "project.structure.proportion": "0.0",
++    "project.structure.side.proportion": "0.2"
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="C:\MY FILES\University Of Kelaniya\Projects\faculty-management-system" />
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_24\" project-jdk-name=\"openjdk-25\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 03bc91d5bb5c4f3ed37c5bc97145b054cbf9a954)
++++ b/.idea/misc.xml	(date 1767803578046)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_24" project-jdk-name="openjdk-25" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_25" default="true" project-jdk-name="openjdk-25" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
