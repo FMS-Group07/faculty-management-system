@@ -1,5 +1,9 @@
 package com.faculty.view;
 
-public record RoundRectangle3D() {
+public class RoundRectangle3D {
+
+    public RoundRectangle3D() {
+        // constructor
+    }
 
 }

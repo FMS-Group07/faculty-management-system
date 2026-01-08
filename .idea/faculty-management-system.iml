@@ -17,5 +17,6 @@
         <jarDirectory url="file://$MODULE_DIR$/mysql-connector-j-9.5.0" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="mysql-connector-j-9.5" level="project" />
   </component>
 </module>
