@@ -2,18 +2,21 @@ package com.faculty.view;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 import com.faculty.utils.AppColors;
-
 import java.awt.*;
 
 public class DepartmentFormDialog extends JDialog {
 
-    private boolean isSaved = false;
+    // UI Components
     private JTextField nameField;
     private JTextField hodField;
     private JTextField degreesField;
     private JTextField staffField;
+    private JButton btnSave;
+    private JButton btnCancel;
+
+    // State to track if saved
+    private boolean isSaved = false;
 
     public DepartmentFormDialog(Frame parent, String title, Object[] initialData) {
         super(parent, title, true);
@@ -21,19 +24,20 @@ public class DepartmentFormDialog extends JDialog {
         setLocationRelativeTo(parent);
         setUndecorated(true);
         setLayout(new BorderLayout());
-
         setShape(new java.awt.geom.RoundRectangle2D.Double(0, 0, 400, 450, 20, 20));
 
+        // --- Main Panel ---
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(Color.WHITE);
         mainPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
         mainPanel.setLayout(new GridLayout(5, 1, 10, 10)); // 4 fields + buttons
 
-        nameField = createStyledTextField("Department Name");
-        hodField = createStyledTextField("HOD");
-        degreesField = createStyledTextField("Degrees");
-        staffField = createStyledTextField("No of Staff");
+        nameField = createStyledTextField();
+        hodField = createStyledTextField();
+        degreesField = createStyledTextField();
+        staffField = createStyledTextField();
 
+        // Populate data if editing
         if (initialData != null) {
             nameField.setText(initialData[0].toString());
             hodField.setText(initialData[1].toString());
@@ -46,23 +50,18 @@ public class DepartmentFormDialog extends JDialog {
         mainPanel.add(createFieldPanel("Degrees", degreesField));
         mainPanel.add(createFieldPanel("No of Staff", staffField));
 
+        // --- Button Panel ---
         JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         btnPanel.setOpaque(false);
 
-        JButton cancelBtn = createButton("Cancel", AppColors.GRAY_BUTTON, Color.BLACK);
-        cancelBtn.addActionListener(e -> dispose());
+        btnCancel = createButton("Cancel", AppColors.GRAY_BUTTON, Color.BLACK);
+        btnSave = createButton("Save", AppColors.PRIMARY_PURPLE, Color.WHITE);
 
-        JButton saveBtn = createButton("Save", AppColors.PRIMARY_PURPLE, Color.WHITE);
-        saveBtn.addActionListener(e -> {
-            isSaved = true;
-            dispose();
-        });
-
-        btnPanel.add(cancelBtn);
-        btnPanel.add(saveBtn);
-
+        btnPanel.add(btnCancel);
+        btnPanel.add(btnSave);
         mainPanel.add(btnPanel);
 
+        // --- Header Panel ---
         JPanel headerPanel = new JPanel(new BorderLayout());
         headerPanel.setBackground(AppColors.PRIMARY_PURPLE);
         headerPanel.setBorder(new EmptyBorder(10, 20, 10, 20));
@@ -76,9 +75,10 @@ public class DepartmentFormDialog extends JDialog {
         add(mainPanel, BorderLayout.CENTER);
     }
 
-    public boolean isSaved() {
-        return isSaved;
-    }
+    // --- Public Methods for Controller/Parent ---
+
+    public boolean isSaved() { return isSaved; }
+    public void setSaved(boolean saved) { this.isSaved = saved; }
 
     public Object[] getData() {
         return new Object[] {
@@ -88,6 +88,16 @@ public class DepartmentFormDialog extends JDialog {
                 staffField.getText()
         };
     }
+
+    // --- Getters for Controller Access ---
+    public JTextField getNameField() { return nameField; }
+    public JTextField getHodField() { return hodField; }
+    public JTextField getDegreesField() { return degreesField; }
+    public JTextField getStaffField() { return staffField; }
+    public JButton getBtnSave() { return btnSave; }
+    public JButton getBtnCancel() { return btnCancel; }
+
+    // --- Helper UI Methods ---
 
     private JPanel createFieldPanel(String labelText, JTextField field) {
         JPanel panel = new JPanel(new BorderLayout(5, 5));
@@ -100,7 +110,7 @@ public class DepartmentFormDialog extends JDialog {
         return panel;
     }
 
-    private JTextField createStyledTextField(String placeholder) {
+    private JTextField createStyledTextField() {
         JTextField field = new JTextField();
         field.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         field.setBorder(BorderFactory.createCompoundBorder(

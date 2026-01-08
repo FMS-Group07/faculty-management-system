@@ -2,38 +2,42 @@ package com.faculty.view;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 import com.faculty.utils.AppColors;
-
 import java.awt.*;
 
 public class CourseFormDialog extends JDialog {
 
-    private boolean isSaved = false;
+    // UI Components
     private JTextField codeField;
     private JTextField nameField;
     private JTextField creditsField;
     private JTextField lecturerField;
+    private JButton btnSave;
+    private JButton btnCancel;
+
+    // State to track if the user clicked Save
+    private boolean isSaved = false;
 
     public CourseFormDialog(Frame parent, String title, Object[] initialData) {
         super(parent, title, true);
-        setSize(400, 450); // 4 fields
+        setSize(400, 450);
         setLocationRelativeTo(parent);
         setUndecorated(true);
         setLayout(new BorderLayout());
-
         setShape(new java.awt.geom.RoundRectangle2D.Double(0, 0, 400, 450, 20, 20));
 
+        // --- Main Form Panel ---
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(Color.WHITE);
         mainPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
-        mainPanel.setLayout(new GridLayout(5, 1, 10, 10)); // 4 fields + buttons
+        mainPanel.setLayout(new GridLayout(5, 1, 10, 10));
 
-        codeField = createStyledTextField("Course Code");
-        nameField = createStyledTextField("Course Name");
-        creditsField = createStyledTextField("Credits");
-        lecturerField = createStyledTextField("Lecturer");
+        codeField = createStyledTextField();
+        nameField = createStyledTextField();
+        creditsField = createStyledTextField();
+        lecturerField = createStyledTextField();
 
+        // Populate data if editing
         if (initialData != null) {
             codeField.setText(initialData[0].toString());
             nameField.setText(initialData[1].toString());
@@ -46,23 +50,18 @@ public class CourseFormDialog extends JDialog {
         mainPanel.add(createFieldPanel("Credits", creditsField));
         mainPanel.add(createFieldPanel("Lecturer", lecturerField));
 
+        // --- Button Panel ---
         JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         btnPanel.setOpaque(false);
 
-        JButton cancelBtn = createButton("Cancel", AppColors.GRAY_BUTTON, Color.BLACK);
-        cancelBtn.addActionListener(e -> dispose());
+        btnCancel = createButton("Cancel", AppColors.GRAY_BUTTON, Color.BLACK);
+        btnSave = createButton("Save", AppColors.PRIMARY_PURPLE, Color.WHITE);
 
-        JButton saveBtn = createButton("Save", AppColors.PRIMARY_PURPLE, Color.WHITE);
-        saveBtn.addActionListener(e -> {
-            isSaved = true;
-            dispose();
-        });
-
-        btnPanel.add(cancelBtn);
-        btnPanel.add(saveBtn);
-
+        btnPanel.add(btnCancel);
+        btnPanel.add(btnSave);
         mainPanel.add(btnPanel);
 
+        // --- Header Panel ---
         JPanel headerPanel = new JPanel(new BorderLayout());
         headerPanel.setBackground(AppColors.PRIMARY_PURPLE);
         headerPanel.setBorder(new EmptyBorder(10, 20, 10, 20));
@@ -76,10 +75,17 @@ public class CourseFormDialog extends JDialog {
         add(mainPanel, BorderLayout.CENTER);
     }
 
+    // --- Public Methods for Controller/Parent ---
+
     public boolean isSaved() {
         return isSaved;
     }
 
+    public void setSaved(boolean saved) {
+        this.isSaved = saved;
+    }
+
+    // Extracts data from fields
     public Object[] getData() {
         return new Object[] {
                 codeField.getText(),
@@ -88,6 +94,16 @@ public class CourseFormDialog extends JDialog {
                 lecturerField.getText()
         };
     }
+
+    // --- Getters for Controller Access ---
+    public JButton getBtnSave() { return btnSave; }
+    public JButton getBtnCancel() { return btnCancel; }
+    public JTextField getCodeField() { return codeField; }
+    public JTextField getNameField() { return nameField; }
+    public JTextField getCreditsField() { return creditsField; }
+    public JTextField getLecturerField() { return lecturerField; }
+
+    // --- Helper UI Methods ---
 
     private JPanel createFieldPanel(String labelText, JTextField field) {
         JPanel panel = new JPanel(new BorderLayout(5, 5));
@@ -100,7 +116,7 @@ public class CourseFormDialog extends JDialog {
         return panel;
     }
 
-    private JTextField createStyledTextField(String placeholder) {
+    private JTextField createStyledTextField() {
         JTextField field = new JTextField();
         field.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         field.setBorder(BorderFactory.createCompoundBorder(
