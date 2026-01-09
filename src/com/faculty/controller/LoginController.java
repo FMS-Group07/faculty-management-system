@@ -81,7 +81,9 @@ public class LoginController {
             case "ADMIN":
                 JOptionPane.showMessageDialog(null, "Opening Admin Dashboard...");
                 SwingUtilities.invokeLater(() -> {
-                    new AdminDashboardView().createAndShowGUI();
+                    AdminDashboardView adminView = new AdminDashboardView();
+                    new AdminDashboardView_Controller(adminView);
+                    adminView.setVisible(true);
                 });
                 break;
             case "STUDENT":
