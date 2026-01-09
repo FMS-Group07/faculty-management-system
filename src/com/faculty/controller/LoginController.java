@@ -82,7 +82,7 @@ public class LoginController {
                 JOptionPane.showMessageDialog(null, "Opening Admin Dashboard...");
                 SwingUtilities.invokeLater(() -> {
                     AdminDashboardView adminView = new AdminDashboardView();
-                    new AdminController(adminView);
+                    new AdminDashboardView_Controller(adminView);
                     adminView.setVisible(true);
                 });
                 break;
