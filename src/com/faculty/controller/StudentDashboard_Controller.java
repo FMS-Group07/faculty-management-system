@@ -23,6 +23,7 @@ public class StudentDashboard_Controller {
     }
 
     private void initController() {
+        loadDegreeOptions();
         loadStudentData();
         view.addSaveListener(new ActionListener() {
             @Override
@@ -30,6 +31,11 @@ public class StudentDashboard_Controller {
                 handleSaveProfile();
             }
         });
+    }
+
+    private void loadDegreeOptions() {
+        java.util.List<String> degrees = dao.getAllDegreeNames();
+        view.setDegreeOptions(degrees);
     }
 
     private void loadStudentData() {

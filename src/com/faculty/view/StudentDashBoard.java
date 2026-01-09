@@ -21,7 +21,7 @@ public class StudentDashBoard extends JFrame implements ActionListener {
     // Profile Fields
     private JTextField fullNameField;
     private JTextField studentIdField;
-    private JTextField degreeField;
+    private JComboBox<String> degreeCombo;
     private JTextField emailField;
     private JTextField mobileField;
     private JButton saveProfileBtn;
@@ -130,7 +130,22 @@ public class StudentDashBoard extends JFrame implements ActionListener {
 
         fullNameField = addFormRow(profileView, "Full Name", "", 180);
         studentIdField = addFormRow(profileView, "Student ID", "", 230);
-        degreeField = addFormRow(profileView, "Degree", "", 280);
+
+        // Degree Combo Box
+        JLabel degreeLabel = new JLabel("Degree");
+        degreeLabel.setBounds(80, 280, 150, 30);
+        degreeLabel.setFont(new Font("Arial", Font.BOLD, 15));
+        degreeLabel.setForeground(new Color(138, 43, 226));
+        profileView.add(degreeLabel);
+
+        degreeCombo = new JComboBox<>();
+        degreeCombo.setBounds(240, 280, 350, 30);
+        degreeCombo.setFont(new Font("Arial", Font.PLAIN, 14));
+        degreeCombo.setBorder(BorderFactory.createLineBorder(new Color(138, 43, 226), 2, true));
+        degreeCombo.setForeground(new Color(138, 43, 226));
+        degreeCombo.setBackground(Color.WHITE);
+        profileView.add(degreeCombo);
+
         emailField = addFormRow(profileView, "Email", "", 330);
         mobileField = addFormRow(profileView, "Mobile Number", "", 380);
 
@@ -161,16 +176,25 @@ public class StudentDashBoard extends JFrame implements ActionListener {
     public void setStudentData(String name, String id, String degree, String email, String mobile) {
         fullNameField.setText(name);
         studentIdField.setText(id);
-        degreeField.setText(degree);
+        if (degree != null && !degree.isEmpty()) {
+            degreeCombo.setSelectedItem(degree);
+        }
         emailField.setText(email);
         mobileField.setText(mobile);
+    }
+
+    public void setDegreeOptions(java.util.List<String> degrees) {
+        degreeCombo.removeAllItems();
+        for (String d : degrees) {
+            degreeCombo.addItem(d);
+        }
     }
 
     public String[] getStudentData() {
         return new String[] {
                 fullNameField.getText().trim(),
                 studentIdField.getText().trim(),
-                degreeField.getText().trim(),
+                (String) degreeCombo.getSelectedItem(),
                 emailField.getText().trim(),
                 mobileField.getText().trim()
         };

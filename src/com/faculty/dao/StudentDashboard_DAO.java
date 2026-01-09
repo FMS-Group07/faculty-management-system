@@ -75,4 +75,19 @@ public class StudentDashboard_DAO {
             return false;
         }
     }
+
+    public java.util.List<String> getAllDegreeNames() {
+        java.util.List<String> degrees = new java.util.ArrayList<>();
+        String query = "SELECT degree_name FROM degrees";
+        try (PreparedStatement ps = conn.prepareStatement(query);
+                ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                degrees.add(rs.getString("degree_name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            lastError = e.getMessage();
+        }
+        return degrees;
+    }
 }
