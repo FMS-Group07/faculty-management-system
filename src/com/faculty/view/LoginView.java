@@ -37,7 +37,6 @@ public class LoginView {
         frame.setLayout(null);
         frame.setResizable(false);
 
-        /* ---------- LEFT PANEL ---------- */
         JPanel leftPanel = new JPanel();
         leftPanel.setBackground(AppColors.PRIMARY_PURPLE);
         leftPanel.setBounds(0, 0, 500, 650);
@@ -194,7 +193,6 @@ public class LoginView {
         signUpPanel.add(signUpBtn);
     }
 
-    /* ---------- HELPERS ---------- */
     private JLabel createLabel(String text, int x, int y) {
         JLabel lbl = new JLabel(text);
         lbl.setBounds(x, y, 250, 25);

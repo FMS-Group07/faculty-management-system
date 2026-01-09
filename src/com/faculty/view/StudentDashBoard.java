@@ -1,5 +1,7 @@
 package com.faculty.view;
 
+import com.faculty.controller.LoginController;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -58,6 +60,7 @@ public class StudentDashBoard extends JFrame implements ActionListener {
 
         btnExit = new JButton("Exit");
         btnExit.setBounds(110, 440, 60, 60);
+        btnExit.addActionListener(this);
 
 
         ImageIcon exitIcon = new ImageIcon(this.getClass().getResource("exit.png"));
@@ -300,6 +303,12 @@ public class StudentDashBoard extends JFrame implements ActionListener {
             btnProfile.setForeground(Color.GRAY);
             btnTimeTable.setForeground(Color.GRAY);
             call.show(rightPanelContainer, "Courses");
+        } else if (e.getSource()== btnExit) {
+            dispose();
+            new LoginController(new LoginView());
+            System.out.println("hi");
+
+
         }
     }
 }
