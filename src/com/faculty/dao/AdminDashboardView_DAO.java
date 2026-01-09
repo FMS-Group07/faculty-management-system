@@ -21,7 +21,7 @@ public class AdminDashboardView_DAO {
         List<Student> students = new ArrayList<>();
         String query = "SELECT * FROM students";
         try (PreparedStatement ps = conn.prepareStatement(query);
-                ResultSet rs = ps.executeQuery()) {
+             ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 students.add(new Student(
                         rs.getString("full_name"),
@@ -83,7 +83,7 @@ public class AdminDashboardView_DAO {
         List<Lecturer> lecturers = new ArrayList<>();
         String query = "SELECT * FROM lecturers";
         try (PreparedStatement ps = conn.prepareStatement(query);
-                ResultSet rs = ps.executeQuery()) {
+             ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 String coursesStr = rs.getString("courses_teaching");
                 String[] courses = coursesStr != null ? coursesStr.split(",") : new String[0];
@@ -150,7 +150,7 @@ public class AdminDashboardView_DAO {
         List<Course> courses = new ArrayList<>();
         String query = "SELECT * FROM courses";
         try (PreparedStatement ps = conn.prepareStatement(query);
-                ResultSet rs = ps.executeQuery()) {
+             ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 courses.add(new Course(
                         rs.getString("course_code"),
@@ -209,7 +209,7 @@ public class AdminDashboardView_DAO {
         List<Department> departments = new ArrayList<>();
         String query = "SELECT * FROM departments";
         try (PreparedStatement ps = conn.prepareStatement(query);
-                ResultSet rs = ps.executeQuery()) {
+             ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 String degreesStr = rs.getString("degrees");
                 String[] degrees = degreesStr != null ? degreesStr.split(",") : new String[0];
@@ -271,7 +271,7 @@ public class AdminDashboardView_DAO {
         List<Degree> degrees = new ArrayList<>();
         String query = "SELECT * FROM degrees";
         try (PreparedStatement ps = conn.prepareStatement(query);
-                ResultSet rs = ps.executeQuery()) {
+             ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 degrees.add(new Degree(
                         rs.getString("degree_name"),

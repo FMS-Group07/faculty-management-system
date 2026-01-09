@@ -1,5 +1,7 @@
 package com.faculty.view;
 
+import com.faculty.controller.LoginController;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -67,6 +69,8 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
 
         btnExit = new JButton("Exit");
         btnExit.setBounds(110, 400, 60, 60);
+        btnExit.addActionListener(this);
+
 
 
         ImageIcon exitIcon = new ImageIcon(this.getClass().getResource("exit.png"));
@@ -241,6 +245,9 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
             btnProfile.setForeground(Color.GRAY);
             btnTimeTable.setForeground(Color.GRAY);
             call.show(rightPanelContainer, "Courses");
-        }
+        } else if (e.getSource() == btnExit) {
+            dispose();
+            new LoginController(new LoginView());
+         }
     }
 }
