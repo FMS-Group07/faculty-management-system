@@ -109,11 +109,7 @@ public class LecturerDashboard_DAO {
                     String[] courses = coursesStr != null ? coursesStr.split(",") : new String[0];
 
                     String lId = "";
-                    try {
-                        lId = rs.getString("salary_id");
-                    } catch (SQLException e) {
-                        System.out.println("Warning: salary_id column missing or error. Defaulting to empty.");
-                    }
+                    lId = rs.getString("salary_id");
 
                     // Resolve Department Name
                     String rawDept = rs.getString("department");
@@ -252,16 +248,19 @@ public class LecturerDashboard_DAO {
                 boolean found = false;
                 while (rs.next()) {
                     if ("department".equalsIgnoreCase(rs.getString("FKCOLUMN_NAME"))) {
-                        sb.append("Found FK on 'department' -> ").append(rs.getString("PKTABLE_NAME")).append(".").append(rs.getString("PKCOLUMN_NAME"));
+                        sb.append("Found FK on 'department' -> ").append(rs.getString("PKTABLE_NAME")).append(".")
+                                .append(rs.getString("PKCOLUMN_NAME"));
                         found = true;
                     }
                 }
-                if (!found) sb.append("No FK on 'department'. ");
+                if (!found)
+                    sb.append("No FK on 'department'. ");
             }
-            
+
             // Check Departments Table
             sb.append(" [Depts Table] ");
-            try (java.sql.Statement st = conn.createStatement(); ResultSet rs = st.executeQuery("SELECT * FROM departments LIMIT 1")) {
+            try (java.sql.Statement st = conn.createStatement();
+                    ResultSet rs = st.executeQuery("SELECT * FROM departments LIMIT 1")) {
                 java.sql.ResultSetMetaData rsmd = rs.getMetaData();
                 for (int i = 1; i <= rsmd.getColumnCount(); i++) {
                     sb.append(rsmd.getColumnName(i)).append("(").append(rsmd.getColumnTypeName(i)).append(") ");
@@ -270,12 +269,13 @@ public class LecturerDashboard_DAO {
 
             // Check Lecturers Table
             sb.append(" [Lecturers Table] ");
-             try (java.sql.Statement st = conn.createStatement(); ResultSet rs = st.executeQuery("SELECT * FROM lecturers LIMIT 1")) {
+            try (java.sql.Statement st = conn.createStatement();
+                    ResultSet rs = st.executeQuery("SELECT * FROM lecturers LIMIT 1")) {
                 java.sql.ResultSetMetaData rsmd = rs.getMetaData();
                 for (int i = 1; i <= rsmd.getColumnCount(); i++) {
-                     if ("department".equalsIgnoreCase(rsmd.getColumnName(i))) {
+                    if ("department".equalsIgnoreCase(rsmd.getColumnName(i))) {
                         sb.append("department (").append(rsmd.getColumnTypeName(i)).append(") ");
-                     }
+                    }
                 }
             }
 
@@ -283,4 +283,5 @@ public class LecturerDashboard_DAO {
             sb.append("Probe Error: ").append(e.getMessage());
         }
         return sb.toString();
-    }}
+    }
+}

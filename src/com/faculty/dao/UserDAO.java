@@ -21,11 +21,9 @@ public class UserDAO {
             return 2;
         }
         try {
-            String checkQuery = "SELECT * FROM users WHERE username = ? AND password = ? AND role = ?";
+            String checkQuery = "SELECT * FROM users WHERE username = ?";
             PreparedStatement psCheck = conn.prepareStatement(checkQuery);
             psCheck.setString(1, user.getUsername());
-            psCheck.setString(2, user.getPassword());
-            psCheck.setString(3, user.getRole());
             ResultSet rs = psCheck.executeQuery();
 
             if (rs.next()) {
