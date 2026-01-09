@@ -14,13 +14,11 @@ public class LoginView {
     private JButton btnSignInTab, btnSignUpTab;
     private JPanel indicatorSignIn, indicatorSignUp;
 
-    // Sign In components
     private JTextField signInUsernameField;
     private JPasswordField signInPasswordField;
     private JRadioButton signInAdmin, signInStudent, signInLecturer;
     private JButton signInBtn;
 
-    // Sign Up components
     private JTextField signUpUsernameField;
     private JPasswordField signUpPasswordField, signUpConfirmField;
     private JRadioButton signUpAdmin, signUpStudent, signUpLecturer;
@@ -32,7 +30,7 @@ public class LoginView {
     public LoginView() {
         frame = new JFrame("Faculty Management System");
         frame.setSize(AppConfig.FRAME_WIDTH, AppConfig.FRAME_HEIGHT);
-        frame.setLocationRelativeTo(null); // Center the frame
+        frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.setResizable(false);
@@ -49,8 +47,7 @@ public class LoginView {
         logoLabel.setBounds(150, 70, 200, 180);
 
         JLabel titleLabel = new JLabel(
-                "<html><div style='text-align:center;'>Faculty Management<br>System</div></html>"
-        );
+                "<html><div style='text-align:center;'>Faculty Management<br>System</div></html>");
         titleLabel.setForeground(Color.WHITE);
         titleLabel.setFont(new Font("Times New Roman", Font.BOLD, 36));
         titleLabel.setBounds(75, 250, 400, 100);
@@ -70,7 +67,6 @@ public class LoginView {
         leftPanel.add(fctLabel);
         leftPanel.add(subtitleLabel);
 
-        /* ---------- RIGHT PANEL ---------- */
         rightPanel = new JPanel();
         rightPanel.setBounds(500, 0, 500, 650);
         rightPanel.setLayout(null);
@@ -108,7 +104,6 @@ public class LoginView {
         btnSignUpTab.addActionListener(e -> setActiveTab(false));
     }
 
-    /* ---------- SIGN IN FORM ---------- */
     private void createSignInForm() {
         signInPanel = new JPanel();
         signInPanel.setBounds(50, 100, 400, 500);
@@ -148,7 +143,6 @@ public class LoginView {
         signInPanel.add(signInBtn);
     }
 
-    /* ---------- SIGN UP FORM ---------- */
     private void createSignUpForm() {
         signUpPanel = new JPanel();
         signUpPanel.setBounds(50, 100, 400, 500);
@@ -248,29 +242,59 @@ public class LoginView {
         frame.setVisible(true);
     }
 
-    /* ---------- GETTERS FOR CONTROLLER ---------- */
-    public String getSignInUsername() { return signInUsernameField.getText().trim(); }
-    public String getSignInPassword() { return new String(signInPasswordField.getPassword()); }
+    public String getSignInUsername() {
+        return signInUsernameField.getText().trim();
+    }
+
+    public String getSignInPassword() {
+        return new String(signInPasswordField.getPassword());
+    }
+
     public String getSignInRole() {
-        if(signInAdmin.isSelected()) return "ADMIN";
-        if(signInStudent.isSelected()) return "STUDENT";
-        if(signInLecturer.isSelected()) return "LECTURER";
+        if (signInAdmin.isSelected())
+            return "ADMIN";
+        if (signInStudent.isSelected())
+            return "STUDENT";
+        if (signInLecturer.isSelected())
+            return "LECTURER";
         return "";
     }
 
-    public String getSignUpUsername() { return signUpUsernameField.getText().trim(); }
-    public String getSignUpPassword() { return new String(signUpPasswordField.getPassword()); }
-    public String getSignUpConfirm() { return new String(signUpConfirmField.getPassword()); }
+    public String getSignUpUsername() {
+        return signUpUsernameField.getText().trim();
+    }
+
+    public String getSignUpPassword() {
+        return new String(signUpPasswordField.getPassword());
+    }
+
+    public String getSignUpConfirm() {
+        return new String(signUpConfirmField.getPassword());
+    }
+
     public String getSignUpRole() {
-        if(signUpAdmin.isSelected()) return "ADMIN";
-        if(signUpStudent.isSelected()) return "STUDENT";
-        if(signUpLecturer.isSelected()) return "LECTURER";
+        if (signUpAdmin.isSelected())
+            return "ADMIN";
+        if (signUpStudent.isSelected())
+            return "STUDENT";
+        if (signUpLecturer.isSelected())
+            return "LECTURER";
         return "";
     }
 
-    public JButton getSignInButton() { return signInBtn; }
-    public JButton getSignUpButton() { return signUpBtn; }
+    public JButton getSignInButton() {
+        return signInBtn;
+    }
 
-    public void switchToSignInTab() { setActiveTab(true); }
-    public void switchToSignUpTab() { setActiveTab(false); }
+    public JButton getSignUpButton() {
+        return signUpBtn;
+    }
+
+    public void switchToSignInTab() {
+        setActiveTab(true);
+    }
+
+    public void switchToSignUpTab() {
+        setActiveTab(false);
+    }
 }

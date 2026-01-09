@@ -20,17 +20,15 @@ public class LecturerFormDialog extends JDialog {
         super(parent, title, true);
         setSize(400, 500);
         setLocationRelativeTo(parent);
-        setUndecorated(true); // Custom look
+        setUndecorated(true);
         setLayout(new BorderLayout());
 
-        // Rounded shape
         setShape(new java.awt.geom.RoundRectangle2D.Double(0, 0, 400, 500, 20, 20));
 
-        // Main Panel
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(Color.WHITE);
         mainPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
-        mainPanel.setLayout(new GridLayout(6, 1, 10, 10)); // 5 fields + buttons
+        mainPanel.setLayout(new GridLayout(6, 1, 10, 10));
 
         nameField = createStyledTextField("Full Name");
         departmentCombo = createStyledComboBox(departments);
@@ -38,7 +36,6 @@ public class LecturerFormDialog extends JDialog {
         emailField = createStyledTextField("Email");
         mobileField = createStyledTextField("Mobile Number");
 
-        // Pre-fill data if editing
         if (initialData != null) {
             nameField.setText(initialData[0].toString());
             departmentCombo.setSelectedItem(initialData[1].toString());
@@ -53,7 +50,6 @@ public class LecturerFormDialog extends JDialog {
         mainPanel.add(createFieldPanel("Email", emailField));
         mainPanel.add(createFieldPanel("Mobile Number", mobileField));
 
-        // Buttons Panel
         JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         btnPanel.setOpaque(false);
 
@@ -71,7 +67,6 @@ public class LecturerFormDialog extends JDialog {
 
         mainPanel.add(btnPanel);
 
-        // Header with Title
         JPanel headerPanel = new JPanel(new BorderLayout());
         headerPanel.setBackground(AppColors.PRIMARY_PURPLE);
         headerPanel.setBorder(new EmptyBorder(10, 20, 10, 20));
