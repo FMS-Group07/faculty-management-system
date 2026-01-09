@@ -11,10 +11,10 @@ public class DegreeFormDialog extends JDialog {
 
     private boolean isSaved = false;
     private JTextField nameField;
-    private JTextField departmentField;
+    private JComboBox<String> departmentCombo;
     private JTextField studentsField;
 
-    public DegreeFormDialog(Frame parent, String title, Object[] initialData) {
+    public DegreeFormDialog(Frame parent, String title, Object[] initialData, String[] departments) {
         super(parent, title, true);
         setSize(400, 400); // 3 fields
         setLocationRelativeTo(parent);
@@ -29,17 +29,17 @@ public class DegreeFormDialog extends JDialog {
         mainPanel.setLayout(new GridLayout(4, 1, 10, 10)); // 3 fields + buttons
 
         nameField = createStyledTextField("Degree Name");
-        departmentField = createStyledTextField("Department");
+        departmentCombo = createStyledComboBox(departments);
         studentsField = createStyledTextField("No of Students");
 
         if (initialData != null) {
             nameField.setText(initialData[0].toString());
-            departmentField.setText(initialData[1].toString());
+            departmentCombo.setSelectedItem(initialData[1].toString());
             studentsField.setText(initialData[2].toString());
         }
 
         mainPanel.add(createFieldPanel("Degree Name", nameField));
-        mainPanel.add(createFieldPanel("Department", departmentField));
+        mainPanel.add(createFieldPanel("Department", departmentCombo));
         mainPanel.add(createFieldPanel("No of Students", studentsField));
 
         JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -79,12 +79,12 @@ public class DegreeFormDialog extends JDialog {
     public Object[] getData() {
         return new Object[] {
                 nameField.getText(),
-                departmentField.getText(),
+                departmentCombo.getSelectedItem(),
                 studentsField.getText()
         };
     }
 
-    private JPanel createFieldPanel(String labelText, JTextField field) {
+    private JPanel createFieldPanel(String labelText, JComponent field) {
         JPanel panel = new JPanel(new BorderLayout(5, 5));
         panel.setOpaque(false);
         JLabel label = new JLabel(labelText);
@@ -102,6 +102,14 @@ public class DegreeFormDialog extends JDialog {
                 BorderFactory.createLineBorder(AppColors.GRAY_BUTTON),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));
         return field;
+    }
+
+    private JComboBox<String> createStyledComboBox(String[] items) {
+        JComboBox<String> combo = new JComboBox<>(items != null ? items : new String[] {});
+        combo.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        combo.setBackground(Color.WHITE);
+        combo.setBorder(BorderFactory.createLineBorder(AppColors.GRAY_BUTTON));
+        return combo;
     }
 
     private JButton createButton(String text, Color bg, Color fg) {

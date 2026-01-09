@@ -119,7 +119,9 @@ public class AdminDashboardView {
 
         // Dynamic Table Height Calculation
         // Note: Initial size might be small if no data, but we set bounds explicitly
-        scrollPane.setBounds(50, 210, 580, 400); // Set a fixed manageable size or dynamic based on logic
+        // Dynamic Table Height Calculation
+        // Adjusted to fit within the screen without overlapping the save button
+        scrollPane.setBounds(50, 180, 580, 350);
         // For now, let's keep it somewhat fixed or we can adjust dynamically if needed,
         // but dynamic height based on row count is tricky if rows change.
         // Let's use the bounds from before but we might need to update it when data
@@ -130,7 +132,7 @@ public class AdminDashboardView {
         centerPanel.add(scrollPane);
 
         // Action Buttons
-        int btnY = 120;
+        int btnY = 110;
         int btnWidth = 150;
         int btnHeight = 45;
         int btnGap = 30;
@@ -153,7 +155,7 @@ public class AdminDashboardView {
 
         // ================= SAVE BUTTON =================
         saveBtn = createRoundedButton("Save changes", AppColors.PRIMARY_PURPLE, Color.WHITE);
-        saveBtn.setBounds(140, 420, 400, 50);
+        saveBtn.setBounds(135, 550, 400, 50);
         saveBtn.setFont(new Font("Segoe UI", Font.BOLD, 18));
         centerPanel.add(saveBtn);
 
@@ -210,6 +212,10 @@ public class AdminDashboardView {
 
     public int getSelectedRow() {
         return table.getSelectedRow();
+    }
+
+    public int getRowCount() {
+        return model.getRowCount();
     }
 
     public int getColumnCount() {

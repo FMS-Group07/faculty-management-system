@@ -10,20 +10,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LecturerDashboard extends JFrame implements ActionListener {
-    JButton btnProfile, btnTimeTable, btnCourses , btnExit ;
+    JButton btnProfile, btnTimeTable, btnCourses, btnExit;
     JPanel rightPanelContainer;
     JPanel profileView;
     JPanel timeTableView;
     JPanel coursesView;
 
+    // Profile Fields
+    private JTextField fullNameField;
+    private JTextField salaryIdField;
+    private JComboBox<String> departmentCombo;
+    private JTextField emailField;
+    private JTextField mobileField;
+    private JButton saveProfileBtn;
+
     public LecturerDashboard() {
         setTitle("Faculty Management System");
         setSize(1000, 650);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);//Frame make sure open in center of the display
+        setLocationRelativeTo(null);// Frame make sure open in center of the display
         setLayout(new BorderLayout());
 
-        //Left Sidebar Panel
+        // Left Sidebar Panel
         JPanel sidebar = new JPanel();
         sidebar.setLayout(null);
         sidebar.setBackground(new Color(138, 43, 226)); // Purple color
@@ -36,7 +44,7 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         iconLabel.setBounds(0, 35, 280, 105);
         sidebar.add(iconLabel);
 
-        JLabel welcomeLabel = new JLabel("Welcome, Lucky", SwingConstants.CENTER);
+        JLabel welcomeLabel = new JLabel("Welcome, Lecturer", SwingConstants.CENTER);
         welcomeLabel.setFont(new Font("Arial", Font.BOLD, 30));
         welcomeLabel.setForeground(Color.WHITE);
         welcomeLabel.setBounds(15, 125, 250, 30);
@@ -58,16 +66,17 @@ public class LecturerDashboard extends JFrame implements ActionListener {
 
         btnExit = new JButton("Exit");
         btnExit.setBounds(110, 440, 60, 60);
+        btnExit.addActionListener(this);
 
-
-        ImageIcon exitIcon = new ImageIcon(this.getClass().getResource("exit.png"));
-        Image scaledImage = exitIcon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-        btnExit.setContentAreaFilled(false);
-        btnExit.setBorderPainted(false);
-        btnExit.setFocusPainted(false);
-        btnExit.setBackground(Color.WHITE);
-        btnExit.setIcon(new ImageIcon(scaledImage));
-
+        java.net.URL exitIconUrl = this.getClass().getResource("exit.png");
+        if (exitIconUrl != null) {
+            ImageIcon exitIcon = new ImageIcon(exitIconUrl);
+            Image scaledImage = exitIcon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+            btnExit.setIcon(new ImageIcon(scaledImage));
+        } else {
+            System.err.println("Warning: exit.png not found.");
+            btnExit.setText("Exit"); // Fallback text
+        }
 
         sidebar.add(btnProfile);
         sidebar.add(btnTimeTable);
@@ -77,7 +86,7 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         // Add sidebar to the West (Left) of the frame
         add(sidebar, BorderLayout.WEST);
 
-        //Right Content Panel
+        // Right Content Panel
         rightPanelContainer = new JPanel();
         rightPanelContainer.setLayout(new CardLayout());
         rightPanelContainer.setBackground(Color.WHITE);
@@ -96,7 +105,6 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         add(rightPanelContainer, BorderLayout.CENTER);
     }
 
-
     private JButton createNavButton(String text, int y) {
         JButton btn = new JButton(text);
         btn.setFont(new Font("Arial", Font.BOLD, 14));
@@ -114,43 +122,88 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         profileView.setLayout(null);
         profileView.setBackground(Color.WHITE);
 
-        JLabel title = new JLabel("Profile Details",SwingConstants.CENTER);
+        JLabel title = new JLabel("Profile Details", SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 35));
         title.setForeground(new Color(138, 43, 226));
         title.setBounds(220, 100, 300, 40);
         profileView.add(title);
 
-        addFormRow(profileView, "Full Name", "Lucky Dias", 180);
-        addFormRow(profileView, "Salary ID", "FCT_001", 230);
-        addFormRow(profileView, "Department", "Computer Systems Engineering", 280);
-        addFormRow(profileView, "Email", "luckydias@le.kln.ac.lk", 330);
-        addFormRow(profileView, "Mobile Number", "0716656789", 380);
+        fullNameField = addFormRow(profileView, "Full Name", "", 180);
+        salaryIdField = addFormRow(profileView, "Salary ID", "", 230);
 
+        // Department Combo
+        JLabel deptLabel = new JLabel("Department");
+        deptLabel.setBounds(80, 280, 150, 30);
+        deptLabel.setFont(new Font("Arial", Font.BOLD, 15));
+        deptLabel.setForeground(new Color(138, 43, 226));
+        profileView.add(deptLabel);
 
-        JButton saveBtn = new JButton("Save changes");
-        saveBtn.setBounds(160, 450, 400, 45);
-        saveBtn.setBackground(new Color(138, 43, 226));
-        saveBtn.setForeground(Color.WHITE);
-        saveBtn.setFont(new Font("Arial", Font.BOLD, 20));
-        profileView.add(saveBtn);
+        departmentCombo = new JComboBox<>();
+        departmentCombo.setBounds(240, 280, 350, 30);
+        departmentCombo.setFont(new Font("Arial", Font.PLAIN, 14));
+        departmentCombo.setBorder(BorderFactory.createLineBorder(new Color(138, 43, 226), 2, true));
+        departmentCombo.setForeground(new Color(138, 43, 226));
+        departmentCombo.setBackground(Color.WHITE);
+        profileView.add(departmentCombo);
+
+        emailField = addFormRow(profileView, "Email", "", 330);
+        mobileField = addFormRow(profileView, "Mobile Number", "", 380);
+
+        saveProfileBtn = new JButton("Save changes");
+        saveProfileBtn.setBounds(160, 450, 400, 45);
+        saveProfileBtn.setBackground(new Color(138, 43, 226));
+        saveProfileBtn.setForeground(Color.WHITE);
+        saveProfileBtn.setFont(new Font("Arial", Font.BOLD, 20));
+        profileView.add(saveProfileBtn);
     }
 
-    private void addFormRow(JPanel panel, String labelText, String value, int y) {
+    private JTextField addFormRow(JPanel panel, String labelText, String value, int y) {
         JLabel label = new JLabel(labelText);
         label.setBounds(80, y, 150, 30);
         label.setFont(new Font("Arial", Font.BOLD, 15));
         label.setForeground(new Color(138, 43, 226));
         panel.add(label);
 
-        JTextField field = new JTextField("  "+value);
+        JTextField field = new JTextField("  " + value);
         field.setBounds(240, y, 350, 30);
         field.setFont(new Font("Arial", Font.PLAIN, 14));
-        field.setBorder(BorderFactory.createLineBorder(new Color(138, 43, 226), 2,true));
+        field.setBorder(BorderFactory.createLineBorder(new Color(138, 43, 226), 2, true));
         field.setForeground(new Color(138, 43, 226));
         panel.add(field);
+        return field;
     }
 
-    //Time Table View
+    public void setLecturerData(String name, String id, String department, String email, String mobile) {
+        fullNameField.setText(name);
+        salaryIdField.setText(id);
+        if (department != null && !department.isEmpty()) {
+            departmentCombo.setSelectedItem(department);
+        }
+        emailField.setText(email);
+        mobileField.setText(mobile);
+    }
+
+    public String[] getLecturerData() {
+        return new String[] {
+                fullNameField.getText().trim(),
+                salaryIdField.getText().trim(),
+                (String) departmentCombo.getSelectedItem(),
+                emailField.getText().trim(),
+                mobileField.getText().trim()
+        };
+    }
+
+    public void setDepartmentOptions(java.util.List<String> depts) {
+        departmentCombo.removeAllItems();
+        for (String d : depts)
+            departmentCombo.addItem(d);
+    }
+
+    public void addSaveListener(ActionListener listener) {
+        saveProfileBtn.addActionListener(listener);
+    }
+
+    // Time Table View
     private void initTimeTableView() {
         Color purple = new Color(138, 43, 226);
 
@@ -158,7 +211,7 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         timeTableView.setLayout(null);
         timeTableView.setBackground(Color.WHITE);
 
-        JLabel title = new JLabel("Time table",SwingConstants.CENTER);
+        JLabel title = new JLabel("Time table", SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 35));
         title.setForeground(new Color(138, 43, 226));
         title.setBounds(220, 100, 300, 40);
@@ -168,7 +221,7 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         int startY = 170;
         int cellWidth = 100;
         int cellHeight = 50;
-        String[] cols = {"Time", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+        String[] cols = { "Time", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
 
         for (int i = 0; i < cols.length; i++) {
             JLabel lbl = new JLabel(cols[i], SwingConstants.CENTER);
@@ -180,8 +233,8 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         }
 
         String[][] Data = {
-                {"08.00", "OOP", "OOP", "OOP", "OOP", "OOP"},
-                {"10.00", "OOP", "OOP", "OOP", "OOP", "OOP"}
+                { "08.00", "OOP", "OOP", "OOP", "OOP", "OOP" },
+                { "10.00", "OOP", "OOP", "OOP", "OOP", "OOP" }
         };
 
         int currentY = startY + cellHeight;
@@ -208,8 +261,8 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         currentY += cellHeight;
 
         String[][] afternoonData = {
-                {"01.00", "SE", "OOP", "SE", "SE", "SE"},
-                {"03.00", "SE", "OOP", "SE", "SE", "SE"}
+                { "01.00", "SE", "OOP", "SE", "SE", "SE" },
+                { "03.00", "SE", "OOP", "SE", "SE", "SE" }
         };
 
         for (String[] row : afternoonData) {
@@ -224,7 +277,7 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         }
     }
 
-    //Courses Enrolled
+    // Courses Enrolled
     private void initCoursesView() {
         coursesView = new JPanel();
         coursesView.setLayout(null); // keep your layout
@@ -236,8 +289,8 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         title.setBounds(220, 100, 300, 40);
         coursesView.add(title);
 
-        //TABLE PART
-        String[] columns = {"Course Code", "Course Name", "Credits", "Total Students"};
+        // TABLE PART
+        String[] columns = { "Course Code", "Course Name", "Credits", "Total Students" };
 
         DefaultTableModel model = new DefaultTableModel(columns, 0) {
             public boolean isCellEditable(int row, int column) {
@@ -269,13 +322,14 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         // TEMP DATA (remove later when DB is connected)
         loadMockCourses(model);
     }
+
     private void loadMockCourses(DefaultTableModel model) {
-        model.addRow(new Object[]{"SE 21062", "OOP", 2, "60"});
-        model.addRow(new Object[]{"OOP1  21052", "OOP", 2, "80"});
-        model.addRow(new Object[]{"OOP2 21042", "OOP", 2, "85"});
-        model.addRow(new Object[]{"SE 21032", "OOP", 2, "50"});
-        model.addRow(new Object[]{"OOP 21022", "OOP", 2, "80"});
-        model.addRow(new Object[]{"OOP 21012", "OOP", 2, "70"});
+        model.addRow(new Object[] { "SE 21062", "OOP", 2, "60" });
+        model.addRow(new Object[] { "OOP1  21052", "OOP", 2, "80" });
+        model.addRow(new Object[] { "OOP2 21042", "OOP", 2, "85" });
+        model.addRow(new Object[] { "SE 21032", "OOP", 2, "50" });
+        model.addRow(new Object[] { "OOP 21022", "OOP", 2, "80" });
+        model.addRow(new Object[] { "OOP 21012", "OOP", 2, "70" });
     }
 
     @Override
@@ -287,18 +341,20 @@ public class LecturerDashboard extends JFrame implements ActionListener {
             btnTimeTable.setForeground(Color.GRAY);
             btnCourses.setForeground(Color.GRAY);
             call.show(rightPanelContainer, "Profile");
-        }
-        else if (e.getSource() == btnTimeTable) {
+        } else if (e.getSource() == btnTimeTable) {
             btnTimeTable.setForeground(new Color(138, 43, 226));
             btnProfile.setForeground(Color.GRAY);
             btnCourses.setForeground(Color.GRAY);
             call.show(rightPanelContainer, "TimeTable");
-        }
-        else if (e.getSource() == btnCourses) {
+        } else if (e.getSource() == btnCourses) {
             btnCourses.setForeground(new Color(138, 43, 226));
             btnProfile.setForeground(Color.GRAY);
             btnTimeTable.setForeground(Color.GRAY);
             call.show(rightPanelContainer, "Courses");
+        } else if (e.getSource() == btnExit) {
+            dispose();
+            com.faculty.controller.LoginController login = new com.faculty.controller.LoginController(
+                    new com.faculty.view.LoginView());
         }
     }
 }

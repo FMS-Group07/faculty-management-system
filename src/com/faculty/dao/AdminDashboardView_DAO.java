@@ -15,13 +15,21 @@ public class AdminDashboardView_DAO {
         conn = DBConnection.getConnection();
     }
 
+    private String lastError = "";
+
+    public String getLastError() {
+        return lastError;
+    }
+
     // ================= STUDENT OPERATIONS =================
 
     public List<Student> getAllStudents() {
         List<Student> students = new ArrayList<>();
+        if (conn == null)
+            return students; // Return empty list if no connection
         String query = "SELECT * FROM students";
         try (PreparedStatement ps = conn.prepareStatement(query);
-             ResultSet rs = ps.executeQuery()) {
+                ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 students.add(new Student(
                         rs.getString("full_name"),
@@ -37,6 +45,10 @@ public class AdminDashboardView_DAO {
     }
 
     public boolean addStudent(Student student) {
+        if (conn == null) {
+            lastError = "Database connection is not established.";
+            return false;
+        }
         String query = "INSERT INTO students (full_name, student_id, degree, email, mobile) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, student.getFullName());
@@ -47,6 +59,7 @@ public class AdminDashboardView_DAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            lastError = e.getMessage();
             return false;
         }
     }
@@ -62,6 +75,7 @@ public class AdminDashboardView_DAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            lastError = e.getMessage();
             return false;
         }
     }
@@ -73,6 +87,7 @@ public class AdminDashboardView_DAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            lastError = e.getMessage();
             return false;
         }
     }
@@ -83,12 +98,13 @@ public class AdminDashboardView_DAO {
         List<Lecturer> lecturers = new ArrayList<>();
         String query = "SELECT * FROM lecturers";
         try (PreparedStatement ps = conn.prepareStatement(query);
-             ResultSet rs = ps.executeQuery()) {
+                ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 String coursesStr = rs.getString("courses_teaching");
                 String[] courses = coursesStr != null ? coursesStr.split(",") : new String[0];
                 lecturers.add(new Lecturer(
                         rs.getString("full_name"),
+                        rs.getString("salary_id"),
                         rs.getString("department"),
                         courses,
                         rs.getString("email"),
@@ -111,6 +127,7 @@ public class AdminDashboardView_DAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            lastError = e.getMessage();
             return false;
         }
     }
@@ -129,6 +146,7 @@ public class AdminDashboardView_DAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            lastError = e.getMessage();
             return false;
         }
     }
@@ -140,6 +158,7 @@ public class AdminDashboardView_DAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            lastError = e.getMessage();
             return false;
         }
     }
@@ -150,7 +169,7 @@ public class AdminDashboardView_DAO {
         List<Course> courses = new ArrayList<>();
         String query = "SELECT * FROM courses";
         try (PreparedStatement ps = conn.prepareStatement(query);
-             ResultSet rs = ps.executeQuery()) {
+                ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 courses.add(new Course(
                         rs.getString("course_code"),
@@ -174,6 +193,7 @@ public class AdminDashboardView_DAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            lastError = e.getMessage();
             return false;
         }
     }
@@ -188,6 +208,7 @@ public class AdminDashboardView_DAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            lastError = e.getMessage();
             return false;
         }
     }
@@ -199,6 +220,7 @@ public class AdminDashboardView_DAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            lastError = e.getMessage();
             return false;
         }
     }
@@ -209,7 +231,7 @@ public class AdminDashboardView_DAO {
         List<Department> departments = new ArrayList<>();
         String query = "SELECT * FROM departments";
         try (PreparedStatement ps = conn.prepareStatement(query);
-             ResultSet rs = ps.executeQuery()) {
+                ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 String degreesStr = rs.getString("degrees");
                 String[] degrees = degreesStr != null ? degreesStr.split(",") : new String[0];
@@ -235,6 +257,7 @@ public class AdminDashboardView_DAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            lastError = e.getMessage();
             return false;
         }
     }
@@ -250,6 +273,7 @@ public class AdminDashboardView_DAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            lastError = e.getMessage();
             return false;
         }
     }
@@ -261,6 +285,7 @@ public class AdminDashboardView_DAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            lastError = e.getMessage();
             return false;
         }
     }
@@ -271,7 +296,7 @@ public class AdminDashboardView_DAO {
         List<Degree> degrees = new ArrayList<>();
         String query = "SELECT * FROM degrees";
         try (PreparedStatement ps = conn.prepareStatement(query);
-             ResultSet rs = ps.executeQuery()) {
+                ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 degrees.add(new Degree(
                         rs.getString("degree_name"),
@@ -293,6 +318,7 @@ public class AdminDashboardView_DAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            lastError = e.getMessage();
             return false;
         }
     }
@@ -307,6 +333,7 @@ public class AdminDashboardView_DAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            lastError = e.getMessage();
             return false;
         }
     }
@@ -318,6 +345,7 @@ public class AdminDashboardView_DAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            lastError = e.getMessage();
             return false;
         }
     }
