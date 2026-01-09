@@ -40,16 +40,9 @@ public class LecturerDashboard_Controller {
     }
 
     private void loadLecturerData() {
-        System.out.println("DEBUG: loadLecturerData called for email: [" + currentUserEmail + "]");
         Lecturer l = dao.getLecturerByEmail(currentUserEmail);
 
         if (l != null) {
-            System.out.println("DEBUG: Lecturer found: " + l.getFullName());
-            String degree = (l.getCoursesTeaching() != null && l.getCoursesTeaching().length > 0)
-                    ? String.join(",", l.getCoursesTeaching())
-                    : "";
-
-            // Use empty strings instead of nulls to prevent setText crashes
             view.setLecturerData(
                     l.getFullName() != null ? l.getFullName() : "",
                     l.getLecturerId() != null ? l.getLecturerId() : "",
@@ -57,10 +50,6 @@ public class LecturerDashboard_Controller {
                     l.getEmail() != null ? l.getEmail() : "",
                     l.getMobile() != null ? l.getMobile() : "");
         } else {
-            System.out.println("DEBUG: Lecturer NOT found. DAO Error: " + dao.getLastError());
-
-            // Only show error, DO NOT clear fields (keeps user input visible for
-            // debugging/retry)
             JOptionPane.showMessageDialog(view,
                     "Warning: Profile updated, but could not reload data for: " + currentUserEmail +
                             "\nDatabase Error: "
@@ -70,26 +59,17 @@ public class LecturerDashboard_Controller {
 
     private void handleSaveProfile() {
         String[] data = view.getLecturerData();
-        // [0]Name, [1]SalaryID, [2]Department, [3]Email, [4]Mobile
-
-        // Construct Lecturer object
-        // Note: Salary ID is not in Lecturer model constructor used here usually.
-        // We'll ignore Salary ID for the Model if it's not supported by DB schema yet,
-        // or add it later.
-
-        String[] coursesPlaceholder = {}; // View doesn't edit courses yet?
+        String[] coursesPlaceholder = {};
 
         Lecturer l = new Lecturer(
-                data[0], // Full Name
-                data[1], // Lecturer ID (Salary ID)
-                data[2], // Department
+                data[0],
+                data[1],
+                data[2],
                 coursesPlaceholder,
-                data[3], // Email
-                data[4] // Mobile
-        );
+                data[3],
+                data[4]);
 
         if (dao.getLecturerByEmail(currentUserEmail) == null) {
-            // INSERT
             if (dao.addLecturer(l)) {
                 JOptionPane.showMessageDialog(view, "Profile created successfully!");
                 this.currentUserEmail = l.getEmail();
@@ -98,7 +78,6 @@ public class LecturerDashboard_Controller {
                 JOptionPane.showMessageDialog(view, "Failed to create profile: " + dao.getLastError());
             }
         } else {
-            // UPDATE
             if (dao.updateLecturer(currentUserEmail, l)) {
                 String warning = dao.getLastError();
                 if (warning != null && !warning.isEmpty()) {

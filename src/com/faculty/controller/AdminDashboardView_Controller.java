@@ -12,7 +12,7 @@ public class AdminDashboardView_Controller {
 
     private AdminDashboardView view;
     private AdminDashboardView_DAO dao;
-    private String currentView = "Students"; // Default view
+    private String currentView = "Students";
 
     public AdminDashboardView_Controller(AdminDashboardView view) {
         this.view = view;
@@ -21,14 +21,13 @@ public class AdminDashboardView_Controller {
     }
 
     private void initController() {
-        // Sidebar Listeners
+
         view.getStudentsBtn().addActionListener(e -> switchView("Students"));
         view.getLecturersBtn().addActionListener(e -> switchView("Lecturers"));
         view.getCoursesBtn().addActionListener(e -> switchView("Courses"));
         view.getDepartmentsBtn().addActionListener(e -> switchView("Departments"));
         view.getDegreesBtn().addActionListener(e -> switchView("Degrees"));
 
-        // Action Buttons
         view.getAddBtn().addActionListener(e -> handleAdd());
         view.getEditBtn().addActionListener(e -> handleEdit());
         view.getDeleteBtn().addActionListener(e -> handleDelete());
@@ -37,7 +36,6 @@ public class AdminDashboardView_Controller {
         view.getLogoutBtn().addActionListener(e -> handleLogout());
         view.getLogoutBtn().addActionListener(e -> handleLogout());
 
-        // Initial Load
         switchView("Students");
     }
 
@@ -67,8 +65,6 @@ public class AdminDashboardView_Controller {
                 break;
         }
     }
-
-    // ================= LOAD DATA METHODS =================
 
     private void loadStudents() {
         List<Student> list = dao.getAllStudents();
@@ -127,8 +123,6 @@ public class AdminDashboardView_Controller {
         view.updateTableData(data, columns);
     }
 
-    // ================= ACTION HANDLERS =================
-
     private void handleAdd() {
         switch (currentView) {
             case "Students":
@@ -164,10 +158,7 @@ public class AdminDashboardView_Controller {
                 lDialog.setVisible(true);
                 if (lDialog.isSaved()) {
                     Object[] data = lDialog.getData();
-                    // Lecturer constructor: FullName, Dept, Courses[], Email, Mobile
-                    // data from dialog probably strings. Courses might need splitting if it's a
-                    // single string field
-                    // Assuming dialog returns String for courses
+
                     String[] courses = ((String) data[2]).split(",");
                     Lecturer l = new Lecturer((String) data[0], "", (String) data[1], courses, (String) data[3],
                             (String) data[4]);
@@ -189,7 +180,7 @@ public class AdminDashboardView_Controller {
                 cDialog.setVisible(true);
                 if (cDialog.isSaved()) {
                     Object[] data = cDialog.getData();
-                    // Extract email from "Name (Email)"
+
                     String selectedLec = (String) data[3];
                     String email = selectedLec.substring(selectedLec.lastIndexOf("(") + 1,
                             selectedLec.lastIndexOf(")"));
@@ -285,9 +276,7 @@ public class AdminDashboardView_Controller {
                 }
                 break;
             case "Courses":
-                // Column order in table: "Course Code", "Course Name", "Credits", "Lecturer"
-                // Course Model: Code, Name, Credits, LecturerId (Email)
-                // table displays LecturerId (Email) because loadCourses uses getLecturerId()
+
                 Object[] cData = getRowData(row, 4);
                 String currentEmail = (String) cData[3];
 
@@ -304,7 +293,6 @@ public class AdminDashboardView_Controller {
                     }
                 }
 
-                // Update cData[3] to match the dropdown item so it gets selected
                 if (!initialSelection.isEmpty()) {
                     cData[3] = initialSelection;
                 }
@@ -314,7 +302,6 @@ public class AdminDashboardView_Controller {
                 if (cDialog.isSaved()) {
                     Object[] data = cDialog.getData();
 
-                    // Extract email from "Name (Email)"
                     String selectedLec = (String) data[3];
                     String email = selectedLec.substring(selectedLec.lastIndexOf("(") + 1,
                             selectedLec.lastIndexOf(")"));
@@ -380,17 +367,17 @@ public class AdminDashboardView_Controller {
         boolean success = false;
         switch (currentView) {
             case "Students":
-                // Student ID is at column 1
+
                 String studentId = (String) view.getValueAt(row, 1);
                 success = dao.deleteStudent(studentId);
                 break;
             case "Lecturers":
-                // Email is at column 3 (Model: FullName, Dept, Courses, Email, Mobile)
+
                 String lEmail = (String) view.getValueAt(row, 3);
                 success = dao.deleteLecturer(lEmail);
                 break;
             case "Courses":
-                // Course Code is at column 0
+
                 String courseCode = (String) view.getValueAt(row, 0);
                 success = dao.deleteCourse(courseCode);
                 break;
@@ -424,7 +411,7 @@ public class AdminDashboardView_Controller {
             boolean success = false;
             switch (currentView) {
                 case "Students":
-                    // Cols: 0:Name, 1:ID, 2:Degree, 3:Email, 4:Mobile
+
                     Student s = new Student(
                             (String) view.getValueAt(i, 0),
                             (String) view.getValueAt(i, 1),
@@ -434,12 +421,12 @@ public class AdminDashboardView_Controller {
                     success = dao.updateStudent(s);
                     break;
                 case "Lecturers":
-                    // Cols: 0:Name, 1:Dept, 2:Courses, 3:Email, 4:Mobile
+
                     String coursesStr = (String) view.getValueAt(i, 2);
-                    String[] courses = coursesStr.split(",\\s*"); // Split by comma and optional space
+                    String[] courses = coursesStr.split(",\\s*");
                     Lecturer l = new Lecturer(
                             (String) view.getValueAt(i, 0),
-                            "", // ID
+                            "",
                             (String) view.getValueAt(i, 1),
                             courses,
                             (String) view.getValueAt(i, 3),
@@ -447,10 +434,10 @@ public class AdminDashboardView_Controller {
                     success = dao.updateLecturer(l);
                     break;
                 case "Courses":
-                    // Cols: 0:Code, 1:Name, 2:Credits, 3:Lecturer
+
                     String lectStr = (String) view.getValueAt(i, 3);
                     String email = lectStr;
-                    // If parsing needed (Name (Email)):
+
                     if (lectStr.contains("(") && lectStr.endsWith(")")) {
                         email = lectStr.substring(lectStr.lastIndexOf("(") + 1, lectStr.lastIndexOf(")"));
                     }
@@ -462,7 +449,7 @@ public class AdminDashboardView_Controller {
                     success = dao.updateCourse(c);
                     break;
                 case "Departments":
-                    // Cols: 0:Name, 1:HOD, 2:Degrees, 3:Staff
+
                     String degreesStr = (String) view.getValueAt(i, 2);
                     String[] degrees = degreesStr.split(",\\s*");
                     Department d = new Department(
@@ -473,7 +460,7 @@ public class AdminDashboardView_Controller {
                     success = dao.updateDepartment(d);
                     break;
                 case "Degrees":
-                    // Cols: 0:Name, 1:Dept, 2:NoStudents
+
                     Degree deg = new Degree(
                             (String) view.getValueAt(i, 0),
                             (String) view.getValueAt(i, 1),

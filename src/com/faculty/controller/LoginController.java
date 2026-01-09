@@ -1,5 +1,3 @@
-//Login Controller
-
 package com.faculty.controller;
 
 import com.faculty.view.AdminDashboardView;
@@ -20,10 +18,7 @@ public class LoginController {
         this.view = view;
         this.userDAO = new UserDAO();
 
-        // Show the GUI
         this.view.show();
-
-        // Attach listeners
         initController();
     }
 
