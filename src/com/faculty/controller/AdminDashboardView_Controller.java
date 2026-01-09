@@ -169,7 +169,7 @@ public class AdminDashboardView_Controller {
                     // single string field
                     // Assuming dialog returns String for courses
                     String[] courses = ((String) data[2]).split(",");
-                    Lecturer l = new Lecturer((String) data[0], (String) data[1], courses, (String) data[3],
+                    Lecturer l = new Lecturer((String) data[0], "", (String) data[1], courses, (String) data[3],
                             (String) data[4]);
                     if (dao.addLecturer(l))
                         refreshTable();
@@ -275,7 +275,7 @@ public class AdminDashboardView_Controller {
                 if (lDialog.isSaved()) {
                     Object[] data = lDialog.getData();
                     String[] courses = ((String) data[2]).split(",");
-                    Lecturer l = new Lecturer((String) data[0], (String) data[1], courses, (String) data[3],
+                    Lecturer l = new Lecturer((String) data[0], "", (String) data[1], courses, (String) data[3],
                             (String) data[4]);
                     if (dao.updateLecturer(l))
                         refreshTable();
@@ -439,6 +439,7 @@ public class AdminDashboardView_Controller {
                     String[] courses = coursesStr.split(",\\s*"); // Split by comma and optional space
                     Lecturer l = new Lecturer(
                             (String) view.getValueAt(i, 0),
+                            "", // ID
                             (String) view.getValueAt(i, 1),
                             courses,
                             (String) view.getValueAt(i, 3),
