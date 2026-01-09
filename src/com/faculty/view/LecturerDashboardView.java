@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 class LecturerDashBoardView extends JFrame implements ActionListener {
-    JButton btnProfile, btnTimeTable, btnCourses , btnExit ;
+    JButton btnProfile, btnTimeTable, btnCourses, btnExit;
     JPanel rightPanelContainer;
     JPanel profileView;
     JPanel timeTableView;
@@ -20,16 +20,14 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
         setTitle("Faculty Management System");
         setSize(1000, 650);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);//Frame make sure open in center of the display
+        setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
-        //Left Sidebar Panel
         JPanel sidebar = new JPanel();
         sidebar.setLayout(null);
-        sidebar.setBackground(new Color(138, 43, 226)); // Purple color
+        sidebar.setBackground(new Color(138, 43, 226));
         sidebar.setPreferredSize(new Dimension(280, 600));
 
-        // User Icon and Welcome Text
         JLabel iconLabel = new JLabel("👤", SwingConstants.CENTER);
         iconLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 80));
         iconLabel.setForeground(Color.WHITE);
@@ -42,7 +40,6 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
         welcomeLabel.setBounds(15, 110, 250, 30);
         sidebar.add(welcomeLabel);
 
-        // Navigation Buttons (Using helper method to style them)
         btnProfile = createNavButton("👤    Profile Details", 180);
         btnProfile.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
         btnProfile.setForeground(Color.GRAY);
@@ -71,8 +68,6 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
         btnExit.setBounds(110, 400, 60, 60);
         btnExit.addActionListener(this);
 
-
-
         ImageIcon exitIcon = new ImageIcon(this.getClass().getResource("exit.png"));
         Image scaledImage = exitIcon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
         btnExit.setContentAreaFilled(false);
@@ -81,34 +76,27 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
         btnExit.setBackground(Color.WHITE);
         btnExit.setIcon(new ImageIcon(scaledImage));
 
-
         sidebar.add(btnProfile);
         sidebar.add(btnTimeTable);
         sidebar.add(btnCourses);
         sidebar.add(btnExit);
 
-        // Add sidebar to the West (Left) of the frame
         add(sidebar, BorderLayout.WEST);
 
-        //Right Content Panel
         rightPanelContainer = new JPanel();
         rightPanelContainer.setLayout(new CardLayout());
         rightPanelContainer.setBackground(Color.WHITE);
 
-        // Initialize the three separate views
         initProfileView();
         initTimeTableView();
         initCoursesView();
 
-        // Add views to the container
         rightPanelContainer.add(profileView, "Profile");
         rightPanelContainer.add(timeTableView, "TimeTable");
         rightPanelContainer.add(coursesView, "Courses");
 
-        // Add the container to the Center of the frame
         add(rightPanelContainer, BorderLayout.CENTER);
     }
-
 
     private JButton createNavButton(String text, int y) {
         JButton btn = new JButton(text);
@@ -122,7 +110,6 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
         return btn;
     }
 
-    // --- View 1: Profile Details (Form) ---
     private void initProfileView() {
         profileView = new JPanel();
         profileView.setLayout(null);
@@ -140,7 +127,6 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
         addFormRow(profileView, "Email", "luckydias@le.kln.ac.lk", 250);
         addFormRow(profileView, "Mobile Number", "0712345678", 300);
 
-
         JButton saveBtn = new JButton("Save changes");
         saveBtn.setBounds(150, 380, 350, 45);
         saveBtn.setBackground(new Color(138, 43, 226));
@@ -156,15 +142,14 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
         label.setForeground(new Color(138, 43, 226));
         panel.add(label);
 
-        JTextField field = new JTextField("  "+value);
+        JTextField field = new JTextField("  " + value);
         field.setBounds(200, y, 350, 30);
         field.setFont(new Font("Arial", Font.PLAIN, 14));
-        field.setBorder(BorderFactory.createLineBorder(new Color(138, 43, 226), 2,true));
+        field.setBorder(BorderFactory.createLineBorder(new Color(138, 43, 226), 2, true));
         field.setForeground(new Color(138, 43, 226));
         panel.add(field);
     }
 
-    // --- View 2: Time Table (JTable) ---
     private void initTimeTableView() {
         timeTableView = new JPanel();
         timeTableView.setLayout(new BorderLayout());
@@ -176,14 +161,13 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
         title.setForeground(new Color(138, 43, 226));
         timeTableView.add(title, BorderLayout.NORTH);
 
-        // Table Data (Slide 228 - JTable)
-        String[] columns = {"Day", "Time", "Batch", "Hall"};
+        String[] columns = { "Day", "Time", "Batch", "Hall" };
         String[][] data = {
-                {"Monday", "08:00 - 10:00", "CS/22", "Lab 01"},
-                {"Monday", "10:30 - 12:30", "CS/22", "Hall A"},
-                {"Tuesday", "09:00 - 11:00", "CS/21", "Lab 02"},
-                {"Wednesday", "13:00 - 15:00", "CS/23", "Hall B"},
-                {"Friday", "08:00 - 10:00", "CS/21", "Hall C"}
+                { "Monday", "08:00 - 10:00", "CS/22", "Lab 01" },
+                { "Monday", "10:30 - 12:30", "CS/22", "Hall A" },
+                { "Tuesday", "09:00 - 11:00", "CS/21", "Lab 02" },
+                { "Wednesday", "13:00 - 15:00", "CS/23", "Hall B" },
+                { "Friday", "08:00 - 10:00", "CS/21", "Hall C" }
         };
 
         JTable table = new JTable(data, columns);
@@ -196,10 +180,9 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
         timeTableView.add(scrollPane, BorderLayout.CENTER);
     }
 
-    //Courses Enrolled
     private void initCoursesView() {
         coursesView = new JPanel();
-        coursesView.setLayout(null); // Absolute positioning for custom card look
+        coursesView.setLayout(null);
         coursesView.setBackground(Color.WHITE);
 
         JLabel title = new JLabel("Courses Teaching");
@@ -233,14 +216,12 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
             btnTimeTable.setForeground(Color.GRAY);
             btnCourses.setForeground(Color.GRAY);
             call.show(rightPanelContainer, "Profile");
-        }
-        else if (e.getSource() == btnTimeTable) {
+        } else if (e.getSource() == btnTimeTable) {
             btnTimeTable.setForeground(new Color(138, 43, 226));
             btnProfile.setForeground(Color.GRAY);
             btnCourses.setForeground(Color.GRAY);
             call.show(rightPanelContainer, "TimeTable");
-        }
-        else if (e.getSource() == btnCourses) {
+        } else if (e.getSource() == btnCourses) {
             btnCourses.setForeground(new Color(138, 43, 226));
             btnProfile.setForeground(Color.GRAY);
             btnTimeTable.setForeground(Color.GRAY);
@@ -248,6 +229,6 @@ class LecturerDashBoardView extends JFrame implements ActionListener {
         } else if (e.getSource() == btnExit) {
             dispose();
             new LoginController(new LoginView());
-         }
+        }
     }
 }
