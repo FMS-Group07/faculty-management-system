@@ -17,7 +17,7 @@ public class CourseFormDialog extends JDialog {
 
     public CourseFormDialog(Frame parent, String title, Object[] initialData, String[] lecturers) {
         super(parent, title, true);
-        setSize(400, 450); // 4 fields
+        setSize(400, 450);
         setLocationRelativeTo(parent);
         setUndecorated(true);
         setLayout(new BorderLayout());
@@ -27,7 +27,7 @@ public class CourseFormDialog extends JDialog {
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(Color.WHITE);
         mainPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
-        mainPanel.setLayout(new GridLayout(5, 1, 10, 10)); // 4 fields + buttons
+        mainPanel.setLayout(new GridLayout(5, 1, 10, 10));
 
         codeField = createStyledTextField("Course Code");
         nameField = createStyledTextField("Course Name");

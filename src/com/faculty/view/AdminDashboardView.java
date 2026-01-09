@@ -19,7 +19,6 @@ public class AdminDashboardView {
     private DefaultTableModel model;
     private Point initialClick;
 
-    // Sidebar Buttons
     private JButton studentsBtn;
     private JButton lecturersBtn;
     private JButton coursesBtn;
@@ -27,7 +26,6 @@ public class AdminDashboardView {
     private JButton degreesBtn;
     private LogoutButton logoutBtn;
 
-    // Action Buttons
     private JButton addBtn;
     private JButton editBtn;
     private JButton deleteBtn;
@@ -45,31 +43,27 @@ public class AdminDashboardView {
 
     private void createGUI() {
         frame = new JFrame("Admin Dashboard");
-        frame.setUndecorated(true); // Remove default title bar
+        frame.setUndecorated(true);
         frame.setSize(AppConfig.FRAME_WIDTH, AppConfig.FRAME_HEIGHT);
-        frame.setLocationRelativeTo(null); // Center the frame
+        frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.setShape(new RoundRectangle2D.Float(0, 0, AppConfig.FRAME_WIDTH, AppConfig.FRAME_HEIGHT, 30, 30));
 
-        // ================= CUSTOM TITLE BAR =================
         JPanel titleBar = createTitleBar(frame);
         frame.add(titleBar, BorderLayout.NORTH);
 
-        // ================= SIDEBAR =================
         JPanel sidebar = new JPanel();
-        sidebar.setPreferredSize(new Dimension(330, AppConfig.FRAME_HEIGHT - 30)); // Adjust for title bar height
+        sidebar.setPreferredSize(new Dimension(330, AppConfig.FRAME_HEIGHT - 30));
         sidebar.setBackground(AppColors.PRIMARY_PURPLE);
         sidebar.setLayout(null);
 
-        // Welcome Label
         JLabel welcomeLabel = new JLabel("Welcome, Admin");
         welcomeLabel.setForeground(Color.WHITE);
         welcomeLabel.setFont(new Font("Segoe UI", Font.BOLD, 35));
         welcomeLabel.setBounds(20, 90, 290, 40);
         sidebar.add(welcomeLabel);
 
-        // Sidebar Menu Items
         int yStart = 180;
         int gap = 60;
 
@@ -79,24 +73,20 @@ public class AdminDashboardView {
         departmentsBtn = addSidebarButton(sidebar, "Departments", "🏢", false, 65, yStart + gap * 3);
         degreesBtn = addSidebarButton(sidebar, "Degrees", "🎓", false, 65, yStart + gap * 4);
 
-        // Logout Button (Bottom)
         logoutBtn = new LogoutButton();
-        logoutBtn.setBounds(135, AppConfig.FRAME_HEIGHT - 100 - 30, 50, 50); // Adjust for title bar
+        logoutBtn.setBounds(135, AppConfig.FRAME_HEIGHT - 100 - 30, 50, 50);
         sidebar.add(logoutBtn);
 
-        // ================= CENTER CONTENT =================
         JPanel centerPanel = new JPanel();
         centerPanel.setBackground(Color.WHITE);
         centerPanel.setLayout(null);
 
-        // Title
         titleLabel = new JLabel("Students");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 35));
         titleLabel.setForeground(AppColors.PRIMARY_PURPLE);
         titleLabel.setBounds(250, 30, 220, 50);
         centerPanel.add(titleLabel);
 
-        // ================= TABLE =================
         model = new DefaultTableModel();
         table = new JTable(model);
 
@@ -107,7 +97,6 @@ public class AdminDashboardView {
         table.setShowVerticalLines(true);
         table.setGridColor(AppColors.PRIMARY_PURPLE);
 
-        // Header Styling
         JTableHeader header = table.getTableHeader();
         header.setBackground(Color.WHITE);
         header.setForeground(AppColors.PRIMARY_PURPLE);
@@ -117,21 +106,11 @@ public class AdminDashboardView {
 
         JScrollPane scrollPane = new JScrollPane(table);
 
-        // Dynamic Table Height Calculation
-        // Note: Initial size might be small if no data, but we set bounds explicitly
-        // Dynamic Table Height Calculation
-        // Adjusted to fit within the screen without overlapping the save button
         scrollPane.setBounds(50, 180, 580, 350);
-        // For now, let's keep it somewhat fixed or we can adjust dynamically if needed,
-        // but dynamic height based on row count is tricky if rows change.
-        // Let's use the bounds from before but we might need to update it when data
-        // changes if we want that shrinking effect.
-        // For simplicity layout, let's stick to a robust area.
         scrollPane.setBorder(BorderFactory.createLineBorder(AppColors.PRIMARY_PURPLE, 1));
         scrollPane.getViewport().setBackground(Color.WHITE);
         centerPanel.add(scrollPane);
 
-        // Action Buttons
         int btnY = 110;
         int btnWidth = 150;
         int btnHeight = 45;
@@ -153,28 +132,18 @@ public class AdminDashboardView {
         deleteBtn.setBounds(startX + (btnWidth + btnGap) * 2, btnY, btnWidth, btnHeight);
         centerPanel.add(deleteBtn);
 
-        // ================= SAVE BUTTON =================
         saveBtn = createRoundedButton("Save changes", AppColors.PRIMARY_PURPLE, Color.WHITE);
         saveBtn.setBounds(135, 550, 400, 50);
         saveBtn.setFont(new Font("Segoe UI", Font.BOLD, 18));
         centerPanel.add(saveBtn);
 
-        // Add panels to frame
         frame.add(sidebar, BorderLayout.WEST);
         frame.add(centerPanel, BorderLayout.CENTER);
     }
 
-    // ================= PUBLIC METHODS FOR CONTROLLER =================
-
     public void updateTableData(Object[][] data, String[] columns) {
         model.setDataVector(data, columns);
         centerTableCells(table);
-        // Recalculate scrollpane height if we want that dynamic effect?
-        // The previous code did: scrollPane.setBounds(50, 210, 580,
-        // Math.min(calculatedHeight, maxHeight));
-        // But scrollPane is local in createGUI. We might need to promote it to field if
-        // we want to resize it.
-        // For now, let's just update data.
     }
 
     public void setTitle(String title) {
@@ -226,7 +195,6 @@ public class AdminDashboardView {
         return model.getValueAt(row, col);
     }
 
-    // Getters for Listeners
     public JButton getStudentsBtn() {
         return studentsBtn;
     }
@@ -270,8 +238,6 @@ public class AdminDashboardView {
     public JFrame getFrame() {
         return frame;
     }
-
-    // ================= PRIVATE HELPERS =================
 
     private JPanel createTitleBar(JFrame frame) {
         JPanel titleBar = new JPanel(new BorderLayout());
@@ -359,28 +325,21 @@ public class AdminDashboardView {
         protected void paintComponent(Graphics g) {
             Graphics2D g2 = (Graphics2D) g.create();
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
             g2.setColor(getBackground());
             g2.fillRoundRect(0, 0, getWidth(), getHeight(), 100, 100);
-
             g2.setColor(AppColors.PRIMARY_PURPLE);
             if (getModel().isPressed()) {
                 g2.setColor(AppColors.DARK_PURPLE);
             }
-
             Stroke stroke = new BasicStroke(3f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
             g2.setStroke(stroke);
-
             int size = 24;
             int x = (getWidth() - size) / 2;
             int y = (getHeight() - size) / 2;
-
             g2.drawArc(x, y, size, size, 120, 300);
-
             int cx = x + size / 2;
             int cy = y + size / 2;
             g2.drawLine(cx, y - 2, cx, cy);
-
             g2.dispose();
         }
     }
@@ -400,9 +359,7 @@ public class AdminDashboardView {
         @Override
         protected void paintComponent(Graphics g) {
             Graphics2D g2 = (Graphics2D) g.create();
-            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                    RenderingHints.VALUE_ANTIALIAS_ON);
-
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             if (getModel().isPressed()) {
                 g2.setColor(new Color(25, 118, 210));
             } else if (getModel().isRollover()) {
@@ -414,9 +371,7 @@ public class AdminDashboardView {
             } else {
                 g2.setColor(getBackground());
             }
-
             g2.fillRoundRect(0, 0, getWidth(), getHeight(), radius, radius);
-
             super.paintComponent(g);
             g2.dispose();
         }
@@ -430,7 +385,6 @@ public class AdminDashboardView {
         btn.setBorderPainted(false);
         btn.setHorizontalAlignment(SwingConstants.LEFT);
         btn.setIconTextGap(15);
-
         if (isActive) {
             btn.setBackground(AppColors.DARK_PURPLE);
             btn.setForeground(Color.WHITE);
@@ -438,7 +392,6 @@ public class AdminDashboardView {
             btn.setBackground(AppColors.WHITE);
             btn.setForeground(AppColors.PRIMARY_PURPLE);
         }
-
         panel.add(btn);
         return btn;
     }
