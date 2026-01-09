@@ -1,9 +1,13 @@
+//Login Controller
+
 package com.faculty.controller;
 
 import com.faculty.view.AdminDashboardView;
+import com.faculty.view.LecturerDashboard;
 import com.faculty.view.LoginView;
 import com.faculty.dao.UserDAO;
 import com.faculty.model.User;
+import com.faculty.view.StudentDashBoard;
 
 import javax.swing.*;
 
@@ -33,18 +37,17 @@ public class LoginController {
         String password = view.getSignInPassword();
         String role = view.getSignInRole();
 
-        if(username.isEmpty() || password.isEmpty() || role.isEmpty()) {
+        if (username.isEmpty() || password.isEmpty() || role.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Fill all fields and select a role!");
             return;
         }
 
-        boolean saved = userDAO.register(new User(username, password, role));
-        if(saved) {
-            JOptionPane.showMessageDialog(null, "Sign In successful! Proceed to Sign Up.");
-            view.switchToSignUpTab();
+        boolean exists = userDAO.checkUserExists(username, password, role);
+        if (exists) {
+            JOptionPane.showMessageDialog(null, "Sign In successful!");
+            openDashboard(role);
         } else {
-            JOptionPane.showMessageDialog(null, "User already exists! Proceed to Sign Up.");
-            view.switchToSignUpTab();
+            JOptionPane.showMessageDialog(null, "Invalid credentials or user does not exist!");
         }
     }
 
@@ -54,45 +57,46 @@ public class LoginController {
         String confirm = view.getSignUpConfirm();
         String role = view.getSignUpRole();
 
-        if(username.isEmpty() || password.isEmpty() || confirm.isEmpty() || role.isEmpty()) {
+        if (username.isEmpty() || password.isEmpty() || confirm.isEmpty() || role.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Fill all fields and select a role!");
             return;
         }
 
-        if(!password.equals(confirm)) {
+        if (!password.equals(confirm)) {
             JOptionPane.showMessageDialog(null, "Passwords do not match!");
             return;
         }
 
-        boolean exists = userDAO.checkUserExists(username, password, role);
-        if(exists) {
-            JOptionPane.showMessageDialog(null, "Sign Up successful!");
-            if (role.equals("ADMIN")) {
-                new AdminDashboardView().createAndShowGUI();
-            } else if (role.equals("STUDENT")) {
-               // call student dashboard
-            } else if (role.equals("STUDENT")) {
-                // call lecturer dashboard
-            }
-
+        boolean saved = userDAO.register(new User(username, password, role));
+        if (saved) {
+            JOptionPane.showMessageDialog(null, "Sign Up successful! Please Sign In.");
+            view.switchToSignInTab();
         } else {
-            JOptionPane.showMessageDialog(null, "User not found! Please Sign In first.");
+            JOptionPane.showMessageDialog(null, "User with this username already exists!");
         }
     }
 
     private void openDashboard(String role) {
-        switch(role.toUpperCase()) {
+        switch (role.toUpperCase()) {
             case "ADMIN":
                 JOptionPane.showMessageDialog(null, "Opening Admin Dashboard...");
-                // new AdminDashboardView();
+                SwingUtilities.invokeLater(() -> {
+                    new AdminDashboardView().createAndShowGUI();
+                });
                 break;
             case "STUDENT":
                 JOptionPane.showMessageDialog(null, "Opening Student Dashboard...");
-                // new StudentDashboardView();
+                SwingUtilities.invokeLater(() -> {
+                    StudentDashBoard studentDash = new StudentDashBoard();
+                    studentDash.setVisible(true);
+                });
                 break;
             case "LECTURER":
                 JOptionPane.showMessageDialog(null, "Opening Lecturer Dashboard...");
-                // new LecturerDashboardView();
+                SwingUtilities.invokeLater(() -> {
+                    LecturerDashboard dashh = new LecturerDashboard();
+                    dashh.setVisible(true);
+                });
                 break;
         }
     }

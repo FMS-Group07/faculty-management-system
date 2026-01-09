@@ -1,0 +1,82 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_1_7_2026_10_09_PM_[Changes]" date="1767803951497" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_7_2026_10_09_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 1/7/2026 10:09 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/faculty-management-system/com/faculty/view/StudentPanel.class" />
+    <option name="AFTER_PATH" value="out/production/faculty-management-system/com/faculty/view/StudentPanel.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_7_2026_10_09_PM_[Changes]/StudentPanel.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/faculty-management-system/com/faculty/view/StudentDashBoard.class" />
+    <option name="AFTER_PATH" value="out/production/faculty-management-system/com/faculty/view/StudentDashBoard.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_7_2026_10_09_PM_[Changes]/StudentDashBoard.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/faculty-management-system/com/faculty/view/DepartmentPanel.class" />
+    <option name="AFTER_PATH" value="out/production/faculty-management-system/com/faculty/view/DepartmentPanel.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_7_2026_10_09_PM_[Changes]/DepartmentPanel.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/faculty-management-system/com/faculty/view/LecturerDashboard.class" />
+    <option name="AFTER_PATH" value="out/production/faculty-management-system/com/faculty/view/LecturerDashboard.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_7_2026_10_09_PM_[Changes]/LecturerDashboard.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/faculty-management-system/com/faculty/view/StudentDashBoard$1.class" />
+    <option name="AFTER_PATH" value="out/production/faculty-management-system/com/faculty/view/StudentDashBoard$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_7_2026_10_09_PM_[Changes]/StudentDashBoard$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/faculty-management-system/com/faculty/view/exit.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/faculty-management-system/com/faculty/view/DegreePanel.class" />
+    <option name="AFTER_PATH" value="out/production/faculty-management-system/com/faculty/view/DegreePanel.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_7_2026_10_09_PM_[Changes]/DegreePanel.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/faculty-management-system/com/faculty/view/TimeTable.class" />
+    <option name="AFTER_PATH" value="out/production/faculty-management-system/com/faculty/view/TimeTable.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_7_2026_10_09_PM_[Changes]/TimeTable.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/faculty-management-system/com/faculty/view/CourseEnrolledPanle.class" />
+    <option name="AFTER_PATH" value="out/production/faculty-management-system/com/faculty/view/CourseEnrolledPanle.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_7_2026_10_09_PM_[Changes]/CourseEnrolledPanle.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/faculty-management-system/com/faculty/view/TimeTablePanel.class" />
+    <option name="AFTER_PATH" value="out/production/faculty-management-system/com/faculty/view/TimeTablePanel.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_7_2026_10_09_PM_[Changes]/TimeTablePanel.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/faculty-management-system/com/faculty/view/LecturerMessagePanel.class" />
+    <option name="AFTER_PATH" value="out/production/faculty-management-system/com/faculty/view/LecturerMessagePanel.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_7_2026_10_09_PM_[Changes]/LecturerMessagePanel.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/faculty-management-system/com/faculty/view/LecturerPanel.class" />
+    <option name="AFTER_PATH" value="out/production/faculty-management-system/com/faculty/view/LecturerPanel.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_7_2026_10_09_PM_[Changes]/LecturerPanel.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/faculty-management-system/com/faculty/view/CoursePanel.class" />
+    <option name="AFTER_PATH" value="out/production/faculty-management-system/com/faculty/view/CoursePanel.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_7_2026_10_09_PM_[Changes]/CoursePanel.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/faculty-management-system/com/faculty/view/ProfileDetailsPanel.class" />
+    <option name="AFTER_PATH" value="out/production/faculty-management-system/com/faculty/view/ProfileDetailsPanel.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_7_2026_10_09_PM_[Changes]/ProfileDetailsPanel.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/faculty-management-system/com/faculty/view/LecturerProfilePanel.class" />
+    <option name="AFTER_PATH" value="out/production/faculty-management-system/com/faculty/view/LecturerProfilePanel.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_7_2026_10_09_PM_[Changes]/LecturerProfilePanel.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/faculty-management-system/com/faculty/controller/LoginController.class" />
+    <option name="AFTER_PATH" value="out/production/faculty-management-system/com/faculty/controller/LoginController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_1_7_2026_10_09_PM_[Changes]/LoginController.class" />
+  </binary>
+</changelist>

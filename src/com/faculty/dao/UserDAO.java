@@ -1,7 +1,7 @@
 package com.faculty.dao;
 
 import com.faculty.model.User;
-import utils.DBConnection;
+import com.faculty.utils.DBConnection;
 
 import java.sql.*;
 
@@ -13,7 +13,7 @@ public class UserDAO {
         conn = DBConnection.getConnection();
     }
 
-    // Save user if not exists (used in Sign In)
+    // Save user if not exists (used in Sign Up)
     public boolean register(User user) {
         try {
             String checkQuery = "SELECT * FROM users WHERE username = ? AND password = ? AND role = ?";
@@ -23,7 +23,7 @@ public class UserDAO {
             psCheck.setString(3, user.getRole());
             ResultSet rs = psCheck.executeQuery();
 
-            if(rs.next()) {
+            if (rs.next()) {
                 return false; // user already exists
             }
 
@@ -42,7 +42,7 @@ public class UserDAO {
         }
     }
 
-    // Check if user exists for Sign Up
+    // Check if user exists for Sign In
     public boolean checkUserExists(String username, String password, String role) {
         try {
             String query = "SELECT * FROM users WHERE username = ? AND password = ? AND role = ?";
