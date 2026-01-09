@@ -17,7 +17,7 @@ public class DepartmentFormDialog extends JDialog {
 
     public DepartmentFormDialog(Frame parent, String title, Object[] initialData) {
         super(parent, title, true);
-        setSize(400, 450); // 4 fields
+        setSize(400, 450);
         setLocationRelativeTo(parent);
         setUndecorated(true);
         setLayout(new BorderLayout());
@@ -27,7 +27,7 @@ public class DepartmentFormDialog extends JDialog {
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(Color.WHITE);
         mainPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
-        mainPanel.setLayout(new GridLayout(5, 1, 10, 10)); // 4 fields + buttons
+        mainPanel.setLayout(new GridLayout(5, 1, 10, 10));
 
         nameField = createStyledTextField("Department Name");
         hodField = createStyledTextField("HOD");

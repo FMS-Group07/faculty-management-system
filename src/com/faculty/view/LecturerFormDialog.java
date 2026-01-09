@@ -11,49 +11,45 @@ public class LecturerFormDialog extends JDialog {
 
     private boolean isSaved = false;
     private JTextField nameField;
-    private JTextField departmentField;
+    private JComboBox<String> departmentCombo;
     private JTextField coursesField;
     private JTextField emailField;
     private JTextField mobileField;
 
-    public LecturerFormDialog(Frame parent, String title, Object[] initialData) {
+    public LecturerFormDialog(Frame parent, String title, Object[] initialData, String[] departments) {
         super(parent, title, true);
         setSize(400, 500);
         setLocationRelativeTo(parent);
-        setUndecorated(true); // Custom look
+        setUndecorated(true);
         setLayout(new BorderLayout());
 
-        // Rounded shape
         setShape(new java.awt.geom.RoundRectangle2D.Double(0, 0, 400, 500, 20, 20));
 
-        // Main Panel
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(Color.WHITE);
         mainPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
-        mainPanel.setLayout(new GridLayout(6, 1, 10, 10)); // 5 fields + buttons
+        mainPanel.setLayout(new GridLayout(6, 1, 10, 10));
 
         nameField = createStyledTextField("Full Name");
-        departmentField = createStyledTextField("Department");
+        departmentCombo = createStyledComboBox(departments);
         coursesField = createStyledTextField("Courses Teaching");
         emailField = createStyledTextField("Email");
         mobileField = createStyledTextField("Mobile Number");
 
-        // Pre-fill data if editing
         if (initialData != null) {
             nameField.setText(initialData[0].toString());
-            departmentField.setText(initialData[1].toString());
+            departmentCombo.setSelectedItem(initialData[1].toString());
             coursesField.setText(initialData[2].toString());
             emailField.setText(initialData[3].toString());
             mobileField.setText(initialData[4].toString());
         }
 
         mainPanel.add(createFieldPanel("Full Name", nameField));
-        mainPanel.add(createFieldPanel("Department", departmentField));
+        mainPanel.add(createFieldPanel("Department", departmentCombo));
         mainPanel.add(createFieldPanel("Courses Teaching", coursesField));
         mainPanel.add(createFieldPanel("Email", emailField));
         mainPanel.add(createFieldPanel("Mobile Number", mobileField));
 
-        // Buttons Panel
         JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         btnPanel.setOpaque(false);
 
@@ -71,7 +67,6 @@ public class LecturerFormDialog extends JDialog {
 
         mainPanel.add(btnPanel);
 
-        // Header with Title
         JPanel headerPanel = new JPanel(new BorderLayout());
         headerPanel.setBackground(AppColors.PRIMARY_PURPLE);
         headerPanel.setBorder(new EmptyBorder(10, 20, 10, 20));
@@ -92,14 +87,14 @@ public class LecturerFormDialog extends JDialog {
     public Object[] getData() {
         return new Object[] {
                 nameField.getText(),
-                departmentField.getText(),
+                departmentCombo.getSelectedItem(),
                 coursesField.getText(),
                 emailField.getText(),
                 mobileField.getText()
         };
     }
 
-    private JPanel createFieldPanel(String labelText, JTextField field) {
+    private JPanel createFieldPanel(String labelText, JComponent field) {
         JPanel panel = new JPanel(new BorderLayout(5, 5));
         panel.setOpaque(false);
         JLabel label = new JLabel(labelText);
@@ -117,6 +112,14 @@ public class LecturerFormDialog extends JDialog {
                 BorderFactory.createLineBorder(AppColors.GRAY_BUTTON),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));
         return field;
+    }
+
+    private JComboBox<String> createStyledComboBox(String[] items) {
+        JComboBox<String> combo = new JComboBox<>(items != null ? items : new String[] {});
+        combo.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        combo.setBackground(Color.WHITE);
+        combo.setBorder(BorderFactory.createLineBorder(AppColors.GRAY_BUTTON));
+        return combo;
     }
 
     private JButton createButton(String text, Color bg, Color fg) {
