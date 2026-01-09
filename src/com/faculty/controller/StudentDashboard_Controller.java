@@ -17,7 +17,7 @@ public class StudentDashboard_Controller {
     public StudentDashboard_Controller(StudentDashBoard view, String username) {
         this.view = view;
         this.dao = new StudentDashboard_DAO();
-        this.currentUserEmail = username; // Assuming username is email
+        this.currentUserEmail = username;
 
         initController();
     }
@@ -48,7 +48,6 @@ public class StudentDashboard_Controller {
                     s.getEmail(),
                     s.getMobile());
         } else {
-            // New Profile Case
             view.setStudentData("", "", "", currentUserEmail, "");
             JOptionPane.showMessageDialog(view, "Welcome! Please complete your profile details.");
         }
@@ -56,19 +55,15 @@ public class StudentDashboard_Controller {
 
     private void handleSaveProfile() {
         String[] data = view.getStudentData();
-        // data: [0]FullName, [1]StudentId, [2]Degree, [3]Email, [4]Mobile
-        // Validations can go here
 
         Student s = new Student(
-                data[0], // Name
-                data[1], // ID (read-only ideally, but passed as reference)
-                data[2], // Degree
-                data[3], // Email
-                data[4] // Mobile
-        );
+                data[0],
+                data[1],
+                data[2],
+                data[3],
+                data[4]);
 
         if (dao.getStudentByEmail(currentUserEmail) == null) {
-            // INSERT
             if (dao.addStudent(s)) {
                 JOptionPane.showMessageDialog(view, "Profile created successfully!");
                 this.currentUserEmail = s.getEmail();
@@ -77,12 +72,10 @@ public class StudentDashboard_Controller {
                 JOptionPane.showMessageDialog(view, "Failed to create profile: " + dao.getLastError());
             }
         } else {
-            // UPDATE
             if (dao.updateStudent(currentUserEmail, s)) {
                 JOptionPane.showMessageDialog(view, "Profile updated successfully!");
-                // Update the current user email if it was changed, so next save works
                 this.currentUserEmail = s.getEmail();
-                loadStudentData(); // Refresh to be sure
+                loadStudentData();
             } else {
                 JOptionPane.showMessageDialog(view, "Failed to update profile: " + dao.getLastError());
             }
