@@ -1,8 +1,12 @@
 package com.faculty.view;
 
+import com.faculty.controller.LoginController;
+
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +17,13 @@ public class StudentDashBoard extends JFrame implements ActionListener {
     JPanel profileView;
     JPanel timeTableView;
     JPanel coursesView;
+
+    private JTextField fullNameField;
+    private JTextField studentIdField;
+    private JComboBox<String> degreeCombo;
+    private JTextField emailField;
+    private JTextField mobileField;
+    private JButton saveProfileBtn;
 
     public StudentDashBoard() {
         setTitle("Faculty Management System");
@@ -53,6 +64,7 @@ public class StudentDashBoard extends JFrame implements ActionListener {
 
         btnExit = new JButton("Exit");
         btnExit.setBounds(110, 440, 60, 60);
+        btnExit.addActionListener(this);
 
         ImageIcon exitIcon = new ImageIcon(this.getClass().getResource("exit.png"));
         Image scaledImage = exitIcon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
@@ -106,21 +118,35 @@ public class StudentDashBoard extends JFrame implements ActionListener {
         title.setBounds(220, 100, 300, 40);
         profileView.add(title);
 
-        addFormRow(profileView, "Full Name", "Kumar Sangakkara", 180);
-        addFormRow(profileView, "Student ID", "ET/2022/011", 230);
-        addFormRow(profileView, "Degree", "Engineering Technology", 280);
-        addFormRow(profileView, "Email", "kumars-et22011@stu.kln.ac.lk", 330);
-        addFormRow(profileView, "Mobile Number", "0123456789", 380);
+        fullNameField = addFormRow(profileView, "Full Name", "", 180);
+        studentIdField = addFormRow(profileView, "Student ID", "", 230);
 
-        JButton saveBtn = new JButton("Save changes");
-        saveBtn.setBounds(160, 450, 400, 45);
-        saveBtn.setBackground(new Color(138, 43, 226));
-        saveBtn.setForeground(Color.WHITE);
-        saveBtn.setFont(new Font("Arial", Font.BOLD, 20));
-        profileView.add(saveBtn);
+        JLabel degreeLabel = new JLabel("Degree");
+        degreeLabel.setBounds(80, 280, 150, 30);
+        degreeLabel.setFont(new Font("Arial", Font.BOLD, 15));
+        degreeLabel.setForeground(new Color(138, 43, 226));
+        profileView.add(degreeLabel);
+
+        degreeCombo = new JComboBox<>();
+        degreeCombo.setBounds(240, 280, 350, 30);
+        degreeCombo.setFont(new Font("Arial", Font.PLAIN, 14));
+        degreeCombo.setBorder(BorderFactory.createLineBorder(new Color(138, 43, 226), 2, true));
+        degreeCombo.setForeground(new Color(138, 43, 226));
+        degreeCombo.setBackground(Color.WHITE);
+        profileView.add(degreeCombo);
+
+        emailField = addFormRow(profileView, "Email", "", 330);
+        mobileField = addFormRow(profileView, "Mobile Number", "", 380);
+
+        saveProfileBtn = new JButton("Save changes");
+        saveProfileBtn.setBounds(160, 450, 400, 45);
+        saveProfileBtn.setBackground(new Color(138, 43, 226));
+        saveProfileBtn.setForeground(Color.WHITE);
+        saveProfileBtn.setFont(new Font("Arial", Font.BOLD, 20));
+        profileView.add(saveProfileBtn);
     }
 
-    private void addFormRow(JPanel panel, String labelText, String value, int y) {
+    private JTextField addFormRow(JPanel panel, String labelText, String value, int y) {
         JLabel label = new JLabel(labelText);
         label.setBounds(80, y, 150, 30);
         label.setFont(new Font("Arial", Font.BOLD, 15));
@@ -133,6 +159,38 @@ public class StudentDashBoard extends JFrame implements ActionListener {
         field.setBorder(BorderFactory.createLineBorder(new Color(138, 43, 226), 2, true));
         field.setForeground(new Color(138, 43, 226));
         panel.add(field);
+        return field;
+    }
+
+    public void setStudentData(String name, String id, String degree, String email, String mobile) {
+        fullNameField.setText(name);
+        studentIdField.setText(id);
+        if (degree != null && !degree.isEmpty()) {
+            degreeCombo.setSelectedItem(degree);
+        }
+        emailField.setText(email);
+        mobileField.setText(mobile);
+    }
+
+    public void setDegreeOptions(java.util.List<String> degrees) {
+        degreeCombo.removeAllItems();
+        for (String d : degrees) {
+            degreeCombo.addItem(d);
+        }
+    }
+
+    public String[] getStudentData() {
+        return new String[] {
+                fullNameField.getText().trim(),
+                studentIdField.getText().trim(),
+                (String) degreeCombo.getSelectedItem(),
+                emailField.getText().trim(),
+                mobileField.getText().trim()
+        };
+    }
+
+    public void addSaveListener(ActionListener listener) {
+        saveProfileBtn.addActionListener(listener);
     }
 
     private void initTimeTableView() {
@@ -280,6 +338,9 @@ public class StudentDashBoard extends JFrame implements ActionListener {
             btnProfile.setForeground(Color.GRAY);
             btnTimeTable.setForeground(Color.GRAY);
             call.show(rightPanelContainer, "Courses");
+        } else if (e.getSource() == btnExit) {
+            dispose();
+            new LoginController(new LoginView());
         }
     }
 }
