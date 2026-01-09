@@ -306,9 +306,6 @@ public class StudentDashBoard extends JFrame implements ActionListener {
         } else if (e.getSource()== btnExit) {
             dispose();
             new LoginController(new LoginView());
-            System.out.println("hi");
-
-
         }
     }
 }

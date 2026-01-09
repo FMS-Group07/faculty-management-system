@@ -1,7 +1,6 @@
 package com.faculty.view;
 
 import javax.swing.*;
-
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -14,10 +13,38 @@ import java.awt.geom.RoundRectangle2D;
 
 public class AdminDashboardView {
 
-    private String currentView = "Students";
+    private JFrame frame;
+    private JLabel titleLabel;
+    private JTable table;
+    private DefaultTableModel model;
+    private Point initialClick;
 
-    public void createAndShowGUI() {
-        JFrame frame = new JFrame("Admin Dashboard");
+    // Sidebar Buttons
+    private JButton studentsBtn;
+    private JButton lecturersBtn;
+    private JButton coursesBtn;
+    private JButton departmentsBtn;
+    private JButton degreesBtn;
+    private LogoutButton logoutBtn;
+
+    // Action Buttons
+    private JButton addBtn;
+    private JButton editBtn;
+    private JButton deleteBtn;
+    private JButton saveBtn;
+
+    public AdminDashboardView() {
+        createGUI();
+    }
+
+    public void setVisible(boolean visible) {
+        if (frame != null) {
+            frame.setVisible(visible);
+        }
+    }
+
+    private void createGUI() {
+        frame = new JFrame("Admin Dashboard");
         frame.setUndecorated(true); // Remove default title bar
         frame.setSize(AppConfig.FRAME_WIDTH, AppConfig.FRAME_HEIGHT);
         frame.setLocationRelativeTo(null); // Center the frame
@@ -46,14 +73,14 @@ public class AdminDashboardView {
         int yStart = 180;
         int gap = 60;
 
-        JButton studentsBtn = addSidebarButton(sidebar, "Students", "👤", true, 65, yStart);
-        JButton lecturersBtn = addSidebarButton(sidebar, "Lecturers", "👥", false, 65, yStart + gap);
-        JButton coursesBtn = addSidebarButton(sidebar, "Courses", "📖", false, 65, yStart + gap * 2);
-        JButton departmentsBtn = addSidebarButton(sidebar, "Departments", "🏢", false, 65, yStart + gap * 3);
-        JButton degreesBtn = addSidebarButton(sidebar, "Degrees", "🎓", false, 65, yStart + gap * 4);
+        studentsBtn = addSidebarButton(sidebar, "Students", "👤", true, 65, yStart);
+        lecturersBtn = addSidebarButton(sidebar, "Lecturers", "👥", false, 65, yStart + gap);
+        coursesBtn = addSidebarButton(sidebar, "Courses", "📖", false, 65, yStart + gap * 2);
+        departmentsBtn = addSidebarButton(sidebar, "Departments", "🏢", false, 65, yStart + gap * 3);
+        degreesBtn = addSidebarButton(sidebar, "Degrees", "🎓", false, 65, yStart + gap * 4);
 
         // Logout Button (Bottom)
-        LogoutButton logoutBtn = new LogoutButton();
+        logoutBtn = new LogoutButton();
         logoutBtn.setBounds(135, AppConfig.FRAME_HEIGHT - 100 - 30, 50, 50); // Adjust for title bar
         sidebar.add(logoutBtn);
 
@@ -63,147 +90,16 @@ public class AdminDashboardView {
         centerPanel.setLayout(null);
 
         // Title
-        JLabel titleLabel = new JLabel("Students");
+        titleLabel = new JLabel("Students");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 35));
         titleLabel.setForeground(AppColors.PRIMARY_PURPLE);
         titleLabel.setBounds(250, 30, 220, 50);
         centerPanel.add(titleLabel);
 
         // ================= TABLE =================
-        String[] columns = { "Full Name", "Student ID", "Degree", "Email", "Mobile Number" };
-        Object[][] studentData = {
-                { "Kumar Sangakkara", "ET/2022/007", "Engineering Tech", "kumar@kln.ac.lk", "0123456789" },
-                { "Mahela Jayawardene", "ET/2022/008", "Engineering Tech", "mahela@kln.ac.lk", "0123456788" },
-                { "Sanath Jayasuriya", "ET/2022/009", "Engineering Tech", "sanath@kln.ac.lk", "0123456787" },
-        };
+        model = new DefaultTableModel();
+        table = new JTable(model);
 
-        String[] lecturerColumns = { "Full Name", "Department", "Courses Teaching", "Email", "Mobile Number" };
-        Object[][] lecturerData = {
-                { "Dr. Nuwan Kodagoda", "Computing", "OOP, DSA", "nuwan@kln.ac.lk", "0712345678" },
-                { "Dr. Pradeepa Samarasinghe", "Computing", "DBMS, SAD", "pradeepa@kln.ac.lk", "0712345679" },
-                { "Dr. Pradeepa Samarasinghe", "Computing", "DBMS, SAD", "pradeepa@kln.ac.lk", "0712345679" }
-        };
-
-        String[] courseColumns = { "Course Code", "Course Name", "Credits", "Lecturer" };
-        Object[][] courseData = {
-                { "SENG 11223", "Object Oriented Programming", "3", "Dr. Nuwan Kodagoda" },
-                { "SENG 11213", "Data Structures and Algorithms", "3", "Dr. Nuwan Kodagoda" },
-                { "SENG 11233", "Database Management Systems", "3", "Dr. Pradeepa Samarasinghe" }
-        };
-
-        String[] departmentColumns = { "Department Name", "HOD", "Degrees", "No of Staff" };
-        Object[][] departmentData = {
-                { "Computing", "Dr. Nuwan Kodagoda", "SE, CS, IS", "15" },
-                { "Engineering Tech", "Dr. Pradeepa Samarasinghe", "BET, BICT", "20" },
-                { "Engineering Tech", "Dr. Pradeepa Samarasinghe", "BET, BICT", "20" }
-        };
-
-        String[] degreeColumns = { "Degree Name", "Department", "No of Students" };
-        Object[][] degreeData = {
-                { "Software Engineering", "Computing", "150" },
-                { "Computer Science", "Computing", "120" },
-                { "Information Systems", "Computing", "100" },
-                { "Bet", "Engineering Tech", "200" }
-        };
-
-        DefaultTableModel model = new DefaultTableModel(studentData, columns);
-        JTable table = new JTable(model);
-
-        // Sidebar Navigation Logic
-        studentsBtn.addActionListener(e -> {
-            currentView = "Students";
-            titleLabel.setText("Students");
-            model.setDataVector(studentData, columns);
-            centerTableCells(table);
-
-            // Update Styles
-            studentsBtn.setBackground(AppColors.DARK_PURPLE);
-            studentsBtn.setForeground(Color.WHITE);
-            lecturersBtn.setBackground(Color.WHITE);
-            lecturersBtn.setForeground(AppColors.PRIMARY_PURPLE);
-            coursesBtn.setBackground(Color.WHITE);
-            coursesBtn.setForeground(AppColors.PRIMARY_PURPLE);
-            departmentsBtn.setBackground(Color.WHITE);
-            departmentsBtn.setForeground(AppColors.PRIMARY_PURPLE);
-            degreesBtn.setBackground(Color.WHITE);
-            degreesBtn.setForeground(AppColors.PRIMARY_PURPLE);
-        });
-
-        lecturersBtn.addActionListener(e -> {
-            currentView = "Lecturers";
-            titleLabel.setText("Lecturers");
-            model.setDataVector(lecturerData, lecturerColumns);
-            centerTableCells(table);
-
-            // Update Styles
-            lecturersBtn.setBackground(AppColors.DARK_PURPLE);
-            lecturersBtn.setForeground(Color.WHITE);
-            studentsBtn.setBackground(Color.WHITE);
-            studentsBtn.setForeground(AppColors.PRIMARY_PURPLE);
-            coursesBtn.setBackground(Color.WHITE);
-            coursesBtn.setForeground(AppColors.PRIMARY_PURPLE);
-            departmentsBtn.setBackground(Color.WHITE);
-            departmentsBtn.setForeground(AppColors.PRIMARY_PURPLE);
-            degreesBtn.setBackground(Color.WHITE);
-            degreesBtn.setForeground(AppColors.PRIMARY_PURPLE);
-        });
-
-        coursesBtn.addActionListener(e -> {
-            currentView = "Courses";
-            titleLabel.setText("Courses");
-            model.setDataVector(courseData, courseColumns);
-            centerTableCells(table);
-
-            // Update Styles
-            coursesBtn.setBackground(AppColors.DARK_PURPLE);
-            coursesBtn.setForeground(Color.WHITE);
-            studentsBtn.setBackground(Color.WHITE);
-            studentsBtn.setForeground(AppColors.PRIMARY_PURPLE);
-            lecturersBtn.setBackground(Color.WHITE);
-            lecturersBtn.setForeground(AppColors.PRIMARY_PURPLE);
-            departmentsBtn.setBackground(Color.WHITE);
-            departmentsBtn.setForeground(AppColors.PRIMARY_PURPLE);
-            degreesBtn.setBackground(Color.WHITE);
-            degreesBtn.setForeground(AppColors.PRIMARY_PURPLE);
-        });
-
-        departmentsBtn.addActionListener(e -> {
-            currentView = "Departments";
-            titleLabel.setText("Departments");
-            model.setDataVector(departmentData, departmentColumns);
-            centerTableCells(table);
-
-            // Update Styles
-            departmentsBtn.setBackground(AppColors.DARK_PURPLE);
-            departmentsBtn.setForeground(Color.WHITE);
-            studentsBtn.setBackground(Color.WHITE);
-            studentsBtn.setForeground(AppColors.PRIMARY_PURPLE);
-            lecturersBtn.setBackground(Color.WHITE);
-            lecturersBtn.setForeground(AppColors.PRIMARY_PURPLE);
-            coursesBtn.setBackground(Color.WHITE);
-            coursesBtn.setForeground(AppColors.PRIMARY_PURPLE);
-            degreesBtn.setBackground(Color.WHITE);
-            degreesBtn.setForeground(AppColors.PRIMARY_PURPLE);
-        });
-
-        degreesBtn.addActionListener(e -> {
-            currentView = "Degrees";
-            titleLabel.setText("Degrees");
-            model.setDataVector(degreeData, degreeColumns);
-            centerTableCells(table);
-
-            // Update Styles
-            degreesBtn.setBackground(AppColors.DARK_PURPLE);
-            degreesBtn.setForeground(Color.WHITE);
-            studentsBtn.setBackground(Color.WHITE);
-            studentsBtn.setForeground(AppColors.PRIMARY_PURPLE);
-            lecturersBtn.setBackground(Color.WHITE);
-            lecturersBtn.setForeground(AppColors.PRIMARY_PURPLE);
-            coursesBtn.setBackground(Color.WHITE);
-            coursesBtn.setForeground(AppColors.PRIMARY_PURPLE);
-            departmentsBtn.setBackground(Color.WHITE);
-            departmentsBtn.setForeground(AppColors.PRIMARY_PURPLE);
-        });
         table.setRowHeight(40);
         table.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         table.setSelectionBackground(AppColors.GRAY_BUTTON);
@@ -219,21 +115,16 @@ public class AdminDashboardView {
         header.setPreferredSize(new Dimension(100, 50));
         ((DefaultTableCellRenderer) header.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
 
-        // Center cell content
-        centerTableCells(table);
-
         JScrollPane scrollPane = new JScrollPane(table);
 
         // Dynamic Table Height Calculation
-        int rowHeight = 40;
-        int headerHeight = 50;
-        int maxVisibleRows = 7;
-        int rows = model.getRowCount();
-
-        int calculatedHeight = headerHeight + (rows * rowHeight);
-        int maxHeight = headerHeight + (maxVisibleRows * rowHeight);
-
-        scrollPane.setBounds(50, 210, 580, Math.min(calculatedHeight, maxHeight));
+        // Note: Initial size might be small if no data, but we set bounds explicitly
+        scrollPane.setBounds(50, 210, 580, 400); // Set a fixed manageable size or dynamic based on logic
+        // For now, let's keep it somewhat fixed or we can adjust dynamically if needed,
+        // but dynamic height based on row count is tricky if rows change.
+        // Let's use the bounds from before but we might need to update it when data
+        // changes if we want that shrinking effect.
+        // For simplicity layout, let's stick to a robust area.
         scrollPane.setBorder(BorderFactory.createLineBorder(AppColors.PRIMARY_PURPLE, 1));
         scrollPane.getViewport().setBackground(Color.WHITE);
         centerPanel.add(scrollPane);
@@ -248,118 +139,20 @@ public class AdminDashboardView {
         int totalBtnWidth = (btnWidth * 3) + (btnGap * 2);
         int startX = (panelWidth - totalBtnWidth) / 2;
 
-        JButton addBtn = createRoundedButton("Add new", AppColors.PRIMARY_PURPLE, Color.WHITE);
+        addBtn = createRoundedButton("Add new", AppColors.PRIMARY_PURPLE, Color.WHITE);
         addBtn.setBounds(startX, btnY, btnWidth, btnHeight);
-        addBtn.addActionListener(e -> {
-            switch (currentView) {
-                case "Students":
-                    StudentFormDialog sDialog = new StudentFormDialog(frame, "Add Student", null);
-                    sDialog.setVisible(true);
-                    if (sDialog.isSaved())
-                        model.addRow(sDialog.getData());
-                    break;
-                case "Lecturers":
-                    LecturerFormDialog lDialog = new LecturerFormDialog(frame, "Add Lecturer", null);
-                    lDialog.setVisible(true);
-                    if (lDialog.isSaved())
-                        model.addRow(lDialog.getData());
-                    break;
-                case "Courses":
-                    CourseFormDialog cDialog = new CourseFormDialog(frame, "Add Course", null);
-                    cDialog.setVisible(true);
-                    if (cDialog.isSaved())
-                        model.addRow(cDialog.getData());
-                    break;
-                case "Departments":
-                    DepartmentFormDialog dDialog = new DepartmentFormDialog(frame, "Add Department", null);
-                    dDialog.setVisible(true);
-                    if (dDialog.isSaved())
-                        model.addRow(dDialog.getData());
-                    break;
-                case "Degrees":
-                    DegreeFormDialog deDialog = new DegreeFormDialog(frame, "Add Degree", null);
-                    deDialog.setVisible(true);
-                    if (deDialog.isSaved())
-                        model.addRow(deDialog.getData());
-                    break;
-            }
-        });
         centerPanel.add(addBtn);
 
-        JButton editBtn = createRoundedButton("Edit", AppColors.PRIMARY_PURPLE, Color.WHITE);
+        editBtn = createRoundedButton("Edit", AppColors.PRIMARY_PURPLE, Color.WHITE);
         editBtn.setBounds(startX + btnWidth + btnGap, btnY, btnWidth, btnHeight);
-        editBtn.addActionListener(e -> {
-            int selectedRow = table.getSelectedRow();
-            if (selectedRow == -1) {
-                JOptionPane.showMessageDialog(frame, "Please select a record to edit.", "Warning",
-                        JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-
-            int colCount = table.getColumnCount();
-            Object[] currentData = new Object[colCount];
-            for (int i = 0; i < colCount; i++) {
-                currentData[i] = model.getValueAt(selectedRow, i);
-            }
-
-            switch (currentView) {
-                case "Students":
-                    StudentFormDialog sDialog = new StudentFormDialog(frame, "Edit Student", currentData);
-                    sDialog.setVisible(true);
-                    if (sDialog.isSaved())
-                        updateRow(model, selectedRow, sDialog.getData());
-                    break;
-                case "Lecturers":
-                    LecturerFormDialog lDialog = new LecturerFormDialog(frame, "Edit Lecturer", currentData);
-                    lDialog.setVisible(true);
-                    if (lDialog.isSaved())
-                        updateRow(model, selectedRow, lDialog.getData());
-                    break;
-                case "Courses":
-                    CourseFormDialog cDialog = new CourseFormDialog(frame, "Edit Course", currentData);
-                    cDialog.setVisible(true);
-                    if (cDialog.isSaved())
-                        updateRow(model, selectedRow, cDialog.getData());
-                    break;
-                case "Departments":
-                    DepartmentFormDialog dDialog = new DepartmentFormDialog(frame, "Edit Department", currentData);
-                    dDialog.setVisible(true);
-                    if (dDialog.isSaved())
-                        updateRow(model, selectedRow, dDialog.getData());
-                    break;
-                case "Degrees":
-                    DegreeFormDialog deDialog = new DegreeFormDialog(frame, "Edit Degree", currentData);
-                    deDialog.setVisible(true);
-                    if (deDialog.isSaved())
-                        updateRow(model, selectedRow, deDialog.getData());
-                    break;
-            }
-        });
         centerPanel.add(editBtn);
 
-        JButton deleteBtn = createRoundedButton("Delete", AppColors.PRIMARY_PURPLE, Color.WHITE);
+        deleteBtn = createRoundedButton("Delete", AppColors.PRIMARY_PURPLE, Color.WHITE);
         deleteBtn.setBounds(startX + (btnWidth + btnGap) * 2, btnY, btnWidth, btnHeight);
-        deleteBtn.addActionListener(e -> {
-            int selectedRow = table.getSelectedRow();
-            if (selectedRow == -1) {
-                JOptionPane.showMessageDialog(frame, "Please select a record to delete.", "Warning",
-                        JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-
-            int confirm = JOptionPane.showConfirmDialog(frame,
-                    "Are you sure you want to delete this " + currentView.substring(0, currentView.length() - 1) + "?",
-                    "Confirm Delete",
-                    JOptionPane.YES_NO_OPTION);
-
-            if (confirm == JOptionPane.YES_OPTION) {
-                model.removeRow(selectedRow);
-            }
-        });
         centerPanel.add(deleteBtn);
 
         // ================= SAVE BUTTON =================
-        JButton saveBtn = createRoundedButton("Save changes", AppColors.PRIMARY_PURPLE, Color.WHITE);
+        saveBtn = createRoundedButton("Save changes", AppColors.PRIMARY_PURPLE, Color.WHITE);
         saveBtn.setBounds(140, 420, 400, 50);
         saveBtn.setFont(new Font("Segoe UI", Font.BOLD, 18));
         centerPanel.add(saveBtn);
@@ -367,37 +160,134 @@ public class AdminDashboardView {
         // Add panels to frame
         frame.add(sidebar, BorderLayout.WEST);
         frame.add(centerPanel, BorderLayout.CENTER);
-
-        frame.setVisible(true);
     }
 
-    private Point initialClick;
+    // ================= PUBLIC METHODS FOR CONTROLLER =================
+
+    public void updateTableData(Object[][] data, String[] columns) {
+        model.setDataVector(data, columns);
+        centerTableCells(table);
+        // Recalculate scrollpane height if we want that dynamic effect?
+        // The previous code did: scrollPane.setBounds(50, 210, 580,
+        // Math.min(calculatedHeight, maxHeight));
+        // But scrollPane is local in createGUI. We might need to promote it to field if
+        // we want to resize it.
+        // For now, let's just update data.
+    }
+
+    public void setTitle(String title) {
+        titleLabel.setText(title);
+    }
+
+    public void setActiveSidebarButton(String viewName) {
+        JButton[] encodedBtns = { studentsBtn, lecturersBtn, coursesBtn, departmentsBtn, degreesBtn };
+        String[] names = { "Students", "Lecturers", "Courses", "Departments", "Degrees" };
+
+        for (int i = 0; i < names.length; i++) {
+            if (names[i].equals(viewName)) {
+                encodedBtns[i].setBackground(AppColors.DARK_PURPLE);
+                encodedBtns[i].setForeground(Color.WHITE);
+            } else {
+                encodedBtns[i].setBackground(Color.WHITE);
+                encodedBtns[i].setForeground(AppColors.PRIMARY_PURPLE);
+            }
+        }
+    }
+
+    public void updateRow(int row, Object[] newData) {
+        for (int i = 0; i < newData.length; i++) {
+            model.setValueAt(newData[i], row, i);
+        }
+    }
+
+    public void addRow(Object[] rowData) {
+        model.addRow(rowData);
+    }
+
+    public void removeRow(int row) {
+        model.removeRow(row);
+    }
+
+    public int getSelectedRow() {
+        return table.getSelectedRow();
+    }
+
+    public int getColumnCount() {
+        return table.getColumnCount();
+    }
+
+    public Object getValueAt(int row, int col) {
+        return model.getValueAt(row, col);
+    }
+
+    // Getters for Listeners
+    public JButton getStudentsBtn() {
+        return studentsBtn;
+    }
+
+    public JButton getLecturersBtn() {
+        return lecturersBtn;
+    }
+
+    public JButton getCoursesBtn() {
+        return coursesBtn;
+    }
+
+    public JButton getDepartmentsBtn() {
+        return departmentsBtn;
+    }
+
+    public JButton getDegreesBtn() {
+        return degreesBtn;
+    }
+
+    public JButton getAddBtn() {
+        return addBtn;
+    }
+
+    public JButton getEditBtn() {
+        return editBtn;
+    }
+
+    public JButton getDeleteBtn() {
+        return deleteBtn;
+    }
+
+    public JButton getSaveBtn() {
+        return saveBtn;
+    }
+
+    public JButton getLogoutBtn() {
+        return logoutBtn;
+    }
+
+    public JFrame getFrame() {
+        return frame;
+    }
+
+    // ================= PRIVATE HELPERS =================
 
     private JPanel createTitleBar(JFrame frame) {
         JPanel titleBar = new JPanel(new BorderLayout());
-        titleBar.setBackground(Color.WHITE); // Or AppColors.PRIMARY_PURPLE based on pref
+        titleBar.setBackground(Color.WHITE);
         titleBar.setPreferredSize(new Dimension(frame.getWidth(), 30));
 
-        // Window Title Centered
         JLabel titleLabel = new JLabel("Admin Dashboard");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
         titleLabel.setForeground(Color.BLACK);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         titleBar.add(titleLabel, BorderLayout.CENTER);
 
-        // Spacer - LEFT SIDE (to balance the controls and force title to absolute
-        // center)
         JPanel spacer = new JPanel();
         spacer.setOpaque(false);
-        spacer.setPreferredSize(new Dimension(100, 30)); // Match controls width
+        spacer.setPreferredSize(new Dimension(100, 30));
         titleBar.add(spacer, BorderLayout.WEST);
 
-        // Controls - RIGHT SIDE (Close Button)
         JPanel controlsPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
         controlsPanel.setOpaque(false);
-        controlsPanel.setPreferredSize(new Dimension(100, 30)); // Match left spacer for balance
+        controlsPanel.setPreferredSize(new Dimension(100, 30));
 
-        JButton closeBtn = new JButton("X"); // Standard X to avoid rendering issues
+        JButton closeBtn = new JButton("X");
         closeBtn.setFont(new Font("Segoe UI", Font.BOLD, 14));
         closeBtn.setFocusPainted(false);
         closeBtn.setBorderPainted(false);
@@ -409,7 +299,7 @@ public class AdminDashboardView {
 
         closeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent e) {
-                closeBtn.setBackground(new Color(232, 17, 35)); // Windows 10 red
+                closeBtn.setBackground(new Color(232, 17, 35));
                 closeBtn.setForeground(Color.WHITE);
                 closeBtn.setContentAreaFilled(true);
             }
@@ -426,7 +316,6 @@ public class AdminDashboardView {
         controlsPanel.add(closeBtn);
         titleBar.add(controlsPanel, BorderLayout.EAST);
 
-        // Drag Functionality
         titleBar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent e) {
                 initialClick = e.getPoint();
@@ -437,15 +326,10 @@ public class AdminDashboardView {
         titleBar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             @Override
             public void mouseDragged(java.awt.event.MouseEvent e) {
-                // Get location of the window
                 int thisX = frame.getLocation().x;
                 int thisY = frame.getLocation().y;
-
-                // Determine how much the mouse moved since the initial click
                 int xMoved = e.getX() - initialClick.x;
                 int yMoved = e.getY() - initialClick.y;
-
-                // Move window to this position
                 int X = thisX + xMoved;
                 int Y = thisY + yMoved;
                 frame.setLocation(X, Y);
@@ -470,11 +354,9 @@ public class AdminDashboardView {
             Graphics2D g2 = (Graphics2D) g.create();
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-            // Draw Background
             g2.setColor(getBackground());
-            g2.fillRoundRect(0, 0, getWidth(), getHeight(), 100, 100); // Fully rounded
+            g2.fillRoundRect(0, 0, getWidth(), getHeight(), 100, 100);
 
-            // Draw Icon
             g2.setColor(AppColors.PRIMARY_PURPLE);
             if (getModel().isPressed()) {
                 g2.setColor(AppColors.DARK_PURPLE);
@@ -487,12 +369,8 @@ public class AdminDashboardView {
             int x = (getWidth() - size) / 2;
             int y = (getHeight() - size) / 2;
 
-            // Power Icon: Broken Circle
-            // 90 is top. Start at 120, sweep 300. Gap at top.
             g2.drawArc(x, y, size, size, 120, 300);
 
-            // Power Icon: Line
-            // From top of bounding box down to center
             int cx = x + size / 2;
             int cy = y + size / 2;
             g2.drawLine(cx, y - 2, cx, cy);
@@ -502,7 +380,6 @@ public class AdminDashboardView {
     }
 
     public class RoundedButton extends JButton {
-
         private int radius = 20;
 
         public RoundedButton(String text) {
@@ -521,12 +398,8 @@ public class AdminDashboardView {
                     RenderingHints.VALUE_ANTIALIAS_ON);
 
             if (getModel().isPressed()) {
-                g2.setColor(new Color(25, 118, 210)); // Darker blue/pressed color
+                g2.setColor(new Color(25, 118, 210));
             } else if (getModel().isRollover()) {
-                // If background is white (like inactive sidebar), maybe hover is light gray?
-                // But user asked for specific action button colors.
-                // Let's assume a generic hover behavior: slightly darker or complementary.
-                // For Primary Purple buttons, let's use Dark Purple.
                 if (getBackground().equals(AppColors.PRIMARY_PURPLE)) {
                     g2.setColor(AppColors.DARK_PURPLE);
                 } else {
@@ -544,9 +417,7 @@ public class AdminDashboardView {
     }
 
     private JButton addSidebarButton(JPanel panel, String text, String icon, boolean isActive, int x, int y) {
-        JButton btn = new RoundedButton(text); // Icons typically require Font support or ImageIcon
-        // For simplicity using text, but styling it like the image
-
+        JButton btn = new RoundedButton(text);
         btn.setBounds(x, y, 200, 45);
         btn.setFont(new Font("Segoe UI", Font.BOLD, 25));
         btn.setFocusPainted(false);
@@ -558,18 +429,12 @@ public class AdminDashboardView {
             btn.setBackground(AppColors.DARK_PURPLE);
             btn.setForeground(Color.WHITE);
         } else {
-            btn.setBackground(AppColors.WHITE); // Transparent-ish logic
+            btn.setBackground(AppColors.WHITE);
             btn.setForeground(AppColors.PRIMARY_PURPLE);
         }
 
         panel.add(btn);
         return btn;
-    }
-
-    private void updateRow(DefaultTableModel model, int row, Object[] newData) {
-        for (int i = 0; i < newData.length; i++) {
-            model.setValueAt(newData[i], row, i);
-        }
     }
 
     private void centerTableCells(JTable table) {
@@ -587,5 +452,4 @@ public class AdminDashboardView {
         btn.setFont(new Font("Segoe UI", Font.BOLD, 14));
         return btn;
     }
-
 }
