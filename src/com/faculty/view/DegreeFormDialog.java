@@ -16,7 +16,7 @@ public class DegreeFormDialog extends JDialog {
 
     public DegreeFormDialog(Frame parent, String title, Object[] initialData, String[] departments) {
         super(parent, title, true);
-        setSize(400, 400); // 3 fields
+        setSize(400, 400);
         setLocationRelativeTo(parent);
         setUndecorated(true);
         setLayout(new BorderLayout());
@@ -26,7 +26,7 @@ public class DegreeFormDialog extends JDialog {
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(Color.WHITE);
         mainPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
-        mainPanel.setLayout(new GridLayout(4, 1, 10, 10)); // 3 fields + buttons
+        mainPanel.setLayout(new GridLayout(4, 1, 10, 10));
 
         nameField = createStyledTextField("Degree Name");
         departmentCombo = createStyledComboBox(departments);

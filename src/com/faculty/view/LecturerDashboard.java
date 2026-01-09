@@ -16,7 +16,6 @@ public class LecturerDashboard extends JFrame implements ActionListener {
     JPanel timeTableView;
     JPanel coursesView;
 
-    // Profile Fields
     private JTextField fullNameField;
     private JTextField salaryIdField;
     private JComboBox<String> departmentCombo;
@@ -28,16 +27,14 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         setTitle("Faculty Management System");
         setSize(1000, 650);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);// Frame make sure open in center of the display
+        setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
-        // Left Sidebar Panel
         JPanel sidebar = new JPanel();
         sidebar.setLayout(null);
-        sidebar.setBackground(new Color(138, 43, 226)); // Purple color
+        sidebar.setBackground(new Color(138, 43, 226));
         sidebar.setPreferredSize(new Dimension(280, 600));
 
-        // User Icon and Welcome Text
         JLabel iconLabel = new JLabel("👤", SwingConstants.CENTER);
         iconLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 80));
         iconLabel.setForeground(Color.WHITE);
@@ -50,7 +47,6 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         welcomeLabel.setBounds(15, 125, 250, 30);
         sidebar.add(welcomeLabel);
 
-        // Navigation Buttons (Using helper method to style them)
         btnProfile = createNavButton("👤    Profile Details", 180);
         btnProfile.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
         btnProfile.setForeground(new Color(138, 43, 226));
@@ -75,7 +71,7 @@ public class LecturerDashboard extends JFrame implements ActionListener {
             btnExit.setIcon(new ImageIcon(scaledImage));
         } else {
             System.err.println("Warning: exit.png not found.");
-            btnExit.setText("Exit"); // Fallback text
+            btnExit.setText("Exit");
         }
 
         sidebar.add(btnProfile);
@@ -83,25 +79,20 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         sidebar.add(btnCourses);
         sidebar.add(btnExit);
 
-        // Add sidebar to the West (Left) of the frame
         add(sidebar, BorderLayout.WEST);
 
-        // Right Content Panel
         rightPanelContainer = new JPanel();
         rightPanelContainer.setLayout(new CardLayout());
         rightPanelContainer.setBackground(Color.WHITE);
 
-        // Initialize the three separate views
         initProfileView();
         initTimeTableView();
         initCoursesView();
 
-        // Add views to the container
         rightPanelContainer.add(profileView, "Profile");
         rightPanelContainer.add(timeTableView, "TimeTable");
         rightPanelContainer.add(coursesView, "Courses");
 
-        // Add the container to the Center of the frame
         add(rightPanelContainer, BorderLayout.CENTER);
     }
 
@@ -116,7 +107,6 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         return btn;
     }
 
-    // --- View 1: Profile Details (Form) ---
     private void initProfileView() {
         profileView = new JPanel();
         profileView.setLayout(null);
@@ -131,7 +121,6 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         fullNameField = addFormRow(profileView, "Full Name", "", 180);
         salaryIdField = addFormRow(profileView, "Salary ID", "", 230);
 
-        // Department Combo
         JLabel deptLabel = new JLabel("Department");
         deptLabel.setBounds(80, 280, 150, 30);
         deptLabel.setFont(new Font("Arial", Font.BOLD, 15));
@@ -203,7 +192,6 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         saveProfileBtn.addActionListener(listener);
     }
 
-    // Time Table View
     private void initTimeTableView() {
         Color purple = new Color(138, 43, 226);
 
@@ -277,10 +265,9 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         }
     }
 
-    // Courses Enrolled
     private void initCoursesView() {
         coursesView = new JPanel();
-        coursesView.setLayout(null); // keep your layout
+        coursesView.setLayout(null);
         coursesView.setBackground(Color.WHITE);
 
         JLabel title = new JLabel("Courses Teaching");
@@ -289,12 +276,11 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         title.setBounds(220, 100, 300, 40);
         coursesView.add(title);
 
-        // TABLE PART
         String[] columns = { "Course Code", "Course Name", "Credits", "Total Students" };
 
         DefaultTableModel model = new DefaultTableModel(columns, 0) {
             public boolean isCellEditable(int row, int column) {
-                return false; // read-only
+                return false;
             }
         };
 
@@ -319,7 +305,6 @@ public class LecturerDashboard extends JFrame implements ActionListener {
 
         coursesView.add(scrollPane);
 
-        // TEMP DATA (remove later when DB is connected)
         loadMockCourses(model);
     }
 
