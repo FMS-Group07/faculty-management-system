@@ -100,7 +100,12 @@ public class LecturerDashboard_Controller {
         } else {
             // UPDATE
             if (dao.updateLecturer(currentUserEmail, l)) {
-                JOptionPane.showMessageDialog(view, "Profile updated successfully!");
+                String warning = dao.getLastError();
+                if (warning != null && !warning.isEmpty()) {
+                    JOptionPane.showMessageDialog(view, "Profile updated successfully!\n" + warning);
+                } else {
+                    JOptionPane.showMessageDialog(view, "Profile updated successfully!");
+                }
                 this.currentUserEmail = l.getEmail();
                 loadLecturerData();
             } else {
