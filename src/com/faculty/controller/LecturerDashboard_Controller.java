@@ -40,27 +40,31 @@ public class LecturerDashboard_Controller {
     }
 
     private void loadLecturerData() {
-        System.out.println("DEBUG: loadLecturerData called for email: " + currentUserEmail);
+        System.out.println("DEBUG: loadLecturerData called for email: [" + currentUserEmail + "]");
         Lecturer l = dao.getLecturerByEmail(currentUserEmail);
+
         if (l != null) {
             System.out.println("DEBUG: Lecturer found: " + l.getFullName());
             String degree = (l.getCoursesTeaching() != null && l.getCoursesTeaching().length > 0)
                     ? String.join(",", l.getCoursesTeaching())
                     : "";
 
+            // Use empty strings instead of nulls to prevent setText crashes
             view.setLecturerData(
-                    l.getFullName(),
-                    l.getLecturerId(),
-                    l.getDepartment(),
-                    l.getEmail(),
-                    l.getMobile());
+                    l.getFullName() != null ? l.getFullName() : "",
+                    l.getLecturerId() != null ? l.getLecturerId() : "",
+                    l.getDepartment() != null ? l.getDepartment() : "",
+                    l.getEmail() != null ? l.getEmail() : "",
+                    l.getMobile() != null ? l.getMobile() : "");
         } else {
-            System.out.println("DEBUG: Lecturer NOT found (or error). DAO error: " + dao.getLastError());
-            // New Profile
-            view.setLecturerData("", "", "", currentUserEmail, "");
+            System.out.println("DEBUG: Lecturer NOT found. DAO Error: " + dao.getLastError());
+
+            // Only show error, DO NOT clear fields (keeps user input visible for
+            // debugging/retry)
             JOptionPane.showMessageDialog(view,
-                    "Welcome! Please complete your profile details.\n(Debug: Record not found for " + currentUserEmail
-                            + ")");
+                    "Warning: Profile updated, but could not reload data for: " + currentUserEmail +
+                            "\nDatabase Error: "
+                            + (dao.getLastError().isEmpty() ? "Record not found" : dao.getLastError()));
         }
     }
 
@@ -77,6 +81,7 @@ public class LecturerDashboard_Controller {
 
         Lecturer l = new Lecturer(
                 data[0], // Full Name
+                data[1], // Lecturer ID (Salary ID)
                 data[2], // Department
                 coursesPlaceholder,
                 data[3], // Email

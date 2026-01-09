@@ -104,7 +104,7 @@ public class AdminDashboardView_DAO {
                 String[] courses = coursesStr != null ? coursesStr.split(",") : new String[0];
                 lecturers.add(new Lecturer(
                         rs.getString("full_name"),
-                        rs.getString("lecturer_id"),
+                        rs.getString("salary_id"),
                         rs.getString("department"),
                         courses,
                         rs.getString("email"),

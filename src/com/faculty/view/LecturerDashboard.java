@@ -68,13 +68,15 @@ public class LecturerDashboard extends JFrame implements ActionListener {
         btnExit.setBounds(110, 440, 60, 60);
         btnExit.addActionListener(this);
 
-        ImageIcon exitIcon = new ImageIcon(this.getClass().getResource("exit.png"));
-        Image scaledImage = exitIcon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-        btnExit.setContentAreaFilled(false);
-        btnExit.setBorderPainted(false);
-        btnExit.setFocusPainted(false);
-        btnExit.setBackground(Color.WHITE);
-        btnExit.setIcon(new ImageIcon(scaledImage));
+        java.net.URL exitIconUrl = this.getClass().getResource("exit.png");
+        if (exitIconUrl != null) {
+            ImageIcon exitIcon = new ImageIcon(exitIconUrl);
+            Image scaledImage = exitIcon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+            btnExit.setIcon(new ImageIcon(scaledImage));
+        } else {
+            System.err.println("Warning: exit.png not found.");
+            btnExit.setText("Exit"); // Fallback text
+        }
 
         sidebar.add(btnProfile);
         sidebar.add(btnTimeTable);

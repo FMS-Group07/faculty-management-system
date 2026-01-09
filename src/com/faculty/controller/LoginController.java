@@ -99,9 +99,14 @@ public class LoginController {
             case "LECTURER":
                 JOptionPane.showMessageDialog(null, "Opening Lecturer Dashboard...");
                 SwingUtilities.invokeLater(() -> {
-                    LecturerDashboard lecturerView = new LecturerDashboard();
-                    new LecturerDashboard_Controller(lecturerView, username);
-                    lecturerView.setVisible(true);
+                    try {
+                        LecturerDashboard lecturerView = new LecturerDashboard();
+                        new LecturerDashboard_Controller(lecturerView, username);
+                        lecturerView.setVisible(true);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "Error opening dashboard: " + e.getMessage());
+                    }
                 });
                 break;
         }
