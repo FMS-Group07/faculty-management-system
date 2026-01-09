@@ -45,7 +45,7 @@ public class LoginController {
         boolean exists = userDAO.checkUserExists(username, password, role);
         if (exists) {
             JOptionPane.showMessageDialog(null, "Sign In successful!");
-            openDashboard(role);
+            openDashboard(role, username);
         } else {
             JOptionPane.showMessageDialog(null, "Invalid credentials or user does not exist!");
         }
@@ -67,16 +67,18 @@ public class LoginController {
             return;
         }
 
-        boolean saved = userDAO.register(new User(username, password, role));
-        if (saved) {
+        int status = userDAO.register(new User(username, password, role));
+        if (status == 0) {
             JOptionPane.showMessageDialog(null, "Sign Up successful! Please Sign In.");
             view.switchToSignInTab();
-        } else {
+        } else if (status == 1) {
             JOptionPane.showMessageDialog(null, "User with this username already exists!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Database Error! Check your connection.");
         }
     }
 
-    private void openDashboard(String role) {
+    private void openDashboard(String role, String username) {
         switch (role.toUpperCase()) {
             case "ADMIN":
                 JOptionPane.showMessageDialog(null, "Opening Admin Dashboard...");
@@ -90,6 +92,7 @@ public class LoginController {
                 JOptionPane.showMessageDialog(null, "Opening Student Dashboard...");
                 SwingUtilities.invokeLater(() -> {
                     StudentDashBoard studentDash = new StudentDashBoard();
+                    new StudentDashboard_Controller(studentDash, username);
                     studentDash.setVisible(true);
                 });
                 break;

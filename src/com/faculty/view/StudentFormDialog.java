@@ -12,11 +12,11 @@ public class StudentFormDialog extends JDialog {
     private boolean isSaved = false;
     private JTextField nameField;
     private JTextField idField;
-    private JTextField degreeField;
+    private JComboBox<String> degreeCombo;
     private JTextField emailField;
     private JTextField mobileField;
 
-    public StudentFormDialog(Frame parent, String title, Object[] initialData) {
+    public StudentFormDialog(Frame parent, String title, Object[] initialData, String[] availableDegrees) {
         super(parent, title, true);
         setSize(400, 500);
         setLocationRelativeTo(parent);
@@ -34,7 +34,7 @@ public class StudentFormDialog extends JDialog {
 
         nameField = createStyledTextField("Full Name");
         idField = createStyledTextField("Student ID");
-        degreeField = createStyledTextField("Degree");
+        degreeCombo = createStyledComboBox(availableDegrees);
         emailField = createStyledTextField("Email");
         mobileField = createStyledTextField("Mobile Number");
 
@@ -42,14 +42,14 @@ public class StudentFormDialog extends JDialog {
         if (initialData != null) {
             nameField.setText(initialData[0].toString());
             idField.setText(initialData[1].toString());
-            degreeField.setText(initialData[2].toString());
+            degreeCombo.setSelectedItem(initialData[2].toString());
             emailField.setText(initialData[3].toString());
             mobileField.setText(initialData[4].toString());
         }
 
         mainPanel.add(createFieldPanel("Full Name", nameField));
         mainPanel.add(createFieldPanel("Student ID", idField));
-        mainPanel.add(createFieldPanel("Degree", degreeField));
+        mainPanel.add(createFieldPanel("Degree", degreeCombo));
         mainPanel.add(createFieldPanel("Email", emailField));
         mainPanel.add(createFieldPanel("Mobile Number", mobileField));
 
@@ -93,13 +93,13 @@ public class StudentFormDialog extends JDialog {
         return new Object[] {
                 nameField.getText(),
                 idField.getText(),
-                degreeField.getText(),
+                degreeCombo.getSelectedItem(),
                 emailField.getText(),
                 mobileField.getText()
         };
     }
 
-    private JPanel createFieldPanel(String labelText, JTextField field) {
+    private JPanel createFieldPanel(String labelText, JComponent field) {
         JPanel panel = new JPanel(new BorderLayout(5, 5));
         panel.setOpaque(false);
         JLabel label = new JLabel(labelText);
@@ -117,6 +117,14 @@ public class StudentFormDialog extends JDialog {
                 BorderFactory.createLineBorder(AppColors.GRAY_BUTTON),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));
         return field;
+    }
+
+    private JComboBox<String> createStyledComboBox(String[] items) {
+        JComboBox<String> combo = new JComboBox<>(items != null ? items : new String[] {});
+        combo.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        combo.setBackground(Color.WHITE);
+        combo.setBorder(BorderFactory.createLineBorder(AppColors.GRAY_BUTTON));
+        return combo;
     }
 
     private JButton createButton(String text, Color bg, Color fg) {

@@ -14,7 +14,12 @@ public class UserDAO {
     }
 
     // Save user if not exists (used in Sign Up)
-    public boolean register(User user) {
+    // Returns: 0 = Success, 1 = User Exists, 2 = Database Error
+    public int register(User user) {
+        if (conn == null) {
+            System.err.println("❌ Database connection is null!");
+            return 2;
+        }
         try {
             String checkQuery = "SELECT * FROM users WHERE username = ? AND password = ? AND role = ?";
             PreparedStatement psCheck = conn.prepareStatement(checkQuery);
@@ -24,7 +29,7 @@ public class UserDAO {
             ResultSet rs = psCheck.executeQuery();
 
             if (rs.next()) {
-                return false; // user already exists
+                return 1; // user already exists
             }
 
             String insertQuery = "INSERT INTO users(username, password, role) VALUES(?, ?, ?)";
@@ -34,16 +39,18 @@ public class UserDAO {
             ps.setString(3, user.getRole());
 
             ps.executeUpdate();
-            return true;
+            return 0;
 
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return 2;
         }
     }
 
     // Check if user exists for Sign In
     public boolean checkUserExists(String username, String password, String role) {
+        if (conn == null)
+            return false;
         try {
             String query = "SELECT * FROM users WHERE username = ? AND password = ? AND role = ?";
             PreparedStatement ps = conn.prepareStatement(query);

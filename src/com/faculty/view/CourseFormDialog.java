@@ -13,9 +13,9 @@ public class CourseFormDialog extends JDialog {
     private JTextField codeField;
     private JTextField nameField;
     private JTextField creditsField;
-    private JTextField lecturerField;
+    private JComboBox<String> lecturerCombo;
 
-    public CourseFormDialog(Frame parent, String title, Object[] initialData) {
+    public CourseFormDialog(Frame parent, String title, Object[] initialData, String[] lecturers) {
         super(parent, title, true);
         setSize(400, 450); // 4 fields
         setLocationRelativeTo(parent);
@@ -32,19 +32,19 @@ public class CourseFormDialog extends JDialog {
         codeField = createStyledTextField("Course Code");
         nameField = createStyledTextField("Course Name");
         creditsField = createStyledTextField("Credits");
-        lecturerField = createStyledTextField("Lecturer");
+        lecturerCombo = createStyledComboBox(lecturers);
 
         if (initialData != null) {
             codeField.setText(initialData[0].toString());
             nameField.setText(initialData[1].toString());
             creditsField.setText(initialData[2].toString());
-            lecturerField.setText(initialData[3].toString());
+            lecturerCombo.setSelectedItem(initialData[3].toString());
         }
 
         mainPanel.add(createFieldPanel("Course Code", codeField));
         mainPanel.add(createFieldPanel("Course Name", nameField));
         mainPanel.add(createFieldPanel("Credits", creditsField));
-        mainPanel.add(createFieldPanel("Lecturer", lecturerField));
+        mainPanel.add(createFieldPanel("Lecturer", lecturerCombo));
 
         JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         btnPanel.setOpaque(false);
@@ -85,11 +85,11 @@ public class CourseFormDialog extends JDialog {
                 codeField.getText(),
                 nameField.getText(),
                 creditsField.getText(),
-                lecturerField.getText()
+                lecturerCombo.getSelectedItem()
         };
     }
 
-    private JPanel createFieldPanel(String labelText, JTextField field) {
+    private JPanel createFieldPanel(String labelText, JComponent field) {
         JPanel panel = new JPanel(new BorderLayout(5, 5));
         panel.setOpaque(false);
         JLabel label = new JLabel(labelText);
@@ -107,6 +107,14 @@ public class CourseFormDialog extends JDialog {
                 BorderFactory.createLineBorder(AppColors.GRAY_BUTTON),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));
         return field;
+    }
+
+    private JComboBox<String> createStyledComboBox(String[] items) {
+        JComboBox<String> combo = new JComboBox<>(items != null ? items : new String[] {});
+        combo.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        combo.setBackground(Color.WHITE);
+        combo.setBorder(BorderFactory.createLineBorder(AppColors.GRAY_BUTTON));
+        return combo;
     }
 
     private JButton createButton(String text, Color bg, Color fg) {
